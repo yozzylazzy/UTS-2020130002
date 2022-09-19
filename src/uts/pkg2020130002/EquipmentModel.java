@@ -10,57 +10,49 @@ package uts.pkg2020130002;
  */
 
 /*
--->Ngikutin Genshin Impact Prinsipnya
+-->Ngikutin Super Neptunia RPG Prinsipnya
+https://store.playstation.com/en-sg/product/UP0031-CUSA12059_00-DLC0000000000003
 Equipment yang dipakai permain terbagi menjadi 6 buah jenis eq
 Nama Jenis Eq :
--Sands (HP)
--Goblet (ATK)
--Circlet (ATK %)
--Flower (CRIT DMG %)
--Plume (CRIT RATE %)
+-Weapons
+-Bracelets
+-Accessories
+-Necklace
+
 */
 public class EquipmentModel {
-    public String sands, goblet, circlet, flower, plume;
+    public String weapons, bracelets, accessories, necklace;
 
-    public String getSands() {
-        return sands;
+    public String getWeapons() {
+        return weapons;
     }
 
-    public void setSands(String sands) {
-        this.sands = sands;
+    public void setWeapons(String weapons) {
+        this.weapons = weapons;
     }
 
-    public String getGoblet() {
-        return goblet;
+    public String getBracelets() {
+        return bracelets;
     }
 
-    public void setGoblet(String goblet) {
-        this.goblet = goblet;
+    public void setBracelets(String bracelets) {
+        this.bracelets = bracelets;
     }
 
-    public String getCirclet() {
-        return circlet;
+    public String getAccessories() {
+        return accessories;
     }
 
-    public void setCirclet(String circlet) {
-        this.circlet = circlet;
+    public void setAccessories(String accessories) {
+        this.accessories = accessories;
     }
 
-    public String getFlower() {
-        return flower;
+    public String getNecklace() {
+        return necklace;
     }
 
-    public void setFlower(String flower) {
-        this.flower = flower;
+    public void setNecklace(String necklace) {
+        this.necklace = necklace;
     }
-
-    public String getPlume() {
-        return plume;
-    }
-
-    public void setPlume(String plume) {
-        this.plume = plume;
-    }
-    
     
 }
