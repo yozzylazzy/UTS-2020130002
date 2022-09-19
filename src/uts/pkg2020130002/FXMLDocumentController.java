@@ -39,13 +39,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextArea txteffect;
     @FXML
-    private ListView<?> scr4;
+    private ListView<EquipmentModel> scr4;
     @FXML
-    private ListView<?> scr2;
+    private ListView<EquipmentModel> scr2;
     @FXML
-    private ListView<?> scr3;
+    private ListView<EquipmentModel> scr3;
     @FXML
-    private ListView<?> scr1;
+    private ListView<EquipmentModel> scr1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

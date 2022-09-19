@@ -8,18 +8,6 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-
-/*
--->Ngikutin Genshin Impact Prinsipnya
-Equipment yang dipakai permain terbagi menjadi 6 buah jenis eq
-Nama Jenis Eq :
--Crown
--
--
--
--
--
-*/
-public class Weapon {
+public class DBEquipment {
     
 }
