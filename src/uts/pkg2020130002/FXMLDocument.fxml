@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="751.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXMLDocumentController">
+    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="403.0" layoutY="41.0" opacity="0.25" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <MenuBar prefHeight="39.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="DISPLAY HOME" />
+          <Menu mnemonicParsing="false" text="ADD WEAPON">
+            <items>
+              <MenuItem mnemonicParsing="false" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="SHOW WEAPON">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="EXIT">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="EXIT" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffe7" height="90.0" layoutX="255.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <ImageView fx:id="img1" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="260.0" layoutY="101.0" onMouseClicked="#img1clicked" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../assets/a1.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffe7" height="90.0" layoutX="255.0" layoutY="315.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <ImageView fx:id="img2" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="260.0" layoutY="320.0" onMouseClicked="#img2clicked" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../assets/a3.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffe7" height="90.0" layoutX="112.0" layoutY="208.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <ImageView fx:id="img3" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="117.0" layoutY="213.0" onMouseClicked="#img3clicked" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../assets/a6.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffe7" height="90.0" layoutX="399.0" layoutY="208.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Rectangle>
+      <ImageView fx:id="img4" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="404.0" layoutY="213.0" onMouseClicked="#img4clicked" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../assets/a7.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="efekweapon" layoutX="52.0" layoutY="652.0" text="Effect Weapon        :" />
+      <Label layoutX="51.0" layoutY="519.0" text="Nama-Set Weapon :" />
+      <TextArea fx:id="txtnamaset" disable="true" layoutX="240.0" layoutY="477.0" prefHeight="110.0" prefWidth="302.0" />
+      <TextArea fx:id="txteffect" disable="true" layoutX="240.0" layoutY="610.0" prefHeight="110.0" prefWidth="302.0" />
+      <ListView fx:id="scr2" disable="true" layoutX="255.0" layoutY="405.0" onMouseExited="#exitscr2" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr4" disable="true" layoutX="399.0" layoutY="293.0" onMouseExited="#exitscr4" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr3" disable="true" layoutX="112.0" layoutY="293.0" onMouseExited="#exitscr3" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr1" disable="true" layoutX="255.0" layoutY="186.0" onMouseExited="#exitscr1" prefHeight="200.0" prefWidth="200.0" visible="false" />
+    </children>
+</AnchorPane>
