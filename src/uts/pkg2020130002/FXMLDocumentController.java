@@ -4,18 +4,25 @@
  */
 package uts.pkg2020130002;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Menu;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
@@ -46,6 +53,11 @@ public class FXMLDocumentController implements Initializable {
     private ListView<EquipmentModel> scr3;
     @FXML
     private ListView<EquipmentModel> scr1;
+
+    
+    public static DBEquipment dtweapons = new DBEquipment();
+    @FXML
+    private Menu showweapon;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -99,6 +111,23 @@ public class FXMLDocumentController implements Initializable {
     private void exitscr1(MouseEvent event) {
         scr1.setDisable(true);
         scr1.setVisible(false);
+    }
+
+    @FXML
+    private void showweaponklik(ActionEvent event) {
+           try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayUtama.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -10,6 +10,7 @@ package uts.pkg2020130002;
  */
 
 /*
+//https://gamefaqs.gamespot.com/ps4/237501-super-neptunia-rpg/faqs/77548/equipment?validate=1
 -->Ngikutin Super Neptunia RPG Prinsipnya
 https://store.playstation.com/en-sg/product/UP0031-CUSA12059_00-DLC0000000000003
 Equipment yang dipakai permain terbagi menjadi 6 buah jenis eq
@@ -19,40 +20,50 @@ Nama Jenis Eq :
 -Accessories
 -Necklace
 
-*/
+ */
 public class EquipmentModel {
-    public String weapons, bracelets, accessories, necklace;
 
-    public String getWeapons() {
-        return weapons;
+    private String weaponid, statusid, weaponname;
+    private int weaponatk, weaponrarity;
+
+    public String getWeaponid() {
+        return weaponid;
     }
 
-    public void setWeapons(String weapons) {
-        this.weapons = weapons;
+    public void setWeaponid(String weaponid) {
+        this.weaponid = weaponid;
     }
 
-    public String getBracelets() {
-        return bracelets;
+    public String getStatusid() {
+        return statusid;
     }
 
-    public void setBracelets(String bracelets) {
-        this.bracelets = bracelets;
+    public void setStatusid(String statusid) {
+        this.statusid = statusid;
     }
 
-    public String getAccessories() {
-        return accessories;
+    public String getWeaponname() {
+        return weaponname;
     }
 
-    public void setAccessories(String accessories) {
-        this.accessories = accessories;
+    public void setWeaponname(String weaponname) {
+        this.weaponname = weaponname;
     }
 
-    public String getNecklace() {
-        return necklace;
+    public int getWeaponatk() {
+        return weaponatk;
     }
 
-    public void setNecklace(String necklace) {
-        this.necklace = necklace;
+    public void setWeaponatk(int weaponatk) {
+        this.weaponatk = weaponatk;
     }
-    
+
+    public int getWeaponrarity() {
+        return weaponrarity;
+    }
+
+    public void setWeaponrarity(int weaponrarity) {
+        this.weaponrarity = weaponrarity;
+    }
+  
 }
