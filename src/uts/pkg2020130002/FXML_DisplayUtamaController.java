@@ -35,7 +35,7 @@ public class FXML_DisplayUtamaController implements Initializable {
     }
 
     public void showData() {
-        ObservableList<EquipmentModel> data = FXMLDocumentController.dtweapons.Load();
+        ObservableList<EquipmentModel> data = FXMLDocumentController.dtweapons.LoadAll();
         if (data != null) {
             tbvweapons.getColumns().clear();
             tbvweapons.getItems().clear();
@@ -56,6 +56,25 @@ public class FXML_DisplayUtamaController implements Initializable {
 
             col = new TableColumn("Weapon_Rarity");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Weaponrarity"));
+            tbvweapons.getColumns().addAll(col);
+            
+            col = new TableColumn("STR");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Str"));
+            tbvweapons.getColumns().addAll(col);
+            col = new TableColumn("INT");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Intl"));
+            tbvweapons.getColumns().addAll(col);
+            col = new TableColumn("AGI");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Agi"));
+            tbvweapons.getColumns().addAll(col);
+            col = new TableColumn("DEX");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Dex"));
+            tbvweapons.getColumns().addAll(col);
+            col = new TableColumn("VIT");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Vit"));
+            tbvweapons.getColumns().addAll(col);
+            col = new TableColumn("CRIT");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Crit"));
             tbvweapons.getColumns().addAll(col);
             tbvweapons.setItems(data);
         } else {

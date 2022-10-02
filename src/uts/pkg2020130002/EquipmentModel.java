@@ -21,7 +21,7 @@ Nama Jenis Eq :
 -Necklace
 
  */
-public class EquipmentModel {
+public class EquipmentModel extends StatusModel {
 
     private String weaponid, statusid, weaponname;
     private int weaponatk, weaponrarity;
