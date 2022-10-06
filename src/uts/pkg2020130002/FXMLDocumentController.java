@@ -80,19 +80,6 @@ public class FXMLDocumentController implements Initializable {
     private ListView<String> scr6;
     @FXML
     private ComboBox<String> cmbweapons;
-
-    public static DBArmor dtarmor = new DBArmor();
-    public static DBEquipment dtweapons = new DBEquipment();
-    public static DBNecklace dtnecklaces = new DBNecklace();
-    public static DBBelt dtbelts = new DBBelt();
-    public static DBBracelet dtbracelets = new DBBracelet();
-    public static DBRing dtrings = new DBRing();
-    ObservableList<String> weapons = FXCollections.observableArrayList();
-    ObservableList<String> armors = FXCollections.observableArrayList();
-    ObservableList<String> necklaces = FXCollections.observableArrayList();
-    ObservableList<String> belts = FXCollections.observableArrayList();
-    ObservableList<String> bracelets = FXCollections.observableArrayList();
-    ObservableList<String> rings = FXCollections.observableArrayList();
     @FXML
     private TableView<EquipmentModel> tbvstat;
     @FXML
@@ -138,6 +125,22 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ComboBox<String> cmbnecklace;
 
+    public static DBSeteffect dtseteq = new DBSeteffect();
+    public static DBDetailset dtdetailset = new DBDetailset();
+    public static DBArmor dtarmor = new DBArmor();
+    public static DBEquipment dtweapons = new DBEquipment();
+    public static DBNecklace dtnecklaces = new DBNecklace();
+    public static DBBelt dtbelts = new DBBelt();
+    public static DBBracelet dtbracelets = new DBBracelet();
+    public static DBRing dtrings = new DBRing();
+    ObservableList<String> weapons = FXCollections.observableArrayList();
+    ObservableList<String> armors = FXCollections.observableArrayList();
+    ObservableList<String> necklaces = FXCollections.observableArrayList();
+    ObservableList<String> belts = FXCollections.observableArrayList();
+    ObservableList<String> bracelets = FXCollections.observableArrayList();
+    ObservableList<String> rings = FXCollections.observableArrayList();
+    ObservableList<String> details = FXCollections.observableArrayList();
+
     //
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -171,9 +174,62 @@ public class FXMLDocumentController implements Initializable {
             rings.add(i, dtrings.LoadWeaponName().get(i).getRingname());
         }
         cmbring.getItems().addAll(rings);
-        //cmbweapons.getSelectionModel().select(0);
+       
+        setNamaEfek();
     }
-
+    
+    public void setNamaEfek(){
+//         String armorequipped = "", beltequipped= "", braceletequipped= "", ringequipped= "", weaponequipped= "", necklaceequipped= "";
+//        if (cmbarmor.getSelectionModel().getSelectedItem() != null) {
+//            armorequipped = cmbarmor.getSelectionModel().getSelectedItem();
+//        }
+//         if (cmbbelt.getSelectionModel().getSelectedItem() != null) {
+//            beltequipped = cmbbelt.getSelectionModel().getSelectedItem();
+//        }
+//        if (cmbbracelet.getSelectionModel().getSelectedItem() != null) {
+//            braceletequipped = cmbbracelet.getSelectionModel().getSelectedItem();
+//        }if (cmbring.getSelectionModel().getSelectedItem() != null) {
+//            ringequipped = cmbring.getSelectionModel().getSelectedItem();
+//        }if (cmbweapons.getSelectionModel().getSelectedItem() != null) {
+//            weaponequipped = cmbweapons.getSelectionModel().getSelectedItem();
+//        }
+//        if (cmbnecklace.getSelectionModel().getSelectedItem() != null) {
+//            necklaceequipped = cmbnecklace.getSelectionModel().getSelectedItem();
+//        }
+//        
+//        String x = " ";
+//        //String armor, String belt, String bracelet, String ring, String weapon, String necklace
+////        details = dtdetailset.LoadSetName(armorequipped,
+////                beltequipped
+////                ,braceletequipped
+////                ,ringequipped
+////                ,weaponequipped
+////                ,necklaceequipped);
+//        for (int i = 0; i< dtdetailset.LoadSetName(armorequipped,
+//                beltequipped
+//                ,braceletequipped
+//                ,ringequipped
+//                ,weaponequipped
+//                ,necklaceequipped).size(); i++){
+//           details.add(i, dtdetailset.LoadSetName(armorequipped,
+//                beltequipped
+//                ,braceletequipped
+//                ,ringequipped
+//                ,weaponequipped
+//                ,necklaceequipped).get(i).getSetname());
+//        }
+//        System.out.println(details);
+//        txtnamaset.setText(details.toString());
+        //dtseteq.Load();
+        for(int i = 0; i<dtdetailset.Load().size(); i++){
+            System.out.println(
+            dtdetailset.Load().get(i).getSetname()
+            );
+        }
+        //dtdetailset.Load();
+        
+    }
+    
     public void setUpBuff(String x) {
         txteffect.setText(x);
     }
