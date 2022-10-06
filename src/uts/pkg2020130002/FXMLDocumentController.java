@@ -125,6 +125,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ComboBox<String> cmbnecklace;
 
+    public static DBStatus dtstatus = new DBStatus();
     public static DBSeteffect dtseteq = new DBSeteffect();
     public static DBDetailset dtdetailset = new DBDetailset();
     public static DBArmor dtarmor = new DBArmor();
@@ -133,6 +134,7 @@ public class FXMLDocumentController implements Initializable {
     public static DBBelt dtbelts = new DBBelt();
     public static DBBracelet dtbracelets = new DBBracelet();
     public static DBRing dtrings = new DBRing();
+    public static DBEfek dtefek = new DBEfek();
     ObservableList<String> weapons = FXCollections.observableArrayList();
     ObservableList<String> armors = FXCollections.observableArrayList();
     ObservableList<String> necklaces = FXCollections.observableArrayList();
@@ -187,12 +189,12 @@ public class FXMLDocumentController implements Initializable {
     public void setNamaEfek(int a) {
         System.out.print(dtweapons.Load().get(a).getWeaponid());
         for (int j = 0; j < dtdetailset.Load().size(); j++) {
-            if (dtdetailset.LoadAll().get(j).getWeaponid().equals(dtweapons.Load().get(a).getWeaponid())) {  
-                 System.out.println(
-                                dtdetailset.LoadAll().get(j).getWeaponid()
-                        );
+            if (dtdetailset.LoadAll().get(j).getWeaponid().equals(dtweapons.Load().get(a).getWeaponid())) {
+                System.out.println(
+                        dtdetailset.LoadAll().get(j).getWeaponid()
+                );
                 txtnamaset.setText(dtdetailset.LoadAll().get(a).getSetname());
-            }   
+            }
         }
     }
 
@@ -337,7 +339,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterweaponclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputWeapon.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -354,7 +356,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masternecklaceclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputNecklace.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -371,7 +373,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterbraceletclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputBracelet.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -388,7 +390,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterbeltclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputBelt.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -405,7 +407,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterringclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputRing.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -422,7 +424,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterstatusclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputStatus.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -439,7 +441,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterefekclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputEfek.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -456,7 +458,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mastersetefekclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputSetEfek.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -473,7 +475,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterdetailsetclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailSet.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -589,10 +591,10 @@ public class FXMLDocumentController implements Initializable {
             e.printStackTrace();
         }
     }
-    
-     @FXML
+
+    @FXML
     private void displaystatusclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayStatus.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -609,7 +611,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void displayefekclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayEfek.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -626,8 +628,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void displaysetequipclick(ActionEvent event) {
-         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplaySetEfek.fxml"));
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplaySetefek.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -643,7 +645,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void displaydetailsetclick(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailSet.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
