@@ -42,6 +42,10 @@
                   <MenuItem fx:id="displaybracelet" mnemonicParsing="false" onAction="#displaybraceletclick" text="BRACELET" />
                   <MenuItem fx:id="displaybelt" mnemonicParsing="false" onAction="#displaybeltclick" text="BELT" />
                   <MenuItem fx:id="displayring" mnemonicParsing="false" onAction="#displayringclick" text="RING" />
+                  <MenuItem fx:id="displaystatus" mnemonicParsing="false" onAction="#displaystatusclick" text="STATUS" />
+                  <MenuItem fx:id="displayefek" mnemonicParsing="false" onAction="#displayefekclick" text="EFEK" />
+                  <MenuItem fx:id="displaysetequip" mnemonicParsing="false" onAction="#displaysetequipclick" text="SETEQUIP" />
+                  <MenuItem fx:id="displaydetailset" mnemonicParsing="false" onAction="#displaydetailsetclick" text="DETAILSET" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="EXIT">
