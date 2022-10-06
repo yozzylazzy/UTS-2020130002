@@ -14,32 +14,32 @@ import javafx.collections.ObservableList;
  */
 public class DBBracelet {
 
-    private EquipmentModel data = new EquipmentModel();
+    private BraceletModel data = new BraceletModel();
 
-    public EquipmentModel getEquipmentModel() {
+    public BraceletModel getBraceletModel() {
         return (data);
     }
 
-    public void setEquipmentModel(EquipmentModel s) {
+    public void setBraceletModel(BraceletModel s) {
         data = s;
     }
 
-    public ObservableList<EquipmentModel> Load() {
+    public ObservableList<BraceletModel> Load() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<BraceletModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select * from weapons");
+            ResultSet rs = con.statement.executeQuery("Select * from bracelets");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponid(rs.getString("weapon_id"));
+                BraceletModel d = new BraceletModel();
+                d.setBraceletid(rs.getString("bracelet_id"));
                 d.setStatusid(rs.getString("status_id"));
-                d.setWeaponname(rs.getString("weapon_name"));
-                d.setWeaponatk(rs.getInt("weapon_atk"));
-                d.setWeaponrarity(rs.getInt("weapon_rarity"));
+                d.setBraceletname(rs.getString("bracelet_name"));
+                d.setBraceletdef(rs.getInt("bracelet_def"));
+                d.setBraceletrarity(rs.getInt("bracelet_rarity"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -54,25 +54,25 @@ public class DBBracelet {
         }
     }
 
-    public ObservableList<EquipmentModel> LoadAll() {
+    public ObservableList<BraceletModel> LoadAll() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<BraceletModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
-                    = con.statement.executeQuery("Select weapon_id, w.status_id, weapon_name, weapon_atk, weapon_rarity,"
+                    = con.statement.executeQuery("Select b.*,"
                             + "str, intl, agi, dex, vit, crit"
-                            + " from weapons w join status s on (w.status_id=s.status_id)");
+                            + " from bracelets b join status s on (b.status_id=s.status_id)");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponid(rs.getString("weapon_id"));
+                BraceletModel d = new BraceletModel();
+                d.setBraceletid(rs.getString("bracelet_id"));
                 d.setStatusid(rs.getString("status_id"));
-                d.setWeaponname(rs.getString("weapon_name"));
-                d.setWeaponatk(rs.getInt("weapon_atk"));
-                d.setWeaponrarity(rs.getInt("weapon_rarity"));
+                d.setBraceletname(rs.getString("bracelet_name"));
+                d.setBraceletdef(rs.getInt("bracelet_def"));
+                d.setBraceletrarity(rs.getInt("bracelet_rarity"));
                 d.setStr(rs.getInt("str"));
                 d.setIntl(rs.getInt("intl"));
                 d.setAgi(rs.getInt("agi"));
@@ -90,18 +90,18 @@ public class DBBracelet {
         }
     }
 
-    public ObservableList<EquipmentModel> LoadWeaponName() {
+    public ObservableList<BraceletModel> LoadWeaponName() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<BraceletModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
-                    = con.statement.executeQuery("Select weapon_name from weapons");
+                    = con.statement.executeQuery("Select bracelet_name from bracelets");
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponname(rs.getString("weapon_name"));
+                BraceletModel d = new BraceletModel();
+                d.setBraceletname(rs.getString("bracelet_name"));
                 TableData.add(d);
                 i++;
             }
@@ -113,19 +113,19 @@ public class DBBracelet {
         }
     }
 
-     public ObservableList<EquipmentModel> LoadWeaponStat(String x) {
+     public ObservableList<BraceletModel> LoadWeaponStat(String x) {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<BraceletModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
                     = con.statement.executeQuery("Select str, intl, agi, dex, vit, crit"
-                            + " from weapons w join status s on (w.status_id=s.status_id) where weapon_name = '" + x + "'");
+                            + " from bracelets b join status s on (b.status_id=s.status_id) where bracelet_name = '" + x + "'");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
+                BraceletModel d = new BraceletModel();
                 d.setStr(rs.getInt("str"));
                 d.setIntl(rs.getInt("intl"));
                 d.setAgi(rs.getInt("agi"));

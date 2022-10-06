@@ -175,18 +175,18 @@
          </font></Label>
       <TextArea fx:id="txtnamaset" disable="true" layoutX="240.0" layoutY="477.0" prefHeight="110.0" prefWidth="302.0" />
       <TextArea fx:id="txteffect" disable="true" layoutX="240.0" layoutY="610.0" prefHeight="110.0" prefWidth="302.0" />
-      <ListView fx:id="scr2" disable="true" layoutX="255.0" layoutY="422.0" onMouseExited="#exitscr2" prefHeight="200.0" prefWidth="200.0" visible="false" />
-      <ListView fx:id="scr4" disable="true" layoutX="390.0" layoutY="420.0" onMouseExited="#exitscr4" prefHeight="200.0" prefWidth="200.0" visible="false" />
-      <ListView fx:id="scr3" disable="true" layoutX="22.0" layoutY="420.0" onMouseExited="#exitscr3" prefHeight="200.0" prefWidth="200.0" visible="false" />
-      <ListView fx:id="scr1" disable="true" layoutX="22.0" layoutY="164.0" onMouseExited="#exitscr1" prefHeight="200.0" prefWidth="200.0" visible="false" />
-      <ListView fx:id="scr5" disable="true" layoutX="255.0" layoutY="164.0" onMouseExited="#exitscr5" prefHeight="200.0" prefWidth="200.0" visible="false" />
-      <ListView fx:id="scr6" disable="true" layoutX="363.0" layoutY="164.0" onMouseExited="#exitscr6" prefHeight="200.0" prefWidth="231.0" visible="false" />
       <ComboBox fx:id="cmbweapons" layoutX="249.0" layoutY="294.0" onAction="#updateWeapon" prefHeight="39.0" prefWidth="100.0" />
       <ComboBox fx:id="cmbarmor" layoutX="17.0" layoutY="294.0" onAction="#updatearmor" prefHeight="39.0" prefWidth="100.0" />
       <ComboBox fx:id="cmbbelt" layoutX="485.0" layoutY="164.0" onAction="#updateBelt" prefHeight="39.0" prefWidth="100.0" />
       <ComboBox fx:id="cmbring" layoutX="17.0" layoutY="164.0" onAction="#updateRing" prefHeight="39.0" prefWidth="100.0" />
       <ComboBox fx:id="cmbbracelet" layoutX="249.0" layoutY="164.0" onAction="#updateBracelet" prefHeight="39.0" prefWidth="100.0" />
       <ComboBox fx:id="cmbnecklace" layoutX="485.0" layoutY="294.0" onAction="#updateNecklace" prefHeight="39.0" prefWidth="100.0" />
+      <ListView fx:id="scr2" disable="true" layoutX="255.0" layoutY="422.0" onMouseExited="#exitscr2" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr4" disable="true" layoutX="390.0" layoutY="420.0" onMouseExited="#exitscr4" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr3" disable="true" layoutX="22.0" layoutY="420.0" onMouseExited="#exitscr3" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr1" disable="true" layoutX="22.0" layoutY="164.0" onMouseExited="#exitscr1" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr5" disable="true" layoutX="255.0" layoutY="164.0" onMouseExited="#exitscr5" prefHeight="200.0" prefWidth="200.0" visible="false" />
+      <ListView fx:id="scr6" disable="true" layoutX="363.0" layoutY="164.0" onMouseExited="#exitscr6" prefHeight="200.0" prefWidth="231.0" visible="false" />
       <TableView fx:id="tbvstat" layoutX="599.0" layoutY="348.0" prefHeight="403.0" prefWidth="491.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />

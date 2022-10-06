@@ -84,9 +84,15 @@ public class FXMLDocumentController implements Initializable {
     public static DBArmor dtarmor = new DBArmor();
     public static DBEquipment dtweapons = new DBEquipment();
     public static DBNecklace dtnecklaces = new DBNecklace();
+    public static DBBelt dtbelts = new DBBelt();
+    public static DBBracelet dtbracelets = new DBBracelet();
+    public static DBRing dtrings = new DBRing();
     ObservableList<String> weapons = FXCollections.observableArrayList();
     ObservableList<String> armors = FXCollections.observableArrayList();
     ObservableList<String> necklaces = FXCollections.observableArrayList();
+    ObservableList<String> belts = FXCollections.observableArrayList();
+    ObservableList<String> bracelets = FXCollections.observableArrayList();
+    ObservableList<String> rings = FXCollections.observableArrayList();
     @FXML
     private TableView<EquipmentModel> tbvstat;
     @FXML
@@ -124,14 +130,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ComboBox<String> cmbarmor;
     @FXML
-    private ComboBox<?> cmbbelt;
+    private ComboBox<String> cmbbelt;
     @FXML
-    private ComboBox<?> cmbring;
+    private ComboBox<String> cmbring;
     @FXML
-    private ComboBox<?> cmbbracelet;
+    private ComboBox<String> cmbbracelet;
     @FXML
     private ComboBox<String> cmbnecklace;
 
+    //
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         scr1.accessibleTextProperty();
@@ -139,14 +146,31 @@ public class FXMLDocumentController implements Initializable {
             weapons.add(i, dtweapons.LoadWeaponName().get(i).getWeaponname());
         }
         cmbweapons.getItems().addAll(weapons);
+
         for (int i = 0; i < dtarmor.LoadWeaponName().size(); i++) {
             armors.add(i, dtarmor.LoadWeaponName().get(i).getArmorname());
         }
         cmbarmor.getItems().addAll(armors);
+
         for (int i = 0; i < dtnecklaces.LoadWeaponName().size(); i++) {
             necklaces.add(i, dtnecklaces.LoadWeaponName().get(i).getNecklacename());
         }
         cmbnecklace.getItems().addAll(necklaces);
+
+        for (int i = 0; i < dtbelts.LoadWeaponName().size(); i++) {
+            belts.add(i, dtbelts.LoadWeaponName().get(i).getBeltname());
+        }
+        cmbbelt.getItems().addAll(belts);
+
+        for (int i = 0; i < dtbracelets.LoadWeaponName().size(); i++) {
+            bracelets.add(i, dtbracelets.LoadWeaponName().get(i).getBraceletname());
+        }
+        cmbbracelet.getItems().addAll(bracelets);
+
+        for (int i = 0; i < dtrings.LoadWeaponName().size(); i++) {
+            rings.add(i, dtrings.LoadWeaponName().get(i).getRingname());
+        }
+        cmbring.getItems().addAll(rings);
         //cmbweapons.getSelectionModel().select(0);
     }
 
@@ -424,14 +448,29 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void updateBelt(ActionEvent event) {
+        String beltstat = cmbbelt.getSelectionModel().getSelectedItem();
+        int a = cmbbelt.getSelectionModel().getSelectedIndex();
+        scr6.setItems(FXCollections.observableArrayList(
+                dtbelts.Load().get(a).getBeltname(), String.valueOf(dtbelts.Load().get(a).getBelthealth()), String.valueOf(dtbelts.Load().get(a).getBeltrarity())));
+        loadStat(beltstat);
     }
 
     @FXML
     private void updateRing(ActionEvent event) {
+        String ringstat = cmbring.getSelectionModel().getSelectedItem();
+        int a = cmbring.getSelectionModel().getSelectedIndex();
+        scr1.setItems(FXCollections.observableArrayList(
+                dtrings.Load().get(a).getRingname(), String.valueOf(dtrings.Load().get(a).getRingmdef()), String.valueOf(dtrings.Load().get(a).getRingrarity())));
+        loadStat(ringstat);
     }
 
     @FXML
     private void updateBracelet(ActionEvent event) {
+        String braceletstat = cmbbracelet.getSelectionModel().getSelectedItem();
+        int a = cmbbracelet.getSelectionModel().getSelectedIndex();
+        scr5.setItems(FXCollections.observableArrayList(
+                dtbracelets.Load().get(a).getBraceletname(), String.valueOf(dtbracelets.Load().get(a).getBraceletdef()), String.valueOf(dtbracelets.Load().get(a).getBraceletrarity())));
+        loadStat(braceletstat);
     }
 
     @FXML

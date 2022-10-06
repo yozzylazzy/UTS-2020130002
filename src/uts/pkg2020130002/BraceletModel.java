@@ -9,15 +9,15 @@ package uts.pkg2020130002;
  * @author Yosef Adrian
  */
 public class BraceletModel extends StatusModel{
-    private String efekid, statusid, braceletname;
+    private String braceletid, statusid, braceletname;
     private int braceletdef, braceletrarity;
 
-    public String getEfekid() {
-        return efekid;
+    public String getBraceletid() {
+        return braceletid;
     }
 
-    public void setEfekid(String efekid) {
-        this.efekid = efekid;
+    public void setBraceletid(String braceletid) {
+        this.braceletid = braceletid;
     }
 
     public String getStatusid() {

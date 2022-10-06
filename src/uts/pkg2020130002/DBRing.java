@@ -14,32 +14,32 @@ import javafx.collections.ObservableList;
  */
 public class DBRing {
 
-    private EquipmentModel data = new EquipmentModel();
+    private RingModel data = new RingModel();
 
-    public EquipmentModel getEquipmentModel() {
+    public RingModel getRingModel() {
         return (data);
     }
 
-    public void setEquipmentModel(EquipmentModel s) {
+    public void setRingModel(RingModel s) {
         data = s;
     }
 
-    public ObservableList<EquipmentModel> Load() {
+    public ObservableList<RingModel> Load() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<RingModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select * from weapons");
+            ResultSet rs = con.statement.executeQuery("Select * from rings");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponid(rs.getString("weapon_id"));
+                RingModel d = new RingModel();
+                d.setRingid(rs.getString("ring_id"));
                 d.setStatusid(rs.getString("status_id"));
-                d.setWeaponname(rs.getString("weapon_name"));
-                d.setWeaponatk(rs.getInt("weapon_atk"));
-                d.setWeaponrarity(rs.getInt("weapon_rarity"));
+                d.setRingname(rs.getString("ring_name"));
+                d.setRingmdef(rs.getInt("ring_mdef"));
+                d.setRingrarity(rs.getInt("ring_rarity"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -54,25 +54,25 @@ public class DBRing {
         }
     }
 
-    public ObservableList<EquipmentModel> LoadAll() {
+    public ObservableList<RingModel> LoadAll() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<RingModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
-                    = con.statement.executeQuery("Select weapon_id, w.status_id, weapon_name, weapon_atk, weapon_rarity,"
+                    = con.statement.executeQuery("Select r.*,"
                             + "str, intl, agi, dex, vit, crit"
-                            + " from weapons w join status s on (w.status_id=s.status_id)");
+                            + " from rings r join status s on (r.status_id=s.status_id)");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponid(rs.getString("weapon_id"));
+                RingModel d = new RingModel();
+                d.setRingid(rs.getString("ring_id"));
                 d.setStatusid(rs.getString("status_id"));
-                d.setWeaponname(rs.getString("weapon_name"));
-                d.setWeaponatk(rs.getInt("weapon_atk"));
-                d.setWeaponrarity(rs.getInt("weapon_rarity"));
+                d.setRingname(rs.getString("ring_name"));
+                d.setRingmdef(rs.getInt("ring_mdef"));
+                d.setRingrarity(rs.getInt("ring_rarity"));
                 d.setStr(rs.getInt("str"));
                 d.setIntl(rs.getInt("intl"));
                 d.setAgi(rs.getInt("agi"));
@@ -90,18 +90,18 @@ public class DBRing {
         }
     }
 
-    public ObservableList<EquipmentModel> LoadWeaponName() {
+    public ObservableList<RingModel> LoadWeaponName() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<RingModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
-                    = con.statement.executeQuery("Select weapon_name from weapons");
+                    = con.statement.executeQuery("Select ring_name from rings");
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponname(rs.getString("weapon_name"));
+                RingModel d = new RingModel();
+                d.setRingname(rs.getString("ring_name"));
                 TableData.add(d);
                 i++;
             }
@@ -113,19 +113,19 @@ public class DBRing {
         }
     }
 
-     public ObservableList<EquipmentModel> LoadWeaponStat(String x) {
+    public ObservableList<RingModel> LoadWeaponStat(String x) {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<RingModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
                     = con.statement.executeQuery("Select str, intl, agi, dex, vit, crit"
-                            + " from weapons w join status s on (w.status_id=s.status_id) where weapon_name = '" + x + "'");
+                            + " from rings r join status s on (r.status_id=s.status_id) where ring_name = '" + x + "'");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
+                RingModel d = new RingModel();
                 d.setStr(rs.getInt("str"));
                 d.setIntl(rs.getInt("intl"));
                 d.setAgi(rs.getInt("agi"));
@@ -142,5 +142,5 @@ public class DBRing {
             return null;
         }
     }
-    
+
 }

@@ -120,7 +120,7 @@ public class DBNecklace {
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
                     = con.statement.executeQuery("Select str, intl, agi, dex, vit, crit"
-                            + " from necklaces n join status s on (n.status_id=s.status_id) where weapon_name = '" + x + "'");
+                            + " from necklaces n join status s on (n.status_id=s.status_id) where necklace_name = '" + x + "'");
 
             int i = 1;
             while (rs.next()) {
