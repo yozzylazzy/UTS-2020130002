@@ -8,7 +8,7 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-public class BeltModel {
+public class BeltModel extends StatusModel {
       private String beltid, statusid,beltname;
       private int belthealth, beltrarity;
 

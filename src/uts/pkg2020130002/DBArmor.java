@@ -14,32 +14,32 @@ import javafx.collections.ObservableList;
  */
 public class DBArmor {
 
-    private EquipmentModel data = new EquipmentModel();
+    private ArmorModel data = new ArmorModel();
 
-    public EquipmentModel getEquipmentModel() {
+    public ArmorModel getArmorModel() {
         return (data);
     }
 
-    public void setEquipmentModel(EquipmentModel s) {
+    public void setArmorModel(ArmorModel s) {
         data = s;
     }
 
-    public ObservableList<EquipmentModel> Load() {
+    public ObservableList<ArmorModel> Load() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<ArmorModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select * from weapons");
+            ResultSet rs = con.statement.executeQuery("Select * from armor");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponid(rs.getString("weapon_id"));
+                ArmorModel d = new ArmorModel();
+                d.setArmorid(rs.getString("armor_id"));
                 d.setStatusid(rs.getString("status_id"));
-                d.setWeaponname(rs.getString("weapon_name"));
-                d.setWeaponatk(rs.getInt("weapon_atk"));
-                d.setWeaponrarity(rs.getInt("weapon_rarity"));
+                d.setArmorname(rs.getString("armor_name"));
+                d.setArmordef(rs.getInt("armor_def"));
+                d.setArmorrarity(rs.getInt("armor_rarity"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -54,25 +54,25 @@ public class DBArmor {
         }
     }
 
-    public ObservableList<EquipmentModel> LoadAll() {
+    public ObservableList<ArmorModel> LoadAll() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<ArmorModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
-                    = con.statement.executeQuery("Select weapon_id, w.status_id, weapon_name, weapon_atk, weapon_rarity,"
+                    = con.statement.executeQuery("Select armor_id, a.status_id, armor_name, armor_def, armor_rarity,"
                             + "str, intl, agi, dex, vit, crit"
-                            + " from weapons w join status s on (w.status_id=s.status_id)");
+                            + " from armor a join status s on (a.status_id=s.status_id)");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponid(rs.getString("weapon_id"));
+                ArmorModel d = new ArmorModel();
+                d.setArmorid(rs.getString("armor_id"));
                 d.setStatusid(rs.getString("status_id"));
-                d.setWeaponname(rs.getString("weapon_name"));
-                d.setWeaponatk(rs.getInt("weapon_atk"));
-                d.setWeaponrarity(rs.getInt("weapon_rarity"));
+                d.setArmorname(rs.getString("armor_name"));
+                d.setArmordef(rs.getInt("armor_def"));
+                d.setArmorrarity(rs.getInt("armor_rarity"));
                 d.setStr(rs.getInt("str"));
                 d.setIntl(rs.getInt("intl"));
                 d.setAgi(rs.getInt("agi"));
@@ -90,18 +90,18 @@ public class DBArmor {
         }
     }
 
-    public ObservableList<EquipmentModel> LoadWeaponName() {
+    public ObservableList<ArmorModel> LoadWeaponName() {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<ArmorModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
-                    = con.statement.executeQuery("Select weapon_name from weapons");
+                    = con.statement.executeQuery("Select armor_name from armor");
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
-                d.setWeaponname(rs.getString("weapon_name"));
+                ArmorModel d = new ArmorModel();
+                d.setArmorname(rs.getString("armor_name"));
                 TableData.add(d);
                 i++;
             }
@@ -113,19 +113,19 @@ public class DBArmor {
         }
     }
 
-     public ObservableList<EquipmentModel> LoadWeaponStat(String x) {
+     public ObservableList<ArmorModel> LoadWeaponStat(String x) {
         try {
-            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            ObservableList<ArmorModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs
                     = con.statement.executeQuery("Select str, intl, agi, dex, vit, crit"
-                            + " from weapons w join status s on (w.status_id=s.status_id) where weapon_name = '" + x + "'");
+                            + " from armor a join status s on (a.status_id=s.status_id) where armor_name = '" + x + "'");
 
             int i = 1;
             while (rs.next()) {
-                EquipmentModel d = new EquipmentModel();
+                ArmorModel d = new ArmorModel();
                 d.setStr(rs.getInt("str"));
                 d.setIntl(rs.getInt("intl"));
                 d.setAgi(rs.getInt("agi"));

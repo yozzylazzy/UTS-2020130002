@@ -8,7 +8,7 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-public class ArmorModel {
+public class ArmorModel extends StatusModel {
     private String armorid, statusid,armorname;
     private int armordef, armorrarity;
 

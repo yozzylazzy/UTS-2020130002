@@ -13,17 +13,35 @@
 <AnchorPane id="AnchorPane" prefHeight="751.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXMLDocumentController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000aed" height="403.0" layoutX="-1.0" layoutY="41.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <MenuBar prefHeight="39.0" prefWidth="600.0">
+      <MenuBar prefHeight="39.0" prefWidth="1090.0">
         <menus>
           <Menu mnemonicParsing="false" text="DISPLAY HOME" />
-          <Menu mnemonicParsing="false" text="ADD WEAPON">
+          <Menu mnemonicParsing="false" text="MASTER MENU EQUIP">
             <items>
-              <MenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="masterarmor" mnemonicParsing="false" onAction="#masterarmorclick" text="ARMOR" />
+                  <MenuItem fx:id="masterweapon" mnemonicParsing="false" onAction="#masterweaponclick" text="WEAPON" />
+                  <MenuItem fx:id="masternecklace" mnemonicParsing="false" onAction="#masternecklaceclick" text="NECKLACE" />
+                  <MenuItem fx:id="masterbracelet" mnemonicParsing="false" onAction="#masterbraceletclick" text="BRACELET" />
+                  <MenuItem fx:id="masterbelt" mnemonicParsing="false" onAction="#masterbeltclick" text="BELT" />
+                  <MenuItem fx:id="masterring" mnemonicParsing="false" onAction="#masterringclick" text="RING" />
             </items>
           </Menu>
-          <Menu fx:id="showweapon" mnemonicParsing="false" onAction="#showweaponklik" text="SHOW WEAPON">
+            <Menu mnemonicParsing="false" text="MASTER STATS">
+               <items>
+                  <MenuItem fx:id="masterstatus" mnemonicParsing="false" onAction="#masterstatusclick" text="STATUS" />
+                  <MenuItem fx:id="masterefek" mnemonicParsing="false" onAction="#masterefekclick" text="EFEK" />
+                  <MenuItem fx:id="mastersetefek" mnemonicParsing="false" onAction="#mastersetefekclick" text="SET EFEK" />
+                  <MenuItem fx:id="masterdetailset" mnemonicParsing="false" onAction="#masterdetailsetclick" text="DETAIL SET" />
+               </items>
+            </Menu>
+          <Menu fx:id="showweapon" mnemonicParsing="false" onAction="#showweaponklik" text="DISPLAY MENU">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="displayarmor" mnemonicParsing="false" onAction="#displayarmorclick" text="ARMOR" />
+                  <MenuItem fx:id="displayweapon" mnemonicParsing="false" onAction="#displayweaponclick" text="WEAPON" />
+                  <MenuItem fx:id="displaynecklace" mnemonicParsing="false" onAction="#displaynecklaceclick" text="NECKLACE" />
+                  <MenuItem fx:id="displaybracelet" mnemonicParsing="false" onAction="#displaybraceletclick" text="BRACELET" />
+                  <MenuItem fx:id="displaybelt" mnemonicParsing="false" onAction="#displaybeltclick" text="BELT" />
+                  <MenuItem fx:id="displayring" mnemonicParsing="false" onAction="#displayringclick" text="RING" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="EXIT">
@@ -164,17 +182,17 @@
       <ListView fx:id="scr5" disable="true" layoutX="255.0" layoutY="164.0" onMouseExited="#exitscr5" prefHeight="200.0" prefWidth="200.0" visible="false" />
       <ListView fx:id="scr6" disable="true" layoutX="363.0" layoutY="164.0" onMouseExited="#exitscr6" prefHeight="200.0" prefWidth="231.0" visible="false" />
       <ComboBox fx:id="cmbweapons" layoutX="249.0" layoutY="294.0" onAction="#updateWeapon" prefHeight="39.0" prefWidth="100.0" />
-      <ComboBox layoutX="17.0" layoutY="294.0" prefHeight="39.0" prefWidth="100.0" />
-      <ComboBox layoutX="485.0" layoutY="164.0" prefHeight="39.0" prefWidth="100.0" />
-      <ComboBox layoutX="17.0" layoutY="164.0" prefHeight="39.0" prefWidth="100.0" />
-      <ComboBox layoutX="249.0" layoutY="164.0" prefHeight="39.0" prefWidth="100.0" />
-      <ComboBox layoutX="485.0" layoutY="294.0" prefHeight="39.0" prefWidth="100.0" />
-      <TableView fx:id="tbvstat" layoutX="601.0" layoutY="41.0" prefHeight="403.0" prefWidth="491.0">
+      <ComboBox fx:id="cmbarmor" layoutX="17.0" layoutY="294.0" onAction="#updatearmor" prefHeight="39.0" prefWidth="100.0" />
+      <ComboBox fx:id="cmbbelt" layoutX="485.0" layoutY="164.0" onAction="#updateBelt" prefHeight="39.0" prefWidth="100.0" />
+      <ComboBox fx:id="cmbring" layoutX="17.0" layoutY="164.0" onAction="#updateRing" prefHeight="39.0" prefWidth="100.0" />
+      <ComboBox fx:id="cmbbracelet" layoutX="249.0" layoutY="164.0" onAction="#updateBracelet" prefHeight="39.0" prefWidth="100.0" />
+      <ComboBox fx:id="cmbnecklace" layoutX="485.0" layoutY="294.0" onAction="#updateNecklace" prefHeight="39.0" prefWidth="100.0" />
+      <TableView fx:id="tbvstat" layoutX="599.0" layoutY="348.0" prefHeight="403.0" prefWidth="491.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
-      <Label layoutX="816.0" layoutY="6.0" text="STATUS" />
+      <Label layoutX="814.0" layoutY="313.0" text="STATUS" />
     </children>
 </AnchorPane>

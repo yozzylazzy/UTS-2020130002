@@ -8,7 +8,7 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-public class NecklaceModel {
+public class NecklaceModel extends StatusModel{
     private String necklaceid, statusid, necklacename;
     private int necklacemdef, beltrarity;
 

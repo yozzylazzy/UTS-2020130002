@@ -8,7 +8,7 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-public class BraceletModel {
+public class BraceletModel extends StatusModel{
     private String efekid, statusid, braceletname;
     private int braceletdef, braceletrarity;
 

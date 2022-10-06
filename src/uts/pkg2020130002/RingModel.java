@@ -8,7 +8,7 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-public class RingModel {
+public class RingModel extends StatusModel{
     private String ringid, statusid, ringname;
     private int ringmdef, ringrarity;
 
