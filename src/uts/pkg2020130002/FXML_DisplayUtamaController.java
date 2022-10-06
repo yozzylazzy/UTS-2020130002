@@ -57,7 +57,7 @@ public class FXML_DisplayUtamaController implements Initializable {
             col = new TableColumn("Weapon_Rarity");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Weaponrarity"));
             tbvweapons.getColumns().addAll(col);
-            
+ 
             col = new TableColumn("STR");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Str"));
             tbvweapons.getColumns().addAll(col);

@@ -8,16 +8,16 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-public class NecklaceModel {
-    private String necklaceid, statusid, necklacename;
-    private int necklacemdef, beltrarity;
+public class BeltModel {
+      private String beltid, statusid,beltname;
+      private int belthealth, beltrarity;
 
-    public String getNecklaceid() {
-        return necklaceid;
+    public String getBeltid() {
+        return beltid;
     }
 
-    public void setNecklaceid(String necklaceid) {
-        this.necklaceid = necklaceid;
+    public void setBeltid(String beltid) {
+        this.beltid = beltid;
     }
 
     public String getStatusid() {
@@ -28,20 +28,20 @@ public class NecklaceModel {
         this.statusid = statusid;
     }
 
-    public String getNecklacename() {
-        return necklacename;
+    public String getBeltname() {
+        return beltname;
     }
 
-    public void setNecklacename(String necklacename) {
-        this.necklacename = necklacename;
+    public void setBeltname(String beltname) {
+        this.beltname = beltname;
     }
 
-    public int getNecklacemdef() {
-        return necklacemdef;
+    public int getBelthealth() {
+        return belthealth;
     }
 
-    public void setNecklacemdef(int necklacemdef) {
-        this.necklacemdef = necklacemdef;
+    public void setBelthealth(int belthealth) {
+        this.belthealth = belthealth;
     }
 
     public int getBeltrarity() {
@@ -51,5 +51,5 @@ public class NecklaceModel {
     public void setBeltrarity(int beltrarity) {
         this.beltrarity = beltrarity;
     }
-    
+      
 }
