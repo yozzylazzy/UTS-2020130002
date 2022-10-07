@@ -50,8 +50,8 @@ public class FXML_DisplayDetailSetController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         showData();
-    }    
-    
+    }
+
     public void showData() {
         ObservableList<DetailsetModel> data = FXMLDocumentController.dtdetailset.LoadAll();
         if (data != null) {
@@ -83,23 +83,32 @@ public class FXML_DisplayDetailSetController implements Initializable {
     }
 
     @FXML
-    private void btnexitklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsesudahklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsebelumklik(ActionEvent event) {
+    private void btnawalklik(ActionEvent event) {
+        tbvdetailset.getSelectionModel().selectFirst();
+        tbvdetailset.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
+        tbvdetailset.getSelectionModel().selectLast();
+        tbvdetailset.requestFocus();
     }
 
     @FXML
-    private void btnawalklik(ActionEvent event) {
+    private void btnsebelumklik(ActionEvent event) {
+        tbvdetailset.getSelectionModel().selectAboveCell();
+        tbvdetailset.requestFocus();
+    }
+
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvdetailset.getSelectionModel().selectBelowCell();
+        tbvdetailset.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
     }
 
     @FXML
@@ -113,5 +122,5 @@ public class FXML_DisplayDetailSetController implements Initializable {
     @FXML
     private void btntambahklik(ActionEvent event) {
     }
-    
+
 }

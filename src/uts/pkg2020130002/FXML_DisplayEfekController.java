@@ -76,22 +76,22 @@ public class FXML_DisplayEfekController implements Initializable {
             col = new TableColumn("DEF");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Def"));
             tbvefekequip.getColumns().addAll(col);
-                        col = new TableColumn("MDEF");
+            col = new TableColumn("MDEF");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Mdef"));
             tbvefekequip.getColumns().addAll(col);
-                        col = new TableColumn("HIT");
+            col = new TableColumn("HIT");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Hit"));
             tbvefekequip.getColumns().addAll(col);
-                        col = new TableColumn("ASPD");
+            col = new TableColumn("ASPD");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Aspd"));
             tbvefekequip.getColumns().addAll(col);
-                        col = new TableColumn("CSPD");
+            col = new TableColumn("CSPD");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Cspd"));
             tbvefekequip.getColumns().addAll(col);
-                        col = new TableColumn("Critical_Rate");
+            col = new TableColumn("Critical_Rate");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Criticalrate"));
             tbvefekequip.getColumns().addAll(col);
-                        col = new TableColumn("Critical_Damage");
+            col = new TableColumn("Critical_Damage");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Criticaldamage"));
             tbvefekequip.getColumns().addAll(col);
             tbvefekequip.setItems(data);
@@ -103,23 +103,32 @@ public class FXML_DisplayEfekController implements Initializable {
     }
 
     @FXML
-    private void btnexitklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsesudahklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsebelumklik(ActionEvent event) {
+    private void btnawalklik(ActionEvent event) {
+        tbvefekequip.getSelectionModel().selectFirst();
+        tbvefekequip.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
+        tbvefekequip.getSelectionModel().selectLast();
+        tbvefekequip.requestFocus();
     }
 
     @FXML
-    private void btnawalklik(ActionEvent event) {
+    private void btnsebelumklik(ActionEvent event) {
+        tbvefekequip.getSelectionModel().selectAboveCell();
+        tbvefekequip.requestFocus();
+    }
+
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvefekequip.getSelectionModel().selectBelowCell();
+        tbvefekequip.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
     }
 
     @FXML

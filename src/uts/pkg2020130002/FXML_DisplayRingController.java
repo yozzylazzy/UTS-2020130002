@@ -103,25 +103,33 @@ public class FXML_DisplayRingController implements Initializable {
     }
 
     @FXML
-    private void btnexitklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsesudahklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsebelumklik(ActionEvent event) {
+    private void btnawalklik(ActionEvent event) {
+        tbvring.getSelectionModel().selectFirst();
+        tbvring.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
+        tbvring.getSelectionModel().selectLast();
+        tbvring.requestFocus();
     }
 
     @FXML
-    private void btnawalklik(ActionEvent event) {
+    private void btnsebelumklik(ActionEvent event) {
+        tbvring.getSelectionModel().selectAboveCell();
+        tbvring.requestFocus();
     }
 
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvring.getSelectionModel().selectBelowCell();
+        tbvring.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
+    }
     @FXML
     private void btnhapusklik(ActionEvent event) {
     }

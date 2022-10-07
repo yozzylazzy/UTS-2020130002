@@ -103,25 +103,33 @@ public class FXML_DisplayBeltController implements Initializable {
     }
 
     @FXML
-    private void btnexitklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsesudahklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsebelumklik(ActionEvent event) {
+    private void btnawalklik(ActionEvent event) {
+        tbvbelt.getSelectionModel().selectFirst();
+        tbvbelt.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
+        tbvbelt.getSelectionModel().selectLast();
+        tbvbelt.requestFocus();
     }
 
     @FXML
-    private void btnawalklik(ActionEvent event) {
+    private void btnsebelumklik(ActionEvent event) {
+        tbvbelt.getSelectionModel().selectAboveCell();
+        tbvbelt.requestFocus();
     }
 
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvbelt.getSelectionModel().selectBelowCell();
+        tbvbelt.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
+    }
     @FXML
     private void btnhapusklik(ActionEvent event) {
     }

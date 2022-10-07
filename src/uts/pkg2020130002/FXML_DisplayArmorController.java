@@ -50,9 +50,9 @@ public class FXML_DisplayArmorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         showData();
-    }    
-    
-        public void showData() {
+    }
+
+    public void showData() {
         ObservableList<ArmorModel> data = FXMLDocumentController.dtarmor.LoadAll();
         if (data != null) {
             tbvarmor.getColumns().clear();
@@ -75,7 +75,7 @@ public class FXML_DisplayArmorController implements Initializable {
             col = new TableColumn("Armor_Rarity");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Armorrarity"));
             tbvarmor.getColumns().addAll(col);
- 
+
             col = new TableColumn("STR");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Str"));
             tbvarmor.getColumns().addAll(col);
@@ -102,25 +102,33 @@ public class FXML_DisplayArmorController implements Initializable {
         }
     }
 
-
     @FXML
-    private void btnexitklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsesudahklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsebelumklik(ActionEvent event) {
+    private void btnawalklik(ActionEvent event) {
+        tbvarmor.getSelectionModel().selectFirst();
+        tbvarmor.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
+        tbvarmor.getSelectionModel().selectLast();
+        tbvarmor.requestFocus();
     }
 
     @FXML
-    private void btnawalklik(ActionEvent event) {
+    private void btnsebelumklik(ActionEvent event) {
+        tbvarmor.getSelectionModel().selectAboveCell();
+        tbvarmor.requestFocus();
+    }
+
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvarmor.getSelectionModel().selectBelowCell();
+        tbvarmor.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
     }
 
     @FXML
@@ -134,5 +142,5 @@ public class FXML_DisplayArmorController implements Initializable {
     @FXML
     private void btntambahklik(ActionEvent event) {
     }
-    
+
 }

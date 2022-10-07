@@ -7,9 +7,11 @@ package uts.pkg2020130002;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,6 +26,22 @@ public class FXML_DisplayUtamaController implements Initializable {
 
     @FXML
     private TableView<EquipmentModel> tbvweapons;
+    @FXML
+    private Button btntambahsiswa;
+    @FXML
+    private Button btneditsiswa;
+    @FXML
+    private Button btnhapussiswa;
+    @FXML
+    private Button btnawal;
+    @FXML
+    private Button akhir;
+    @FXML
+    private Button btnsebelum;
+    @FXML
+    private Button btnsesudah;
+    @FXML
+    private Button btnexit;
 
     /**
      * Initializes the controller class.
@@ -84,4 +102,45 @@ public class FXML_DisplayUtamaController implements Initializable {
         }
     }
 
+    @FXML
+    private void btnawalklik(ActionEvent event) {
+        tbvweapons.getSelectionModel().selectFirst();
+        tbvweapons.requestFocus();
+    }
+
+    @FXML
+    private void btnakhirklik(ActionEvent event) {
+        tbvweapons.getSelectionModel().selectLast();
+        tbvweapons.requestFocus();
+    }
+
+    @FXML
+    private void btnsebelumklik(ActionEvent event) {
+        tbvweapons.getSelectionModel().selectAboveCell();
+        tbvweapons.requestFocus();
+    }
+
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvweapons.getSelectionModel().selectBelowCell();
+        tbvweapons.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        tbvweapons.getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void btntambahklik(ActionEvent event) {
+    }
+
+    @FXML
+    private void btneditklik(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnhapusklik(ActionEvent event) {
+    }
+    
 }

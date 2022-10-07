@@ -91,23 +91,32 @@ public class FXML_DisplayStatusController implements Initializable {
 
 
     @FXML
-    private void btnexitklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsesudahklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsebelumklik(ActionEvent event) {
+    private void btnawalklik(ActionEvent event) {
+        tbvstatusweapon.getSelectionModel().selectFirst();
+        tbvstatusweapon.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
+        tbvstatusweapon.getSelectionModel().selectLast();
+        tbvstatusweapon.requestFocus();
     }
 
     @FXML
-    private void btnawalklik(ActionEvent event) {
+    private void btnsebelumklik(ActionEvent event) {
+        tbvstatusweapon.getSelectionModel().selectAboveCell();
+        tbvstatusweapon.requestFocus();
+    }
+
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvstatusweapon.getSelectionModel().selectBelowCell();
+        tbvstatusweapon.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
     }
 
     @FXML

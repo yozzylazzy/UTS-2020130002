@@ -103,23 +103,32 @@ public class FXML_DisplayBraceletController implements Initializable {
     }
 
     @FXML
-    private void btnexitklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsesudahklik(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnsebelumklik(ActionEvent event) {
+    private void btnawalklik(ActionEvent event) {
+        tbvbracelet.getSelectionModel().selectFirst();
+        tbvbracelet.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
+        tbvbracelet.getSelectionModel().selectLast();
+        tbvbracelet.requestFocus();
     }
 
     @FXML
-    private void btnawalklik(ActionEvent event) {
+    private void btnsebelumklik(ActionEvent event) {
+        tbvbracelet.getSelectionModel().selectAboveCell();
+        tbvbracelet.requestFocus();
+    }
+
+    @FXML
+    private void btnsesudahklik(ActionEvent event) {
+        tbvbracelet.getSelectionModel().selectBelowCell();
+        tbvbracelet.requestFocus();
+    }
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
     }
 
     @FXML

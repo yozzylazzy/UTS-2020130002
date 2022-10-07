@@ -6,6 +6,7 @@ package uts.pkg2020130002;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
@@ -142,6 +143,8 @@ public class FXMLDocumentController implements Initializable {
     ObservableList<String> bracelets = FXCollections.observableArrayList();
     ObservableList<String> rings = FXCollections.observableArrayList();
     ObservableList<String> details = FXCollections.observableArrayList();
+    List<String> equipped = new ArrayList<String>();
+
     @FXML
     private MenuItem displaystatus;
     @FXML
@@ -184,10 +187,14 @@ public class FXMLDocumentController implements Initializable {
             rings.add(i, dtrings.LoadWeaponName().get(i).getRingname());
         }
         cmbring.getItems().addAll(rings);
+        
+        for(int i=0; i<6; i++){
+            equipped.add("");
+        }
     }
 
     public void setNamaEfek(int a) {
-        System.out.print(dtweapons.Load().get(a).getWeaponid());
+        //System.out.print(dtweapons.Load().get(a).getWeaponid());
         for (int j = 0; j < dtdetailset.Load().size(); j++) {
             if (dtdetailset.LoadAll().get(j).getWeaponid().equals(dtweapons.Load().get(a).getWeaponid())) {
                 System.out.println(
@@ -198,8 +205,14 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    public void setUpBuff(String x) {
-        txteffect.setText(x);
+    public void validasiSetEquipment() {
+        
+      System.out.println(dtseteq.Load());
+      for(int i=0; i<dtseteq.Load().size();i++){
+          if(equipped.get(0) == dtseteq.Load().get(i).getBeltid()){
+              System.out.println("1");
+          }
+      }
     }
 
     @FXML
@@ -252,7 +265,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showweaponklik(ActionEvent event) {
-
+        
     }
 
     @FXML
@@ -277,16 +290,6 @@ public class FXMLDocumentController implements Initializable {
     private void exitscr6(MouseEvent event) {
         scr6.setDisable(true);
         scr6.setVisible(false);
-    }
-
-    @FXML
-    private void updateWeapon(ActionEvent event) {
-        String weapstat = cmbweapons.getSelectionModel().getSelectedItem();
-        int a = cmbweapons.getSelectionModel().getSelectedIndex();
-        scr2.setItems(FXCollections.observableArrayList(
-                dtweapons.Load().get(a).getWeaponname(), String.valueOf(dtweapons.Load().get(a).getWeaponatk()), String.valueOf(dtweapons.Load().get(a).getWeaponrarity())));
-        loadStat(weapstat);
-        setNamaEfek(a);
     }
 
     public void loadStat(String x) {
@@ -660,6 +663,14 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /*
+    0-belt
+    1-necklace
+    2-bracelet
+    3-weapon
+    4-ring
+    5-armor
+     */
     @FXML
     private void updatearmor(ActionEvent event) {
         String armorstat = cmbarmor.getSelectionModel().getSelectedItem();
@@ -667,6 +678,9 @@ public class FXMLDocumentController implements Initializable {
         scr3.setItems(FXCollections.observableArrayList(
                 dtarmor.Load().get(a).getArmorname(), String.valueOf(dtarmor.Load().get(a).getArmordef()), String.valueOf(dtarmor.Load().get(a).getArmorrarity())));
         loadStat(armorstat);
+        equipped.set(5,  dtarmor.Load().get(a).getArmorid());
+        validasiSetEquipment();
+        System.out.println(equipped);
     }
 
     @FXML
@@ -676,6 +690,7 @@ public class FXMLDocumentController implements Initializable {
         scr6.setItems(FXCollections.observableArrayList(
                 dtbelts.Load().get(a).getBeltname(), String.valueOf(dtbelts.Load().get(a).getBelthealth()), String.valueOf(dtbelts.Load().get(a).getBeltrarity())));
         loadStat(beltstat);
+        equipped.set(0, dtbelts.Load().get(a).getBeltid());
     }
 
     @FXML
@@ -685,6 +700,7 @@ public class FXMLDocumentController implements Initializable {
         scr1.setItems(FXCollections.observableArrayList(
                 dtrings.Load().get(a).getRingname(), String.valueOf(dtrings.Load().get(a).getRingmdef()), String.valueOf(dtrings.Load().get(a).getRingrarity())));
         loadStat(ringstat);
+        equipped.set(4, dtrings.Load().get(a).getRingid());
     }
 
     @FXML
@@ -694,6 +710,7 @@ public class FXMLDocumentController implements Initializable {
         scr5.setItems(FXCollections.observableArrayList(
                 dtbracelets.Load().get(a).getBraceletname(), String.valueOf(dtbracelets.Load().get(a).getBraceletdef()), String.valueOf(dtbracelets.Load().get(a).getBraceletrarity())));
         loadStat(braceletstat);
+        equipped.set(2, dtbracelets.Load().get(a).getBraceletid());
     }
 
     @FXML
@@ -703,6 +720,16 @@ public class FXMLDocumentController implements Initializable {
         scr4.setItems(FXCollections.observableArrayList(
                 dtnecklaces.Load().get(a).getNecklacename(), String.valueOf(dtnecklaces.Load().get(a).getNecklacemdef()), String.valueOf(dtnecklaces.Load().get(a).getBeltrarity())));
         loadStat(necklacestat);
+        equipped.set(1, dtnecklaces.Load().get(a).getNecklaceid());
     }
 
+    @FXML
+    private void updateWeapon(ActionEvent event) {
+        String weapstat = cmbweapons.getSelectionModel().getSelectedItem();
+        int a = cmbweapons.getSelectionModel().getSelectedIndex();
+        scr2.setItems(FXCollections.observableArrayList(
+                dtweapons.Load().get(a).getWeaponname(), String.valueOf(dtweapons.Load().get(a).getWeaponatk()), String.valueOf(dtweapons.Load().get(a).getWeaponrarity())));
+        loadStat(weapstat);
+        equipped.set(3, dtweapons.Load().get(a).getWeaponid());
+    }
 }
