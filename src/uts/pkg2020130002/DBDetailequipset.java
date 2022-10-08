@@ -4,7 +4,9 @@
  */
 package uts.pkg2020130002;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -49,4 +51,62 @@ public class DBDetailequipset {
             return null;
         }
     }
+      public int validasi(String equipid, String setid) {
+        int val = 0;
+        try {
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select Count(*) as jml from detail_equip_set where equipment_id = '" + equipid + "'"
+                    + " and set_equip_id = '" + setid + "'");
+            while (rs.next()) {
+                val = rs.getInt("jml");
+            }
+            con.tutupKoneksi();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return val;
+    }
+
+    public boolean Delete(String equipid, String setid) {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            //System.out.println(id);
+            con.bukaKoneksi();
+            con.preparedStatement = con.dbKoneksi.prepareStatement(
+                    "delete from detail_equip_set where equipment_id = ? and set_equip_id = ?");
+            con.preparedStatement.setString(1, equipid);
+            con.preparedStatement.setString(2, setid);
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
+        }
+    }
+
+    public boolean insert() {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            con.bukaKoneksi();
+            con.preparedStatement = con.dbKoneksi.prepareStatement("insert into detail_equip_set("
+                    + "set_equip_id, equipment_id) values (?,?)");
+            con.preparedStatement.setString(1, getDetailequipsetModel().getSetequipid());
+            con.preparedStatement.setString(2, getDetailequipsetModel().getEquipmentid());
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            berhasil = false;
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
+        }
+    }
+
 }

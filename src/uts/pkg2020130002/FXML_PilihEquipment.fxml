@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_PilihEquipmentController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="54.0" layoutY="88.0" prefHeight="543.0" prefWidth="963.0">
+         <children>
+            <TableView fx:id="tbvequipment" layoutX="-18.0" layoutY="21.0" prefHeight="408.0" prefWidth="943.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnsesudah" layoutX="754.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnsesudahklik" text="Sesudah" />
+            <Button fx:id="btnsebelum" layoutX="643.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnsebelumklik" text="Sebelum" />
+            <Button fx:id="akhir" layoutX="859.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnakhirklik" text="Akhir" />
+            <Button fx:id="btnawal" layoutX="557.0" layoutY="451.0" mnemonicParsing="false" onAction="#btnawalklik" text="Awal" />
+         </children>
+      </AnchorPane>
+      <TextField fx:id="txtisi" layoutX="358.0" layoutY="49.0" prefHeight="39.0" prefWidth="265.0" />
+      <Button fx:id="btncari" layoutX="638.0" layoutY="49.0" mnemonicParsing="false" onAction="#cariklik" text="Cari" />
+      <Button fx:id="btnpilih" layoutX="710.0" layoutY="49.0" mnemonicParsing="false" onAction="#pilihklik" text="Pilih" />
+      <Button fx:id="btnbatal" layoutX="780.0" layoutY="49.0" mnemonicParsing="false" onAction="#batalklik" text="Batal" />
+      <ComboBox fx:id="cmbfield" layoutX="37.0" layoutY="49.0" prefHeight="39.0" prefWidth="304.0" />
+      <Button fx:id="btnexit" layoutX="917.0" layoutY="49.0" mnemonicParsing="false" onAction="#btnexitklik" text="EXIT" />
+   </children>
+</AnchorPane>

@@ -127,4 +127,28 @@ public class DBEquipmentset {
             return berhasil;
         }
     }
+    
+     public ObservableList<EquipmentsetModel> LookUp(String fld, String dt) {
+        try {
+            ObservableList<EquipmentsetModel> tableData = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select set_equip_id,set_name "
+                    + "from equipment_set where " + fld + " like '%" + dt + "%'");
+            int i = 1;
+            while (rs.next()) {
+                EquipmentsetModel d = new EquipmentsetModel();
+                d.setSetequipid(rs.getString("set_equip_id"));
+                d.setSetname(rs.getString("set_name"));
+                tableData.add(d);
+                i++;
+            }
+            con.tutupKoneksi();
+            return tableData;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }

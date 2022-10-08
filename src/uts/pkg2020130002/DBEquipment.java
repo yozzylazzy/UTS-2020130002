@@ -201,8 +201,8 @@ public class DBEquipment {
             return null;
         }
     }
-    
-      public ObservableList<String> LoadEquipmentType() {
+
+    public ObservableList<String> LoadEquipmentType() {
         try {
             ObservableList<String> EquipType = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
@@ -317,6 +317,32 @@ public class DBEquipment {
         } finally {
             con.tutupKoneksi();
             return berhasil;
+        }
+    }
+
+    public ObservableList<EquipmentModel> LookUp(String fld, String dt) {
+        try {
+            ObservableList<EquipmentModel> tableData = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select equipment_id,equipment_type,equipment_name,equipment_rarity "
+                    + "from equipments where " + fld + " like '%" + dt + "%'");
+            int i = 1;
+            while (rs.next()) {
+                EquipmentModel d = new EquipmentModel();
+                d.setEquipmentid(rs.getString("equipment_id"));
+                d.setEquipmenttype(rs.getString("equipment_type"));
+                d.setEquipmentname(rs.getString("equipment_name"));
+                d.setEquipmentrarity(rs.getInt("equipment_rarity"));
+                tableData.add(d);
+                i++;
+            }
+            con.tutupKoneksi();
+            return tableData;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 }

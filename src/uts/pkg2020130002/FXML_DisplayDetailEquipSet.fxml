@@ -35,8 +35,7 @@
                                           <Font name="System Bold" size="36.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="btnhapussiswa" cancelButton="true" layoutX="178.0" layoutY="499.0" mnemonicParsing="false" onAction="#btnhapusklik" text="HAPUS" />
-                                    <Button fx:id="btneditsiswa" defaultButton="true" layoutX="115.0" layoutY="499.0" mnemonicParsing="false" onAction="#btneditklik" text="EDIT" textFill="WHITE" />
+                                    <Button fx:id="btnhapussiswa" cancelButton="true" layoutX="119.0" layoutY="499.0" mnemonicParsing="false" onAction="#btnhapusklik" text="HAPUS" />
                                     <Button fx:id="btntambahsiswa" defaultButton="true" layoutX="14.0" layoutY="499.0" mnemonicParsing="false" onAction="#btntambahklik" text="TAMBAH" textFill="WHITE" />
                                  </children>
                               </AnchorPane>

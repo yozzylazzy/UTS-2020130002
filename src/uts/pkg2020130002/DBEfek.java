@@ -161,4 +161,38 @@ public class DBEfek {
             return berhasil;
         }
     }
+
+    public ObservableList<EfekModel> LookUp(String fld, String dt) {
+        try {
+            ObservableList<EfekModel> tableData = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select * "
+                    + "from efek where " + fld + " like '%" + dt + "%'");
+            int i = 1;
+            while (rs.next()) {
+                EfekModel d = new EfekModel();
+                d.setEfekid(rs.getString("efek_id"));
+                d.setAtk(rs.getInt("atk"));
+                d.setMatk(rs.getInt("matk"));
+                d.setHp(rs.getInt("hp"));
+                d.setMp(rs.getInt("mp"));
+                d.setDef(rs.getInt("def"));
+                d.setMdef(rs.getInt("mdef"));
+                d.setHit(rs.getInt("hit"));
+                d.setAspd(rs.getInt("aspd"));
+                d.setCspd(rs.getInt("cspd"));
+                d.setCriticalrate(rs.getInt("critical_rate"));
+                d.setCriticaldamage(rs.getInt("critical_damage"));
+                tableData.add(d);
+                i++;
+            }
+            con.tutupKoneksi();
+            return tableData;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }
