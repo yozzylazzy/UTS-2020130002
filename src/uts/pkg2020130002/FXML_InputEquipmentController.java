@@ -19,12 +19,12 @@ import javafx.scene.control.TextField;
  *
  * @author Yosef Adrian
  */
-public class FXML_InputWeaponController implements Initializable {
+public class FXML_InputEquipmentController implements Initializable {
 
     @FXML
-    private TextField txtweaponname;
+    private TextField txtarmoridtxtarmorname;
     @FXML
-    private TextField txtweaponid;
+    private TextField txtarmorid;
     @FXML
     private TextField txtstatusid;
     @FXML
@@ -38,7 +38,7 @@ public class FXML_InputWeaponController implements Initializable {
     @FXML
     private Label lblrarity;
     @FXML
-    private TextField txtweaponatk;
+    private TextField txtarmordef;
     @FXML
     private Button btnloadstat;
 

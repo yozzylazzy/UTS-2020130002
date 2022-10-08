@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="918.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_DisplayDetailSetController">
+<AnchorPane id="AnchorPane" prefHeight="581.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXML_DisplayDetailEquipSetController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -31,7 +30,7 @@
                                     <Button fx:id="btnsebelum" layoutX="714.0" layoutY="499.0" mnemonicParsing="false" onAction="#btnsebelumklik" text="Sebelum" />
                                     <Button fx:id="akhir" layoutX="651.0" layoutY="499.0" mnemonicParsing="false" onAction="#btnakhirklik" text="Akhir" />
                                     <Button fx:id="btnawal" layoutX="592.0" layoutY="499.0" mnemonicParsing="false" onAction="#btnawalklik" text="Awal" />
-                                    <Label layoutX="326.0" layoutY="7.0" text="DATA DETAILSET">
+                                    <Label layoutX="243.0" layoutY="7.0" text="DATA DETAIL EQUIPSET">
                                        <font>
                                           <Font name="System Bold" size="36.0" />
                                        </font>

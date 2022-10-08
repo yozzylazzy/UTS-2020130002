@@ -22,10 +22,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author Yosef Adrian
  */
-public class FXML_DisplayDetailSetController implements Initializable {
+public class FXML_DisplayEquipmentSetController implements Initializable {
 
     @FXML
-    private TableView<DetailequipsetModel> tbvdetailset;
+    private TableView<EquipmentsetModel> tbvequipset;
     @FXML
     private Button btnexit;
     @FXML
@@ -53,49 +53,49 @@ public class FXML_DisplayDetailSetController implements Initializable {
     }
 
     public void showData() {
-        ObservableList<DetailequipsetModel> data = FXMLDocumentController.dtdetailequipset.Load();
+        ObservableList<EquipmentsetModel> data = FXMLDocumentController.dtequipset.Load();
         if (data != null) {
-            tbvdetailset.getColumns().clear();
-            tbvdetailset.getItems().clear();
+            tbvequipset.getColumns().clear();
+            tbvequipset.getItems().clear();
+
             TableColumn col = new TableColumn("Set_Equip_ID");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("set_equip_id"));
-            tbvdetailset.getColumns().addAll(col);
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setequipid"));
+            tbvequipset.getColumns().addAll(col);
 
-            col = new TableColumn("Equipment_ID");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("equipment_id"));
-            tbvdetailset.getColumns().addAll(col);
-            tbvdetailset.getColumns().addAll(col);
+            col = new TableColumn("Set_Name");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setname"));
+            tbvequipset.getColumns().addAll(col);
 
-            tbvdetailset.setItems(data);
+            tbvequipset.setItems(data);
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             a.showAndWait();
-            tbvdetailset.getScene().getWindow().hide();;
+            tbvequipset.getScene().getWindow().hide();;
         }
     }
 
     @FXML
     private void btnawalklik(ActionEvent event) {
-        tbvdetailset.getSelectionModel().selectFirst();
-        tbvdetailset.requestFocus();
+        tbvequipset.getSelectionModel().selectFirst();
+        tbvequipset.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
-        tbvdetailset.getSelectionModel().selectLast();
-        tbvdetailset.requestFocus();
+        tbvequipset.getSelectionModel().selectLast();
+        tbvequipset.requestFocus();
     }
 
     @FXML
     private void btnsebelumklik(ActionEvent event) {
-        tbvdetailset.getSelectionModel().selectAboveCell();
-        tbvdetailset.requestFocus();
+        tbvequipset.getSelectionModel().selectAboveCell();
+        tbvequipset.requestFocus();
     }
 
     @FXML
     private void btnsesudahklik(ActionEvent event) {
-        tbvdetailset.getSelectionModel().selectBelowCell();
-        tbvdetailset.requestFocus();
+        tbvequipset.getSelectionModel().selectBelowCell();
+        tbvequipset.requestFocus();
     }
 
     @FXML

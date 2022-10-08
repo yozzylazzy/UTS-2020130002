@@ -22,10 +22,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author Yosef Adrian
  */
-public class FXML_DisplayUtamaController implements Initializable {
+public class FXML_DisplayEquipmentController implements Initializable {
 
-    @FXML
-    private TableView<EquipmentModel> tbvweapons;
     @FXML
     private Button btntambahsiswa;
     @FXML
@@ -42,6 +40,8 @@ public class FXML_DisplayUtamaController implements Initializable {
     private Button btnsesudah;
     @FXML
     private Button btnexit;
+    @FXML
+    private TableView<EquipmentModel> tbvequipment;
 
     /**
      * Initializes the controller class.
@@ -55,75 +55,75 @@ public class FXML_DisplayUtamaController implements Initializable {
     public void showData() {
         ObservableList<EquipmentModel> data = FXMLDocumentController.dtequipments.Load();
         if (data != null) {
-            tbvweapons.getColumns().clear();
-            tbvweapons.getItems().clear();
+            tbvequipment.getColumns().clear();
+            tbvequipment.getItems().clear();
             TableColumn col = new TableColumn("Equipment_ID");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentid"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
 
             col = new TableColumn("Equipment_Type");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmenttype"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
             col = new TableColumn("Equipment_Name");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentname"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
             col = new TableColumn("Equipment_Rarity");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Equipmentrarity"));
-            tbvweapons.getColumns().addAll(col);
-            tbvweapons.setItems(data);
+            tbvequipment.getColumns().addAll(col);
+            tbvequipment.setItems(data);
             col = new TableColumn("STR");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Str"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
             col = new TableColumn("INT");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Intl"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
             col = new TableColumn("AGI");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Agi"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
             col = new TableColumn("DEX");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Dex"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
             col = new TableColumn("VIT");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Vit"));
-            tbvweapons.getColumns().addAll(col);
+            tbvequipment.getColumns().addAll(col);
             col = new TableColumn("CRIT");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Crit"));
-            tbvweapons.getColumns().addAll(col);
-            tbvweapons.setItems(data);
+            tbvequipment.getColumns().addAll(col);
+            tbvequipment.setItems(data);
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             a.showAndWait();
-            tbvweapons.getScene().getWindow().hide();;
+            tbvequipment.getScene().getWindow().hide();;
         }
     }
 
     @FXML
     private void btnawalklik(ActionEvent event) {
-        tbvweapons.getSelectionModel().selectFirst();
-        tbvweapons.requestFocus();
+        tbvequipment.getSelectionModel().selectFirst();
+        tbvequipment.requestFocus();
     }
 
     @FXML
     private void btnakhirklik(ActionEvent event) {
-        tbvweapons.getSelectionModel().selectLast();
-        tbvweapons.requestFocus();
+        tbvequipment.getSelectionModel().selectLast();
+        tbvequipment.requestFocus();
     }
 
     @FXML
     private void btnsebelumklik(ActionEvent event) {
-        tbvweapons.getSelectionModel().selectAboveCell();
-        tbvweapons.requestFocus();
+        tbvequipment.getSelectionModel().selectAboveCell();
+        tbvequipment.requestFocus();
     }
 
     @FXML
     private void btnsesudahklik(ActionEvent event) {
-        tbvweapons.getSelectionModel().selectBelowCell();
-        tbvweapons.requestFocus();
+        tbvequipment.getSelectionModel().selectBelowCell();
+        tbvequipment.requestFocus();
     }
 
     @FXML
     private void btnexitklik(ActionEvent event) {
-        tbvweapons.getScene().getWindow().hide();
+        tbvequipment.getScene().getWindow().hide();
     }
 
     @FXML

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="557.0" prefWidth="901.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_DisplayDetailSetEfekController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutY="8.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <TableView fx:id="tbvdetailsetefek" layoutY="79.0" prefHeight="380.0" prefWidth="890.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+            </TableView>
+            <Button fx:id="btntambahsiswa" defaultButton="true" layoutX="12.0" layoutY="475.0" mnemonicParsing="false" onAction="#btntambahklik" text="TAMBAH" textFill="WHITE" />
+            <Button fx:id="btneditsiswa" defaultButton="true" layoutX="113.0" layoutY="475.0" mnemonicParsing="false" onAction="#btneditklik" text="EDIT" textFill="WHITE" />
+            <Button fx:id="btnhapussiswa" cancelButton="true" layoutX="176.0" layoutY="475.0" mnemonicParsing="false" onAction="#btnhapusklik" text="HAPUS" />
+            <Label layoutX="250.0" layoutY="9.0" text="DATA DETAIL SET EFEK">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnawal" layoutX="590.0" layoutY="475.0" mnemonicParsing="false" onAction="#btnawalklik" text="Awal" />
+            <Button fx:id="akhir" layoutX="649.0" layoutY="475.0" mnemonicParsing="false" onAction="#btnakhirklik" text="Akhir" />
+            <Button fx:id="btnsebelum" layoutX="712.0" layoutY="475.0" mnemonicParsing="false" onAction="#btnsebelumklik" text="Sebelum" />
+            <Button fx:id="btnsesudah" layoutX="799.0" layoutY="475.0" mnemonicParsing="false" onAction="#btnsesudahklik" text="Sesudah" />
+            <Button fx:id="btnexit" layoutX="806.0" layoutY="16.0" mnemonicParsing="false" onAction="#btnexitklik" text="EXIT" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

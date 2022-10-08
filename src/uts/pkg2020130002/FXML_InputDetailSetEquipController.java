@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author Yosef Adrian
  */
-public class FXML_InputDetailSetController implements Initializable {
+public class FXML_InputDetailSetEquipController implements Initializable {
 
     /**
      * Initializes the controller class.
