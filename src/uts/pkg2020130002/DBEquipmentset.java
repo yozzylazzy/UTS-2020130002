@@ -4,7 +4,9 @@
  */
 package uts.pkg2020130002;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -31,7 +33,6 @@ public class DBEquipmentset {
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery("Select * from equipment_set");
-
             int i = 1;
             while (rs.next()) {
                 EquipmentsetModel d = new EquipmentsetModel();
@@ -48,6 +49,82 @@ public class DBEquipmentset {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    
+      public int validasi(String id) {
+        int val = 0;
+        try {
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select Count(*) as jml from equipment_set where set_equip_id = '" + id + "'");
+            while (rs.next()) {
+                val = rs.getInt("jml");
+            }
+            con.tutupKoneksi();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return val;
+    }
+
+    public boolean Delete(String id) {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            //System.out.println(id);
+            con.bukaKoneksi();
+            con.preparedStatement = con.dbKoneksi.prepareStatement(
+                    "delete from equipment_set where set_equip_id = ?");
+            con.preparedStatement.setString(1, id);
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
+        }
+    }
+
+    public boolean insert() {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            con.bukaKoneksi();
+            con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipment_set("
+                    + "set_equip_id, set_name) values (?,?)");
+            con.preparedStatement.setString(1, getEquipmentsetModel().getSetequipid());
+            con.preparedStatement.setString(2, getEquipmentsetModel().getSetname());        
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            berhasil = false;
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
+        }
+    }
+
+    public boolean update() {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            con.bukaKoneksi();
+            con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
+                    "update equipment_set set_name = ? where set_equip_id = ?;");
+            con.preparedStatement.setString(1, getEquipmentsetModel().getSetname());
+            con.preparedStatement.setString(2, getEquipmentsetModel().getSetequipid());
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            berhasil = false;
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
         }
     }
 }

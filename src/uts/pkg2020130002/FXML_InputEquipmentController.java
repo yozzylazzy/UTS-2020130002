@@ -74,7 +74,14 @@ public class FXML_InputEquipmentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cmbequipmenttype.setItems(FXMLDocumentController.dtequipments.LoadEquipmentType());
         sldrarityclick();
+        sldagiclick();
+        sldcritclick();
+        slddexclick();
+        sldintlclick();
+        sldstrclick();
+        sldvitclick();
     }
 
     @FXML
@@ -90,6 +97,16 @@ public class FXML_InputEquipmentController implements Initializable {
         eq.setCrit((int) sldcrit.getValue());
         eq.setDex((int) slddex.getValue());
         eq.setVit((int) sldvit.getValue());
+        System.out.println(eq.getEquipmentid());
+        System.out.println(eq.getEquipmentname());
+        System.out.println(eq.getEquipmentrarity());
+        System.out.println(eq.getEquipmenttype());
+        System.out.println(eq.getStr());
+        System.out.println(eq.getIntl());
+        System.out.println(eq.getAgi());
+        System.out.println(eq.getCrit());
+        System.out.println(eq.getDex());
+        System.out.println(eq.getVit());
         FXMLDocumentController.dtequipments.setEquipmentModel(eq);
         if (editdata) {
             if (FXMLDocumentController.dtequipments.update()) {
@@ -100,7 +117,7 @@ public class FXML_InputEquipmentController implements Initializable {
                 Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal Diperbaharui", ButtonType.OK);
                 a.showAndWait();
             }
-        } else if (FXMLDocumentController.dtequipments.validasi(eq.getEquipmentid()) < 0) {
+        } else if (FXMLDocumentController.dtequipments.validasi(eq.getEquipmentid()) <= 0) {
             if (FXMLDocumentController.dtequipments.insert()) {
                 Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Equipment Berhasil Disimpan", ButtonType.OK);
                 a.showAndWait();
@@ -110,7 +127,7 @@ public class FXML_InputEquipmentController implements Initializable {
                 a.showAndWait();
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Equipment Sudah Terdaftar Sebelumnya!", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Equipment Gagal Disimpan", ButtonType.OK);
             a.showAndWait();
             txtequipmentid.requestFocus();
         }
@@ -141,37 +158,37 @@ public class FXML_InputEquipmentController implements Initializable {
         });
     }
 
-    private void sldstrclick(MouseEvent event) {
+    private void sldstrclick() {
         sldstr.valueProperty().addListener((observable, oldvalue, newvalue) -> {
             lblstr.setText(String.valueOf(newvalue.intValue()));
         });
     }
 
-    private void sldintlclick(MouseEvent event) {
+    private void sldintlclick() {
         sldintl.valueProperty().addListener((observable, oldvalue, newvalue) -> {
             lblintl.setText(String.valueOf(newvalue.intValue()));
         });
     }
 
-    private void sldvitclick(MouseEvent event) {
+    private void sldvitclick() {
         sldvit.valueProperty().addListener((observable, oldvalue, newvalue) -> {
             lblvit.setText(String.valueOf(newvalue.intValue()));
         });
     }
 
-    private void sldagiclick(MouseEvent event) {
+    private void sldagiclick() {
         sldagi.valueProperty().addListener((observable, oldvalue, newvalue) -> {
             lblagi.setText(String.valueOf(newvalue.intValue()));
         });
     }
 
-    private void slddexclick(MouseEvent event) {
+    private void slddexclick() {
         slddex.valueProperty().addListener((observable, oldvalue, newvalue) -> {
             lbldex.setText(String.valueOf(newvalue.intValue()));
         });
     }
 
-    private void sldcritclick(MouseEvent event) {
+    private void sldcritclick() {
         sldcrit.valueProperty().addListener((observable, oldvalue, newvalue) -> {
             lblcrit.setText(String.valueOf(newvalue.intValue()));
         }); 
@@ -194,5 +211,4 @@ public class FXML_InputEquipmentController implements Initializable {
             btnreset.setDisable(true);
         }
     }
-
 }

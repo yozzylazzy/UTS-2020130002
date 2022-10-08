@@ -201,6 +201,29 @@ public class DBEquipment {
             return null;
         }
     }
+    
+      public ObservableList<String> LoadEquipmentType() {
+        try {
+            ObservableList<String> EquipType = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select DISTINCT(equipment_type) from equipments");
+
+            int i = 1;
+            while (rs.next()) {
+                EquipType.add(rs.getString("equipment_type"));
+                i++;
+                //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
+                // + rs.getInt("weapon_rarity"));
+            }
+            con.tutupKoneksi();
+            return EquipType;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public int validasi(String id) {
         int val = 0;
@@ -243,7 +266,8 @@ public class DBEquipment {
         Koneksi con = new Koneksi();
         try {
             con.bukaKoneksi();
-            con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipments(equipment_id,equipment_type,equipment_name,equipment_rarity,"
+            con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipments("
+                    + "equipment_id,equipment_type,equipment_name,equipment_rarity,"
                     + "str,intl,vit,agi,dex,crit) values (?,?,?,?,?,?,?,?,?,?)");
             con.preparedStatement.setString(1, getEquipmentModel().getEquipmentid());
             con.preparedStatement.setString(2, getEquipmentModel().getEquipmenttype());
@@ -273,7 +297,7 @@ public class DBEquipment {
             con.bukaKoneksi();
             con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
                     "update equipments set equipment_type = ?, equipment_name = ?, "
-                    + "equipment_rarity = ?, str = ?, intl = ? vit = ?, agi = ?,"
+                    + "equipment_rarity = ?, str = ?, intl = ?, vit = ?, agi = ?,"
                     + "dex=?, crit=?  where equipment_id = ?;");
             con.preparedStatement.setString(1, getEquipmentModel().getEquipmenttype());
             con.preparedStatement.setString(2, getEquipmentModel().getEquipmentname());
@@ -295,5 +319,4 @@ public class DBEquipment {
             return berhasil;
         }
     }
-
 }

@@ -9,7 +9,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -75,69 +77,133 @@ public class FXML_InputEfekController implements Initializable {
     @FXML
     private Slider sldcdmg;
 
+    private boolean editdata = false;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-
-    @FXML
-    private void sldmatkclick(MouseEvent event) {
+        updateSlider();
     }
 
-    @FXML
-    private void sldatkclick(MouseEvent event) {
+    public void updateSlider() {
+        sldatk.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblatk.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldmatk.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblmatk.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldhp.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblhp.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldmp.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblmp.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldaspd.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblaspd.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldcspd.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblcspd.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        slddef.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lbldef.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldmdef.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblmdef.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldcrate.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblcrate.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldcdmg.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblcdmg.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
+        sldhit.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblhit.setText(String.valueOf(newvalue.intValue()) + "%");
+        });
     }
 
     @FXML
     private void btnexitklik(ActionEvent event) {
+        btnexit.getScene().getWindow().hide();
     }
 
     @FXML
     private void btnresetklik(ActionEvent event) {
+        txtefekid.setText("");
+        sldatk.setValue(0);
+        sldmatk.setValue(0);
+        sldhp.setValue(0);
+        sldmp.setValue(0);
+        slddef.setValue(0);
+        sldmdef.setValue(0);
+        sldaspd.setValue(0);
+        sldcspd.setValue(0);
+        sldcrate.setValue(0);
+        sldcdmg.setValue(0);
+        sldhit.setValue(0);
     }
 
     @FXML
     private void btnsimpanklik(ActionEvent event) {
+        EfekModel eq = new EfekModel();
+        eq.setEfekid(txtefekid.getText());
+        eq.setAtk((int) sldatk.getValue());
+        eq.setMatk((int) sldmatk.getValue());
+        eq.setCriticaldamage((int) sldcdmg.getValue());
+        eq.setCriticalrate((int) sldcrate.getValue());
+        eq.setCspd((int) sldcspd.getValue());
+        eq.setDef((int) slddef.getValue());
+        eq.setHp((int) sldhp.getValue());
+        eq.setHit((int) sldhit.getValue());
+        eq.setMatk((int) sldmatk.getValue());
+        eq.setMdef((int) sldmdef.getValue());
+        eq.setMp((int) sldmp.getValue());
+        FXMLDocumentController.dtefek.setEfekModel(eq);
+        if (editdata) {
+            if (FXMLDocumentController.dtefek.update()) {
+                Alert a = new Alert(Alert.AlertType.WARNING, "Data Equipment Berhasil Diperbaharui", ButtonType.OK);
+                a.showAndWait();
+                btnexitklik(event);
+            } else {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal Diperbaharui", ButtonType.OK);
+                a.showAndWait();
+            }
+        } else if (FXMLDocumentController.dtefek.validasi(eq.getEfekid()) <= 0) {
+            if (FXMLDocumentController.dtefek.insert()) {
+                Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Equipment Berhasil Disimpan", ButtonType.OK);
+                a.showAndWait();
+                btnresetklik(event);
+            } else {
+                Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal disimpan", ButtonType.OK);
+                a.showAndWait();
+            }
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Equipment Gagal Disimpan", ButtonType.OK);
+            a.showAndWait();
+            txtefekid.requestFocus();
+        }
     }
 
-    @FXML
-    private void sldmdefclick(MouseEvent event) {
+    public void execute(EfekModel eq) {
+        if (!eq.getEfekid().isEmpty()) {
+            editdata = true;
+            txtefekid.setText(eq.getEfekid());
+            txtefekid.setEditable(false);
+            sldatk.setValue(eq.getAtk());
+            sldmatk.setValue(eq.getMatk());
+            sldhp.setValue(eq.getHp());
+            sldmp.setValue(eq.getMp());
+            sldaspd.setValue(eq.getAspd());
+            sldcspd.setValue(eq.getCspd());
+            sldhit.setValue(eq.getHit());
+            slddef.setValue(eq.getDef());
+            sldmdef.setValue(eq.getMdef());
+            sldcrate.setValue(eq.getCriticalrate());
+            sldcdmg.setValue(eq.getCriticaldamage());
+            btnreset.setDisable(true);
+        }
     }
 
-    @FXML
-    private void slddefclick(MouseEvent event) {
-    }
-
-    @FXML
-    private void sldmpclick(MouseEvent event) {
-    }
-
-    @FXML
-    private void sldhpclick(MouseEvent event) {
-    }
-
-    @FXML
-    private void sldhitclick(MouseEvent event) {
-    }
-
-    @FXML
-    private void sldaspdclick(MouseEvent event) {
-    }
-
-    @FXML
-    private void sldcspdclick(MouseEvent event) {
-    }
-
-    @FXML
-    private void sldcrateclick(MouseEvent event) {
-    }
-
-    @FXML
-    private void sldcdmgclick(MouseEvent event) {
-    }
-    
 }

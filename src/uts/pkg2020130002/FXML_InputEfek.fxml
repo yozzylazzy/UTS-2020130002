@@ -13,17 +13,17 @@
       <Line endX="100.0" layoutX="470.0" layoutY="666.0" startX="-100.0" strokeWidth="5.0" />
       <Line endX="100.0" layoutX="165.0" layoutY="664.0" startX="-100.0" strokeWidth="5.0" />
       <Label fx:id="lblmdef" layoutX="568.0" layoutY="380.0" text="0" />
-      <Slider fx:id="sldmdef" layoutX="296.0" layoutY="383.0" max="3000.0" onDragDetected="#sldmdefclick" prefHeight="21.0" prefWidth="258.0" />
-      <Slider fx:id="slddef" layoutX="296.0" layoutY="344.0" max="3000.0" onDragDetected="#slddefclick" prefHeight="21.0" prefWidth="258.0" />
+      <Slider fx:id="sldmdef" blockIncrement="0.0" layoutX="296.0" layoutY="383.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="slddef" blockIncrement="0.0" layoutX="296.0" layoutY="344.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
       <Label fx:id="lbldef" layoutX="568.0" layoutY="341.0" text="0" />
       <Label fx:id="lblmp" layoutX="568.0" layoutY="302.0" text="0" />
       <Label fx:id="lblhp" layoutX="568.0" layoutY="263.0" text="0" />
       <Label fx:id="lblmatk" layoutX="568.0" layoutY="220.0" text="0" />
       <Label fx:id="lblatk" layoutX="568.0" layoutY="176.0" text="0" />
-      <Slider fx:id="sldmp" layoutX="296.0" layoutY="305.0" max="3000.0" onDragDetected="#sldmpclick" prefHeight="21.0" prefWidth="258.0" />
-      <Slider fx:id="sldhp" layoutX="296.0" layoutY="266.0" max="3000.0" onDragDetected="#sldhpclick" prefHeight="21.0" prefWidth="258.0" />
-      <Slider fx:id="sldmatk" layoutX="296.0" layoutY="223.0" max="3000.0" onDragDetected="#sldmatkclick" prefHeight="21.0" prefWidth="258.0" />
-      <Slider fx:id="sldatk" layoutX="295.0" layoutY="179.0" max="3000.0" onDragDetected="#sldatkclick" prefHeight="21.0" prefWidth="258.0" />
+      <Slider fx:id="sldmp" blockIncrement="0.0" layoutX="296.0" layoutY="305.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="sldhp" blockIncrement="0.0" layoutX="296.0" layoutY="266.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="sldmatk" blockIncrement="0.0" layoutX="296.0" layoutY="223.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="sldatk" blockIncrement="0.0" layoutX="295.0" layoutY="179.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
       <Label layoutX="72.0" layoutY="382.0" text="Magic Defense (MDEF) :" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
@@ -88,16 +88,16 @@
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Slider fx:id="sldhit" layoutX="295.0" layoutY="421.0" max="3000.0" onDragDetected="#sldhitclick" prefHeight="21.0" prefWidth="258.0" />
-      <Slider fx:id="sldaspd" layoutX="295.0" layoutY="460.0" max="3000.0" onDragDetected="#sldaspdclick" prefHeight="21.0" prefWidth="258.0" />
+      <Slider fx:id="sldhit" blockIncrement="0.0" layoutX="295.0" layoutY="421.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="sldaspd" blockIncrement="0.0" layoutX="295.0" layoutY="460.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
       <Label fx:id="lblhit" layoutX="567.0" layoutY="418.0" text="0" />
       <Label fx:id="lblaspd" layoutX="567.0" layoutY="457.0" text="0" />
       <Label fx:id="lblcspd" layoutX="567.0" layoutY="496.0" text="0" />
-      <Slider fx:id="sldcspd" layoutX="295.0" layoutY="499.0" max="3000.0" onDragDetected="#sldcspdclick" prefHeight="21.0" prefWidth="258.0" />
-      <Slider fx:id="sldcrate" layoutX="295.0" layoutY="538.0" max="3000.0" onDragDetected="#sldcrateclick" prefHeight="21.0" prefWidth="258.0" />
+      <Slider fx:id="sldcspd" blockIncrement="0.0" layoutX="295.0" layoutY="499.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
+      <Slider fx:id="sldcrate" blockIncrement="0.0" layoutX="295.0" layoutY="538.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
       <Label fx:id="lblcrate" layoutX="567.0" layoutY="535.0" text="0" />
       <Label fx:id="lblcdmg" layoutX="567.0" layoutY="572.0" text="0" />
-      <Slider fx:id="sldcdmg" layoutX="295.0" layoutY="575.0" max="3000.0" onDragDetected="#sldcdmgclick" prefHeight="21.0" prefWidth="258.0" />
+      <Slider fx:id="sldcdmg" blockIncrement="0.0" layoutX="295.0" layoutY="575.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
       <Label layoutX="71.0" layoutY="574.0" text="Critical Damage (CDMG) :" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
