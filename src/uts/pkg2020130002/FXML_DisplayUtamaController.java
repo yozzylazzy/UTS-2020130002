@@ -53,29 +53,24 @@ public class FXML_DisplayUtamaController implements Initializable {
     }
 
     public void showData() {
-        ObservableList<EquipmentModel> data = FXMLDocumentController.dtweapons.LoadAll();
+        ObservableList<EquipmentModel> data = FXMLDocumentController.dtequipments.Load();
         if (data != null) {
             tbvweapons.getColumns().clear();
             tbvweapons.getItems().clear();
-            TableColumn col = new TableColumn("Weapon_Id");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Weaponid"));
+            TableColumn col = new TableColumn("Equipment_ID");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentid"));
             tbvweapons.getColumns().addAll(col);
 
-            col = new TableColumn("Status_Id");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Statusid"));
+            col = new TableColumn("Equipment_Type");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmenttype"));
             tbvweapons.getColumns().addAll(col);
-            col = new TableColumn("Weapon_Name");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Weaponname"));
+            col = new TableColumn("Equipment_Name");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentname"));
             tbvweapons.getColumns().addAll(col);
-            col = new TableColumn("Weapon_Atk");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Weaponatk"));
+            col = new TableColumn("Equipment_Rarity");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Equipmentrarity"));
             tbvweapons.getColumns().addAll(col);
             tbvweapons.setItems(data);
-
-            col = new TableColumn("Weapon_Rarity");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Weaponrarity"));
-            tbvweapons.getColumns().addAll(col);
- 
             col = new TableColumn("STR");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Str"));
             tbvweapons.getColumns().addAll(col);

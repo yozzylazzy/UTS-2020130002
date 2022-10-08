@@ -25,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class FXML_DisplayDetailSetController implements Initializable {
 
     @FXML
-    private TableView<DetailsetefekModel> tbvdetailset;
+    private TableView<DetailequipsetModel> tbvdetailset;
     @FXML
     private Button btnexit;
     @FXML
@@ -53,25 +53,17 @@ public class FXML_DisplayDetailSetController implements Initializable {
     }
 
     public void showData() {
-        ObservableList<DetailsetefekModel> data = FXMLDocumentController.dtdetailset.LoadAll();
+        ObservableList<DetailequipsetModel> data = FXMLDocumentController.dtdetailequipset.Load();
         if (data != null) {
             tbvdetailset.getColumns().clear();
             tbvdetailset.getItems().clear();
             TableColumn col = new TableColumn("Set_Equip_ID");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Setequipid"));
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("set_equip_id"));
             tbvdetailset.getColumns().addAll(col);
 
-            col = new TableColumn("Efek_ID");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Efekid"));
+            col = new TableColumn("Equipment_ID");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("equipment_id"));
             tbvdetailset.getColumns().addAll(col);
-            col = new TableColumn("Set_ID");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Setid"));
-            tbvdetailset.getColumns().addAll(col);
-            col = new TableColumn("Set_Name");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Setname"));
-            tbvdetailset.getColumns().addAll(col);
-            col = new TableColumn("Min_Set");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Minset"));
             tbvdetailset.getColumns().addAll(col);
 
             tbvdetailset.setItems(data);

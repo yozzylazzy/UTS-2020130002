@@ -47,35 +47,26 @@ public class FXMLDocumentController implements Initializable {
 
     private Label label;
     @FXML
-    private ImageView img1;
-    @FXML
     private ImageView img2;
     @FXML
     private ImageView img3;
-    @FXML
-    private ImageView img4;
     @FXML
     private Label efekweapon;
     @FXML
     private TextArea txtnamaset;
     @FXML
     private TextArea txteffect;
-    @FXML
     private ListView<String> scr4;
     @FXML
     private ListView<String> scr2;
     @FXML
     private ListView<String> scr3;
-    @FXML
     private ListView<String> scr1;
 
     @FXML
     private Menu showweapon;
     @FXML
-    private ImageView img5;
-    @FXML
     private ImageView img6;
-    @FXML
     private ListView<String> scr5;
     @FXML
     private ListView<String> scr6;
@@ -84,76 +75,52 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableView<EquipmentModel> tbvstat;
     @FXML
-    private MenuItem masterarmor;
-    @FXML
-    private MenuItem masterweapon;
-    @FXML
-    private MenuItem masternecklace;
-    @FXML
-    private MenuItem masterbracelet;
-    @FXML
-    private MenuItem masterbelt;
-    @FXML
-    private MenuItem masterring;
-    @FXML
-    private MenuItem masterstatus;
-    @FXML
     private MenuItem masterefek;
-    @FXML
-    private MenuItem mastersetefek;
-    @FXML
-    private MenuItem masterdetailset;
-    @FXML
-    private MenuItem displayarmor;
-    @FXML
-    private MenuItem displayweapon;
-    @FXML
-    private MenuItem displaynecklace;
-    @FXML
-    private MenuItem displaybracelet;
-    @FXML
-    private MenuItem displaybelt;
-    @FXML
-    private MenuItem displayring;
     @FXML
     private ComboBox<String> cmbarmor;
     @FXML
     private ComboBox<String> cmbbelt;
-    @FXML
     private ComboBox<String> cmbring;
-    @FXML
     private ComboBox<String> cmbbracelet;
-    @FXML
     private ComboBox<String> cmbnecklace;
-
-    public static DBEquipmentset dtequipset = new DBEquipmentset();
-    public static DBDetailequipset dtdetailequipset = new DBDetailequipset();
-    public static DBDetailsetefek dtdetailsetefek = new DBDetailsetefek();
-    public static DBEquipment dtweapons = new DBEquipment();
-    public static DBEfek dtefek = new DBEfek();
-    ObservableList<String> weapons = FXCollections.observableArrayList();
-    ObservableList<String> armors = FXCollections.observableArrayList();
-    ObservableList<String> necklaces = FXCollections.observableArrayList();
-    ObservableList<String> belts = FXCollections.observableArrayList();
-    ObservableList<String> bracelets = FXCollections.observableArrayList();
-    ObservableList<String> rings = FXCollections.observableArrayList();
-    ObservableList<String> details = FXCollections.observableArrayList();
-    List<String> equipped = new ArrayList<String>();
-    List<String> cek = new ArrayList<String>();
-
-    @FXML
-    private MenuItem displaystatus;
     @FXML
     private MenuItem displayefek;
     @FXML
     private MenuItem displaysetequip;
     @FXML
-    private MenuItem displaydetailset;
+    private TableView<?> tbvstatbelt;
+    @FXML
+    private TableView<?> tbvstatarmor;
+
+    public static DBEquipmentset dtequipset = new DBEquipmentset();
+    public static DBDetailequipset dtdetailequipset = new DBDetailequipset();
+    public static DBDetailsetefek dtdetailsetefek = new DBDetailsetefek();
+    public static DBEquipment dtequipments = new DBEquipment();
+    public static DBEfek dtefek = new DBEfek();
+
+    ObservableList<String> details = FXCollections.observableArrayList();
+    List<String> equipped = new ArrayList<String>();
+    List<String> cek = new ArrayList<String>();
+    private String weapon = "", armor = "", belt = "";
+    @FXML
+    private MenuItem masterequipment;
+    @FXML
+    private MenuItem masterequipmentset;
+    @FXML
+    private MenuItem masterdetailequipset;
+    @FXML
+    private MenuItem masterdetailsetefek;
+    @FXML
+    private MenuItem displayequipment;
+    @FXML
+    private MenuItem displaydetailsetequip;
+    @FXML
+    private MenuItem displaydetailsetefek;
 
     //
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        scr1.accessibleTextProperty();
+       // scr1.accessibleTextProperty();
 //        for (int i = 0; i < dtweapons.LoadWeaponName().size(); i++) {
 //            weapons.add(i, dtweapons.LoadWeaponName().get(i).getWeaponname());
 //        }
@@ -190,7 +157,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
     private void img1clicked(MouseEvent event) {
         scr1.setDisable(false);
         scr1.setVisible(true);
@@ -208,13 +174,11 @@ public class FXMLDocumentController implements Initializable {
         scr3.setVisible(true);
     }
 
-    @FXML
     private void img4clicked(MouseEvent event) {
         scr4.setDisable(false);
         scr4.setVisible(true);
     }
 
-    @FXML
     private void exitscr4(MouseEvent event) {
         scr4.setDisable(true);
         scr4.setVisible(false);
@@ -232,7 +196,6 @@ public class FXMLDocumentController implements Initializable {
         scr3.setVisible(false);
     }
 
-    @FXML
     private void exitscr1(MouseEvent event) {
         scr1.setDisable(true);
         scr1.setVisible(false);
@@ -243,7 +206,6 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    @FXML
     private void img5clicked(MouseEvent event) {
         scr5.setDisable(false);
         scr5.setVisible(true);
@@ -255,7 +217,6 @@ public class FXMLDocumentController implements Initializable {
         scr6.setVisible(true);
     }
 
-    @FXML
     private void exitscr5(MouseEvent event) {
         scr5.setDisable(true);
         scr5.setVisible(false);
@@ -268,7 +229,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void loadStat(String x) {
-        ObservableList<EquipmentModel> data = FXMLDocumentController.dtweapons.LoadWeaponStat(x);
+        ObservableList<EquipmentModel> data = FXMLDocumentController.dtequipments.LoadInHome(weapon, armor, belt);
         if (data != null) {
             tbvstat.getColumns().clear();
             tbvstat.getItems().clear();
@@ -299,281 +260,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void masterarmorclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputArmor.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masterweaponclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputWeapon.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masternecklaceclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputNecklace.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masterbraceletclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputBracelet.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masterbeltclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputBelt.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masterringclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputRing.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masterstatusclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputStatus.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     private void masterefekclick(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputEfek.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void mastersetefekclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputSetEfek.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masterdetailsetclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailSet.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void displayarmorclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayArmor.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void displayweaponclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayUtama.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void displaynecklaceclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayNecklace.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void displaybraceletclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayBracelet.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void displaybeltclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayBelt.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void displayringclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayRing.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void displaystatusclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayStatus.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -621,7 +310,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
     private void displaydetailsetclick(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailSet.fxml"));
@@ -638,7 +326,75 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    /*
+    
+    @FXML
+    private void masterequipmentclick(ActionEvent event) {
+          try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputWeapon.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void masterequipmentsetclick(ActionEvent event) {
+      try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailSet.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void masterdetailequipsetclick(ActionEvent event) {
+    }
+
+    @FXML
+    private void masterdetailsetefekclick(ActionEvent event) {
+    }
+
+    @FXML
+    private void displayequipmentclick(ActionEvent event) {
+          try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayUtama.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void displaydetailsetequipclick(ActionEvent event) {
+    }
+
+    @FXML
+    private void displaydetailsetefekclick(ActionEvent event) {
+    }
+    
+    /* Planningnya begini : (Sementara Uji Coba sampai jalan 3 dlu (Belt, Weapon, Armor)
     0-belt
     1-necklace
     2-bracelet
@@ -651,11 +407,9 @@ public class FXMLDocumentController implements Initializable {
         String armorstat = cmbarmor.getSelectionModel().getSelectedItem();
         int a = cmbarmor.getSelectionModel().getSelectedIndex();
         scr3.setItems(FXCollections.observableArrayList(
-                dtarmor.Load().get(a).getArmorname(), String.valueOf(dtarmor.Load().get(a).getArmordef()), String.valueOf(dtarmor.Load().get(a).getArmorrarity())));
+                dtequipments.Load().get(a).getEquipmentname(), String.valueOf(dtequipments.Load().get(a).getVit()), String.valueOf(dtequipments.Load().get(a).getEquipmentrarity())));
+        armor = dtequipments.Load().get(a).getEquipmentid();
         loadStat(armorstat);
-        equipped.set(5, dtarmor.Load().get(a).getArmorid());
-        validasiSetEquipment();
-        System.out.println(equipped);
     }
 
     @FXML
@@ -663,39 +417,9 @@ public class FXMLDocumentController implements Initializable {
         String beltstat = cmbbelt.getSelectionModel().getSelectedItem();
         int a = cmbbelt.getSelectionModel().getSelectedIndex();
         scr6.setItems(FXCollections.observableArrayList(
-                dtbelts.Load().get(a).getBeltname(), String.valueOf(dtbelts.Load().get(a).getBelthealth()), String.valueOf(dtbelts.Load().get(a).getBeltrarity())));
+                dtequipments.Load().get(a).getEquipmentname(), String.valueOf(dtequipments.Load().get(a).getVit()), String.valueOf(dtequipments.Load().get(a).getEquipmentrarity())));
+        belt = dtequipments.Load().get(a).getEquipmentid();
         loadStat(beltstat);
-        equipped.set(0, dtbelts.Load().get(a).getBeltid());
-    }
-
-    @FXML
-    private void updateRing(ActionEvent event) {
-        String ringstat = cmbring.getSelectionModel().getSelectedItem();
-        int a = cmbring.getSelectionModel().getSelectedIndex();
-        scr1.setItems(FXCollections.observableArrayList(
-                dtrings.Load().get(a).getRingname(), String.valueOf(dtrings.Load().get(a).getRingmdef()), String.valueOf(dtrings.Load().get(a).getRingrarity())));
-        loadStat(ringstat);
-        equipped.set(4, dtrings.Load().get(a).getRingid());
-    }
-
-    @FXML
-    private void updateBracelet(ActionEvent event) {
-        String braceletstat = cmbbracelet.getSelectionModel().getSelectedItem();
-        int a = cmbbracelet.getSelectionModel().getSelectedIndex();
-        scr5.setItems(FXCollections.observableArrayList(
-                dtbracelets.Load().get(a).getBraceletname(), String.valueOf(dtbracelets.Load().get(a).getBraceletdef()), String.valueOf(dtbracelets.Load().get(a).getBraceletrarity())));
-        loadStat(braceletstat);
-        equipped.set(2, dtbracelets.Load().get(a).getBraceletid());
-    }
-
-    @FXML
-    private void updateNecklace(ActionEvent event) {
-        String necklacestat = cmbnecklace.getSelectionModel().getSelectedItem();
-        int a = cmbnecklace.getSelectionModel().getSelectedIndex();
-        scr4.setItems(FXCollections.observableArrayList(
-                dtnecklaces.Load().get(a).getNecklacename(), String.valueOf(dtnecklaces.Load().get(a).getNecklacemdef()), String.valueOf(dtnecklaces.Load().get(a).getBeltrarity())));
-        loadStat(necklacestat);
-        equipped.set(1, dtnecklaces.Load().get(a).getNecklaceid());
     }
 
     @FXML
@@ -703,8 +427,9 @@ public class FXMLDocumentController implements Initializable {
         String weapstat = cmbweapons.getSelectionModel().getSelectedItem();
         int a = cmbweapons.getSelectionModel().getSelectedIndex();
         scr2.setItems(FXCollections.observableArrayList(
-                dtweapons.Load().get(a).getWeaponname(), String.valueOf(dtweapons.Load().get(a).getWeaponatk()), String.valueOf(dtweapons.Load().get(a).getWeaponrarity())));
+                dtequipments.Load().get(a).getEquipmentname(), String.valueOf(dtequipments.Load().get(a).getVit()), String.valueOf(dtequipments.Load().get(a).getEquipmentrarity())));
+        weapon = dtequipments.Load().get(a).getEquipmentid();
         loadStat(weapstat);
-        equipped.set(3, dtweapons.Load().get(a).getWeaponid());
     }
+
 }
