@@ -21,49 +21,88 @@ Nama Jenis Eq :
 -Necklace
 
  */
-public class EquipmentModel extends StatusModel {
+public class EquipmentModel {
 
-    private String weaponid, statusid, weaponname;
-    private int weaponatk, weaponrarity;
+    private String equipmentid,equipmenttype,equipmentname;
+    private int equipmentrarity, str, intl, vit, agi, dex, crit;
 
-    public String getWeaponid() {
-        return weaponid;
+    public String getEquipmentid() {
+        return equipmentid;
     }
 
-    public void setWeaponid(String weaponid) {
-        this.weaponid = weaponid;
+    public void setEquipmentid(String equipmentid) {
+        this.equipmentid = equipmentid;
     }
 
-    public String getStatusid() {
-        return statusid;
+    public String getEquipmenttype() {
+        return equipmenttype;
     }
 
-    public void setStatusid(String statusid) {
-        this.statusid = statusid;
+    public void setEquipmenttype(String equipmenttype) {
+        this.equipmenttype = equipmenttype;
     }
 
-    public String getWeaponname() {
-        return weaponname;
+    public String getEquipmentname() {
+        return equipmentname;
     }
 
-    public void setWeaponname(String weaponname) {
-        this.weaponname = weaponname;
+    public void setEquipmentname(String equipmentname) {
+        this.equipmentname = equipmentname;
     }
 
-    public int getWeaponatk() {
-        return weaponatk;
+    public int getEquipmentrarity() {
+        return equipmentrarity;
     }
 
-    public void setWeaponatk(int weaponatk) {
-        this.weaponatk = weaponatk;
+    public void setEquipmentrarity(int equipmentrarity) {
+        this.equipmentrarity = equipmentrarity;
     }
 
-    public int getWeaponrarity() {
-        return weaponrarity;
+    public int getStr() {
+        return str;
     }
 
-    public void setWeaponrarity(int weaponrarity) {
-        this.weaponrarity = weaponrarity;
+    public void setStr(int str) {
+        this.str = str;
     }
-  
+
+    public int getIntl() {
+        return intl;
+    }
+
+    public void setIntl(int intl) {
+        this.intl = intl;
+    }
+
+    public int getVit() {
+        return vit;
+    }
+
+    public void setVit(int vit) {
+        this.vit = vit;
+    }
+
+    public int getAgi() {
+        return agi;
+    }
+
+    public void setAgi(int agi) {
+        this.agi = agi;
+    }
+
+    public int getDex() {
+        return dex;
+    }
+
+    public void setDex(int dex) {
+        this.dex = dex;
+    }
+
+    public int getCrit() {
+        return crit;
+    }
+
+    public void setCrit(int crit) {
+        this.crit = crit;
+    }
 }

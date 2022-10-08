@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXML_InputDetailSetController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_InputDetailSetController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="5.0" layoutY="5.0" prefHeight="462.0" prefWidth="826.0">
+         <children>
+            <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <AnchorPane id="AnchorPane" layoutX="5.0" layoutY="5.0" prefHeight="436.0" prefWidth="804.0">
+                     <children>
+                        <AnchorPane id="AnchorPane" prefHeight="358.0" prefWidth="669.0">
+                           <children>
+                              <AnchorPane id="AnchorPane" layoutX="5.0" layoutY="5.0" prefHeight="424.0" prefWidth="766.0">
+                                 <children>
+                                    <TextField fx:id="txtbraceletname" layoutX="314.0" layoutY="201.0" prefHeight="31.0" prefWidth="222.0" />
+                                    <Label layoutX="107.0" layoutY="107.0" text="BRACELET_ID">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="157.0" text="STATUS_ID :">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="207.0" text="BRACELET_NAME :">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtbraceletid" layoutX="315.0" layoutY="101.0" prefHeight="31.0" prefWidth="222.0" />
+                                    <TextField fx:id="txtstatusid" layoutX="315.0" layoutY="151.0" prefHeight="31.0" prefWidth="222.0" />
+                                    <Button fx:id="btnsimpan" layoutX="323.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnsimpanklik" text="Simpan" />
+                                    <Button fx:id="btnreset" layoutX="412.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnresetklik" text="Reset" />
+                                    <Button fx:id="btnexit" layoutX="485.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnexitklik" text="Exit" />
+                                    <Label layoutX="246.0" layoutY="28.0" text="INPUT DATA DETAILSET">
+                                       <font>
+                                          <Font name="Arial Black" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="301.0" text="BRACELET_RARITY : ">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="107.0" layoutY="257.0" text="BRACELET_DEF :">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="sldrarity" layoutX="318.0" layoutY="304.0" max="3.0" min="1.0" prefHeight="21.0" prefWidth="222.0" />
+                                    <Label fx:id="lblrarity" layoutX="555.0" layoutY="301.0" text="0" />
+                                    <TextField fx:id="txtbraceletdef" layoutX="314.0" layoutY="251.0" prefHeight="31.0" prefWidth="222.0" />
+                                    <Button fx:id="btnloadstat" layoutX="555.0" layoutY="151.0" mnemonicParsing="false" onAction="#btnloadstatklik" text="LOAD STATUS_ID" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

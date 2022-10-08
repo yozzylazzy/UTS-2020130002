@@ -12,42 +12,31 @@ import javafx.collections.ObservableList;
  *
  * @author Yosef Adrian
  */
-public class DBEfek {
+public class DBDetailequipset {
+      
+    private DetailequipsetModel data = new DetailequipsetModel();
 
-    private EfekModel data = new EfekModel();
-
-    public EfekModel getEfekModel() {
+    public DetailequipsetModel getDetailequipsetModel() {
         return (data);
     }
 
-    public void setEfekModel(EfekModel s) {
+    public void setDetailequipsetModel(DetailequipsetModel s) {
         data = s;
     }
 
-    public ObservableList<EfekModel> Load() {
+    public ObservableList<DetailequipsetModel> Load() {
         try {
-            ObservableList<EfekModel> TableData = FXCollections.observableArrayList();
+            ObservableList<DetailequipsetModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select * from efek");
+            ResultSet rs = con.statement.executeQuery("Select * from detail_equip_set");
 
             int i = 1;
             while (rs.next()) {
-                EfekModel d = new EfekModel();
-                d.setEfekid(rs.getString("efek_id"));
-                d.setAtk(rs.getInt("atk"));
-                d.setMatk(rs.getInt("matk"));
-                d.setHp(rs.getInt("hp"));
-                d.setMp(rs.getInt("mp"));
-                d.setDef(rs.getInt("def"));
-                d.setMdef(rs.getInt("mdef"));
-                d.setHit(rs.getInt("hit"));
-                d.setAspd(rs.getInt("aspd"));
-                d.setCspd(rs.getInt("cspd"));
-                d.setCriticalrate(rs.getInt("critical_rate"));
-                d.setCriticaldamage(rs.getInt("critical_damage"));
-
+                DetailequipsetModel d = new DetailequipsetModel();
+                d.setSetequipid(rs.getString("set_equip_id"));
+                d.setEquipmentid(rs.getString("equipment_id"));
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
                 TableData.add(d);

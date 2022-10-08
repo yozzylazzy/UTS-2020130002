@@ -126,15 +126,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ComboBox<String> cmbnecklace;
 
-    public static DBStatus dtstatus = new DBStatus();
-    public static DBSeteffect dtseteq = new DBSeteffect();
-    public static DBDetailset dtdetailset = new DBDetailset();
-    public static DBArmor dtarmor = new DBArmor();
+    public static DBEquipmentset dtequipset = new DBEquipmentset();
+    public static DBDetailequipset dtdetailequipset = new DBDetailequipset();
+    public static DBDetailsetefek dtdetailsetefek = new DBDetailsetefek();
     public static DBEquipment dtweapons = new DBEquipment();
-    public static DBNecklace dtnecklaces = new DBNecklace();
-    public static DBBelt dtbelts = new DBBelt();
-    public static DBBracelet dtbracelets = new DBBracelet();
-    public static DBRing dtrings = new DBRing();
     public static DBEfek dtefek = new DBEfek();
     ObservableList<String> weapons = FXCollections.observableArrayList();
     ObservableList<String> armors = FXCollections.observableArrayList();
@@ -144,6 +139,7 @@ public class FXMLDocumentController implements Initializable {
     ObservableList<String> rings = FXCollections.observableArrayList();
     ObservableList<String> details = FXCollections.observableArrayList();
     List<String> equipped = new ArrayList<String>();
+    List<String> cek = new ArrayList<String>();
 
     @FXML
     private MenuItem displaystatus;
@@ -158,61 +154,40 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         scr1.accessibleTextProperty();
-        for (int i = 0; i < dtweapons.LoadWeaponName().size(); i++) {
-            weapons.add(i, dtweapons.LoadWeaponName().get(i).getWeaponname());
-        }
-        cmbweapons.getItems().addAll(weapons);
+//        for (int i = 0; i < dtweapons.LoadWeaponName().size(); i++) {
+//            weapons.add(i, dtweapons.LoadWeaponName().get(i).getWeaponname());
+//        }
+//        cmbweapons.getItems().addAll(weapons);
+//
+//        for (int i = 0; i < dtarmor.LoadWeaponName().size(); i++) {
+//            armors.add(i, dtarmor.LoadWeaponName().get(i).getArmorname());
+//        }
+//        cmbarmor.getItems().addAll(armors);
+//
+//        for (int i = 0; i < dtnecklaces.LoadWeaponName().size(); i++) {
+//            necklaces.add(i, dtnecklaces.LoadWeaponName().get(i).getNecklacename());
+//        }
+//        cmbnecklace.getItems().addAll(necklaces);
+//
+//        for (int i = 0; i < dtbelts.LoadWeaponName().size(); i++) {
+//            belts.add(i, dtbelts.LoadWeaponName().get(i).getBeltname());
+//        }
+//        cmbbelt.getItems().addAll(belts);
+//
+//        for (int i = 0; i < dtbracelets.LoadWeaponName().size(); i++) {
+//            bracelets.add(i, dtbracelets.LoadWeaponName().get(i).getBraceletname());
+//        }
+//        cmbbracelet.getItems().addAll(bracelets);
+//
+//        for (int i = 0; i < dtrings.LoadWeaponName().size(); i++) {
+//            rings.add(i, dtrings.LoadWeaponName().get(i).getRingname());
+//        }
+//        cmbring.getItems().addAll(rings);
 
-        for (int i = 0; i < dtarmor.LoadWeaponName().size(); i++) {
-            armors.add(i, dtarmor.LoadWeaponName().get(i).getArmorname());
-        }
-        cmbarmor.getItems().addAll(armors);
-
-        for (int i = 0; i < dtnecklaces.LoadWeaponName().size(); i++) {
-            necklaces.add(i, dtnecklaces.LoadWeaponName().get(i).getNecklacename());
-        }
-        cmbnecklace.getItems().addAll(necklaces);
-
-        for (int i = 0; i < dtbelts.LoadWeaponName().size(); i++) {
-            belts.add(i, dtbelts.LoadWeaponName().get(i).getBeltname());
-        }
-        cmbbelt.getItems().addAll(belts);
-
-        for (int i = 0; i < dtbracelets.LoadWeaponName().size(); i++) {
-            bracelets.add(i, dtbracelets.LoadWeaponName().get(i).getBraceletname());
-        }
-        cmbbracelet.getItems().addAll(bracelets);
-
-        for (int i = 0; i < dtrings.LoadWeaponName().size(); i++) {
-            rings.add(i, dtrings.LoadWeaponName().get(i).getRingname());
-        }
-        cmbring.getItems().addAll(rings);
-        
-        for(int i=0; i<6; i++){
+        for (int i = 0; i < 6; i++) {
             equipped.add("");
+            cek.add("");
         }
-    }
-
-    public void setNamaEfek(int a) {
-        //System.out.print(dtweapons.Load().get(a).getWeaponid());
-        for (int j = 0; j < dtdetailset.Load().size(); j++) {
-            if (dtdetailset.LoadAll().get(j).getWeaponid().equals(dtweapons.Load().get(a).getWeaponid())) {
-                System.out.println(
-                        dtdetailset.LoadAll().get(j).getWeaponid()
-                );
-                txtnamaset.setText(dtdetailset.LoadAll().get(a).getSetname());
-            }
-        }
-    }
-
-    public void validasiSetEquipment() {
-        
-      System.out.println(dtseteq.Load());
-      for(int i=0; i<dtseteq.Load().size();i++){
-          if(equipped.get(0) == dtseteq.Load().get(i).getBeltid()){
-              System.out.println("1");
-          }
-      }
     }
 
     @FXML
@@ -265,7 +240,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void showweaponklik(ActionEvent event) {
-        
+
     }
 
     @FXML
@@ -678,7 +653,7 @@ public class FXMLDocumentController implements Initializable {
         scr3.setItems(FXCollections.observableArrayList(
                 dtarmor.Load().get(a).getArmorname(), String.valueOf(dtarmor.Load().get(a).getArmordef()), String.valueOf(dtarmor.Load().get(a).getArmorrarity())));
         loadStat(armorstat);
-        equipped.set(5,  dtarmor.Load().get(a).getArmorid());
+        equipped.set(5, dtarmor.Load().get(a).getArmorid());
         validasiSetEquipment();
         System.out.println(equipped);
     }

@@ -12,36 +12,31 @@ import javafx.collections.ObservableList;
  *
  * @author Yosef Adrian
  */
-public class DBStatus {
+public class DBEquipmentset {
 
-    private StatusModel data = new StatusModel();
+    private EquipmentsetModel data = new EquipmentsetModel();
 
-    public StatusModel getStatusModel() {
+    public EquipmentsetModel getEquipmentsetModel() {
         return (data);
     }
 
-    public void setStatusModel(StatusModel s) {
+    public void setEquipmentsetModel(EquipmentsetModel s) {
         data = s;
     }
 
-    public ObservableList<StatusModel> Load() {
+    public ObservableList<EquipmentsetModel> Load() {
         try {
-            ObservableList<StatusModel> TableData = FXCollections.observableArrayList();
+            ObservableList<EquipmentsetModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select * from status");
+            ResultSet rs = con.statement.executeQuery("Select * from equipment_set");
 
             int i = 1;
             while (rs.next()) {
-                StatusModel d = new StatusModel();
-                d.setStatusid(rs.getString("status_id"));
-                d.setStr(rs.getInt("str"));
-                d.setIntl(rs.getInt("intl"));
-                d.setDex(rs.getInt("vit"));
-                d.setAgi(rs.getInt("agi"));
-                d.setVit(rs.getInt("dex"));
-                d.setCrit(rs.getInt("crit"));
+                EquipmentsetModel d = new EquipmentsetModel();
+                d.setSetequipid(rs.getString("set_equip_id"));
+                d.setSetname(rs.getString("set_name"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));

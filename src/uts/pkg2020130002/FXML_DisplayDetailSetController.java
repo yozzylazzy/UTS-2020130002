@@ -25,7 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class FXML_DisplayDetailSetController implements Initializable {
 
     @FXML
-    private TableView<DetailsetModel> tbvdetailset;
+    private TableView<DetailsetefekModel> tbvdetailset;
     @FXML
     private Button btnexit;
     @FXML
@@ -53,7 +53,7 @@ public class FXML_DisplayDetailSetController implements Initializable {
     }
 
     public void showData() {
-        ObservableList<DetailsetModel> data = FXMLDocumentController.dtdetailset.LoadAll();
+        ObservableList<DetailsetefekModel> data = FXMLDocumentController.dtdetailset.LoadAll();
         if (data != null) {
             tbvdetailset.getColumns().clear();
             tbvdetailset.getItems().clear();
