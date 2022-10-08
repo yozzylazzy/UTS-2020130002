@@ -6,7 +6,11 @@ package uts.pkg2020130002;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,6 +19,21 @@ import javafx.fxml.Initializable;
  */
 public class FXML_InputDetailSetEquipController implements Initializable {
 
+    @FXML
+    private Button btnexit;
+    @FXML
+    private Button btnreset;
+    @FXML
+    private Button btnsimpan;
+    @FXML
+    private Button btnloadsetequipid;
+    @FXML
+    private Button btnloadequipid;
+    @FXML
+    private TextField txtequipmentid;
+    @FXML
+    private TextField txtsetequipid;
+
     /**
      * Initializes the controller class.
      */
@@ -22,5 +41,25 @@ public class FXML_InputDetailSetEquipController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void btnexitklik(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnresetklik(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnsimpanklik(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnloadsetequipidclick(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnloadequipidclick(ActionEvent event) {
+    }
     
 }

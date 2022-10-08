@@ -4,7 +4,9 @@
  */
 package uts.pkg2020130002;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -129,6 +131,7 @@ public class DBEquipment {
             return null;
         }
     }
+
     public ObservableList<EquipmentModel> LoadArmor() {
         try {
             ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
@@ -163,6 +166,7 @@ public class DBEquipment {
             return null;
         }
     }
+
     public ObservableList<EquipmentModel> LoadBelt() {
         try {
             ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
@@ -197,4 +201,99 @@ public class DBEquipment {
             return null;
         }
     }
+
+    public int validasi(String id) {
+        int val = 0;
+        try {
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select Count(*) as jml from equipments where equipment_id = '" + id + "'");
+            while (rs.next()) {
+                val = rs.getInt("jml");
+            }
+            con.tutupKoneksi();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return val;
+    }
+
+    public boolean Delete(String id) {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            //System.out.println(id);
+            con.bukaKoneksi();
+            con.preparedStatement = con.dbKoneksi.prepareStatement(
+                    "delete from equipments where equipment_id = ?");
+            con.preparedStatement.setString(1, id);
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
+        }
+    }
+
+    public boolean insert() {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            con.bukaKoneksi();
+            con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipments(equipment_id,equipment_type,equipment_name,equipment_rarity,"
+                    + "str,intl,vit,agi,dex,crit) values (?,?,?,?,?,?,?,?,?,?)");
+            con.preparedStatement.setString(1, getEquipmentModel().getEquipmentid());
+            con.preparedStatement.setString(2, getEquipmentModel().getEquipmenttype());
+            con.preparedStatement.setString(3, getEquipmentModel().getEquipmentname());
+            con.preparedStatement.setInt(4, getEquipmentModel().getEquipmentrarity());
+            con.preparedStatement.setInt(5, getEquipmentModel().getStr());
+            con.preparedStatement.setInt(6, getEquipmentModel().getIntl());
+            con.preparedStatement.setInt(7, getEquipmentModel().getVit());
+            con.preparedStatement.setInt(8, getEquipmentModel().getAgi());
+            con.preparedStatement.setInt(9, getEquipmentModel().getDex());
+            con.preparedStatement.setInt(10, getEquipmentModel().getCrit());
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            berhasil = false;
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
+        }
+    }
+
+    public boolean update() {
+        boolean berhasil = false;
+        Koneksi con = new Koneksi();
+        try {
+            con.bukaKoneksi();
+            con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
+                    "update equipments set equipment_type = ?, equipment_name = ?, "
+                    + "equipment_rarity = ?, str = ?, intl = ? vit = ?, agi = ?,"
+                    + "dex=?, crit=?  where equipment_id = ?;");
+            con.preparedStatement.setString(1, getEquipmentModel().getEquipmenttype());
+            con.preparedStatement.setString(2, getEquipmentModel().getEquipmentname());
+            con.preparedStatement.setInt(3, getEquipmentModel().getEquipmentrarity());
+            con.preparedStatement.setInt(4, getEquipmentModel().getStr());
+            con.preparedStatement.setInt(5, getEquipmentModel().getIntl());
+            con.preparedStatement.setInt(6, getEquipmentModel().getVit());
+            con.preparedStatement.setInt(7, getEquipmentModel().getAgi());
+            con.preparedStatement.setInt(8, getEquipmentModel().getDex());
+            con.preparedStatement.setInt(9, getEquipmentModel().getCrit());
+            con.preparedStatement.setString(10, getEquipmentModel().getEquipmentid());
+            con.preparedStatement.executeUpdate();
+            berhasil = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            berhasil = false;
+        } finally {
+            con.tutupKoneksi();
+            return berhasil;
+        }
+    }
+
 }

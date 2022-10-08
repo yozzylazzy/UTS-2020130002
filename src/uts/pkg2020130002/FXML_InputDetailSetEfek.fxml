@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXML_InputDetailSetEfekController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="897.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_InputDetailSetEfekController">
+   <children>
+      <Label layoutX="127.0" layoutY="127.0" text="SET EQUIP ID :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="177.0" text="EFEK ID :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtsetequipid" layoutX="335.0" layoutY="121.0" prefHeight="31.0" prefWidth="222.0" />
+      <TextField fx:id="txtequipmentid" layoutX="335.0" layoutY="171.0" prefHeight="31.0" prefWidth="222.0" />
+      <Label layoutX="245.0" layoutY="36.0" text="INPUT DATA DETAILSET EFEK">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnloadequipid" layoutX="575.0" layoutY="171.0" mnemonicParsing="false" onAction="#btnloadequipidclick" text="LOAD EQUIPMENT ID" />
+      <Button fx:id="btnloadsetequipid" layoutX="575.0" layoutY="121.0" mnemonicParsing="false" onAction="#btnloadsetequipidclick" prefHeight="39.0" prefWidth="196.0" text="LOAD SET EQUIP ID" />
+      <Button fx:id="btnsimpan" defaultButton="true" layoutX="271.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnsimpanklik" prefHeight="39.0" prefWidth="99.0" text="SIMPAN" />
+      <Button fx:id="btnreset" layoutX="387.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="90.0" text="RESET" />
+      <Button fx:id="btnexit" cancelButton="true" layoutX="495.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="77.0" text="EXIT" />
+      <Line endX="100.0" layoutX="224.0" layoutY="288.0" startX="-100.0" strokeWidth="5.0" />
+      <Line endX="100.0" layoutX="667.0" layoutY="288.0" startX="-100.0" strokeWidth="5.0" />
+      <Label layoutX="127.0" layoutY="230.0" text="JUMLAH ITEM SET :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Slider fx:id="slditemset" layoutX="335.0" layoutY="233.0" max="3.0" onDragDetected="#slditemsetclick" prefHeight="21.0" prefWidth="222.0" />
+      <Label fx:id="lblitemset" layoutX="575.0" layoutY="230.0" text="0" />
+   </children>
 </AnchorPane>
