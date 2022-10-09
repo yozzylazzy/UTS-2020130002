@@ -90,7 +90,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableView<?> tbvstatbelt;
     @FXML
-    private TableView<?> tbvstatarmor;
+    private TableView<DetailsetefekModel> tbvstatarmor;
 
     public static DBEquipmentset dtequipset = new DBEquipmentset();
     public static DBDetailequipset dtdetailequipset = new DBDetailequipset();
@@ -136,6 +136,8 @@ public class FXMLDocumentController implements Initializable {
             belts.add(i, dtequipments.LoadBelt().get(i).getEquipmentname());
         }
         cmbbelt.getItems().addAll(belts);
+        
+        checkEquipped();
     }
 
     private void img1clicked(MouseEvent event) {
@@ -207,6 +209,28 @@ public class FXMLDocumentController implements Initializable {
     private void exitscr6(MouseEvent event) {
         scr6.setDisable(true);
         scr6.setVisible(false);
+    }
+
+    public void checkEquipped() {
+        ObservableList<DetailsetefekModel> data = FXMLDocumentController.dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002");
+        if (data != null) {
+            tbvstatarmor.getColumns().clear();
+            tbvstatarmor.getItems().clear();
+
+            TableColumn col = new TableColumn("Set_Equip_ID");
+            col.setCellValueFactory(new PropertyValueFactory<DetailequipsetModel, String>("Setequipid"));
+            tbvstatarmor.getColumns().addAll(col);
+
+            col = new TableColumn("Item_Set");
+            col.setCellValueFactory(new PropertyValueFactory<DetailequipsetModel, String>("Itemset"));
+            tbvstatarmor.getColumns().addAll(col);
+
+            tbvstatarmor.setItems(data);
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
+            a.showAndWait();
+            tbvstatarmor.getScene().getWindow().hide();;
+        }
     }
 
     public void loadStat(String x) {
@@ -293,7 +317,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void displaydetailsetequipclick(ActionEvent event) {
-       try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailEquipSet.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
@@ -378,7 +402,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void masterdetailequipsetclick(ActionEvent event) {
-          try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailSetEquip.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);

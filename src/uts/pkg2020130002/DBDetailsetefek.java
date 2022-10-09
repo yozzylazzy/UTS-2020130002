@@ -132,5 +132,32 @@ public class DBDetailsetefek {
             return berhasil;
         }
     }
+    
+    public ObservableList<DetailsetefekModel> LoadEquipSet(String armorid, String weaponid, String beltid) {
+        try {
+            ObservableList<DetailsetefekModel> tableData = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery(""
+                    + "select de2.set_equip_id, Count(`EQUIPMENT_ID`) as \"Terpakai\"\n"
+                    + " from equipment_set es join detail_equip_set de2 on(de2.`SET_EQUIP_ID` = es.`SET_EQUIP_ID`)"
+                    + "  where de2.`EQUIPMENT_ID` IN ('"+armorid+"', '"+weaponid+"', '"+beltid+"')\n"
+                    + "   GROUP BY de2.`SET_EQUIP_ID` ");
+            int i = 1;
+            while (rs.next()) {
+                DetailsetefekModel d = new DetailsetefekModel();
+                d.setSetequipid(rs.getString("set_equip_id"));
+                d.setItemset(rs.getInt("Terpakai"));
+                tableData.add(d);
+                i++;
+            }
+            con.tutupKoneksi();
+            return tableData;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
 }

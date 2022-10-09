@@ -51,8 +51,8 @@ public class DBEquipmentset {
             return null;
         }
     }
-    
-      public int validasi(String id) {
+
+    public int validasi(String id) {
         int val = 0;
         try {
             Koneksi con = new Koneksi();
@@ -96,7 +96,7 @@ public class DBEquipmentset {
             con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipment_set("
                     + "set_equip_id, set_name) values (?,?)");
             con.preparedStatement.setString(1, getEquipmentsetModel().getSetequipid());
-            con.preparedStatement.setString(2, getEquipmentsetModel().getSetname());        
+            con.preparedStatement.setString(2, getEquipmentsetModel().getSetname());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -127,8 +127,8 @@ public class DBEquipmentset {
             return berhasil;
         }
     }
-    
-     public ObservableList<EquipmentsetModel> LookUp(String fld, String dt) {
+
+    public ObservableList<EquipmentsetModel> LookUp(String fld, String dt) {
         try {
             ObservableList<EquipmentsetModel> tableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
@@ -151,4 +151,5 @@ public class DBEquipmentset {
             return null;
         }
     }
+
 }
