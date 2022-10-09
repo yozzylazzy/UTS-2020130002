@@ -165,7 +165,7 @@ public class FXML_DisplayDetailSetEfekController implements Initializable {
         a.showAndWait();
         if (a.getResult() == ButtonType.YES) {
             // System.out.print(s);
-            if (FXMLDocumentController.dtdetailsetefek.Delete(eq.getSetequipid(), eq.getEfekid())) {
+            if (FXMLDocumentController.dtdetailsetefek.Delete(eq.getEfekid(), eq.getSetequipid())) {
                 Alert b = new Alert(Alert.AlertType.INFORMATION, "Data berhasil dihapus", ButtonType.OK);
                 b.showAndWait();
             } else {

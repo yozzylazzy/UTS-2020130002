@@ -109,6 +109,7 @@ public class FXML_InputDetailSetEfekController implements Initializable {
         DetailsetefekModel eqsetefek = new DetailsetefekModel();
         eqsetefek.setSetequipid(txtsetequipid.getText());
         eqsetefek.setEfekid(txtefekid.getText());
+        eqsetefek.setItemset((int) slditemset.getValue());
         FXMLDocumentController.dtdetailsetefek.setDetailsetefekModel(eqsetefek);
         if (editdata) {
             if (FXMLDocumentController.dtdetailsetefek.update()) {

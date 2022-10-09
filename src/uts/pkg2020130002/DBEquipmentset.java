@@ -114,7 +114,7 @@ public class DBEquipmentset {
         try {
             con.bukaKoneksi();
             con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
-                    "update equipment_set set_name = ? where set_equip_id = ?;");
+                    "update equipment_set set set_name = ? where set_equip_id = ?;");
             con.preparedStatement.setString(1, getEquipmentsetModel().getSetname());
             con.preparedStatement.setString(2, getEquipmentsetModel().getSetequipid());
             con.preparedStatement.executeUpdate();

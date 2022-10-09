@@ -136,7 +136,7 @@ public class FXML_DisplayDetailEquipSetController implements Initializable {
         a.showAndWait();
         if (a.getResult() == ButtonType.YES) {
             // System.out.print(s);
-            if (FXMLDocumentController.dtdetailequipset.Delete(eq.getSetequipid(), eq.getEquipmentid())) {
+            if (FXMLDocumentController.dtdetailequipset.Delete(eq.getEquipmentid(), eq.getSetequipid())) {
                 Alert b = new Alert(Alert.AlertType.INFORMATION, "Data berhasil dihapus", ButtonType.OK);
                 b.showAndWait();
             } else {
