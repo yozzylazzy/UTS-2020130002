@@ -4,10 +4,12 @@
  */
 package uts.pkg2020130002;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -15,13 +17,17 @@ import javafx.stage.Stage;
  * @author asus
  */
 public class UTS2020130002 extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+        Stage stg = new Stage();
+        stg.setTitle("Managemen Equipment Set dan Rarity Game RPG");
+        stg.initModality(Modality.APPLICATION_MODAL);
+        stg.setResizable(false);
+        stg.setIconified(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -32,5 +38,5 @@ public class UTS2020130002 extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

@@ -55,7 +55,6 @@ public class FXML_DisplayEquipmentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
         showData();
     }
 
@@ -100,7 +99,7 @@ public class FXML_DisplayEquipmentController implements Initializable {
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             a.showAndWait();
-            tbvequipment.getScene().getWindow().hide();;
+            tbvequipment.getScene().getWindow().hide();
         }
     }
 

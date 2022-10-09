@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -44,30 +45,36 @@ public class FXML_InputEquipmentSetController implements Initializable {
 
     @FXML
     private void btnsimpanklik(ActionEvent event) {
-        EquipmentsetModel eqset = new EquipmentsetModel();
-        eqset.setSetequipid(txtsetequipmentid.getText());
-        eqset.setSetname(txtname.getText());
-        FXMLDocumentController.dtequipset.setEquipmentsetModel(eqset);
-        if (editdata) {
-            if (FXMLDocumentController.dtequipset.update()) {
-                Alert a = new Alert(Alert.AlertType.WARNING, "Data Set Equipment Berhasil Diperbaharui", ButtonType.OK);
-                a.showAndWait();
-                btnexitklik(event);
+        if ((!txtsetequipmentid.getText().isEmpty()) && (!txtname.getText().isEmpty())) {
+            EquipmentsetModel eqset = new EquipmentsetModel();
+            eqset.setSetequipid(txtsetequipmentid.getText());
+            eqset.setSetname(txtname.getText());
+            FXMLDocumentController.dtequipset.setEquipmentsetModel(eqset);
+            if (editdata) {
+                if (FXMLDocumentController.dtequipset.update()) {
+                    Alert a = new Alert(Alert.AlertType.WARNING, "Data Set Equipment Berhasil Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                    btnexitklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Set Equipment Gagal Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                }
+            } else if (FXMLDocumentController.dtequipset.validasi(eqset.getSetequipid()) <= 0) {
+                if (FXMLDocumentController.dtequipset.insert()) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Set Equipment Berhasil Disimpan", ButtonType.OK);
+                    a.showAndWait();
+                    btnresetklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Set Equipment Gagal disimpan", ButtonType.OK);
+                    a.showAndWait();
+                }
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Set Equipment Gagal Diperbaharui", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Set Equipment Sudah Ada", ButtonType.OK);
                 a.showAndWait();
-            }
-        } else if (FXMLDocumentController.dtequipset.validasi(eqset.getSetequipid()) <= 0) {
-            if (FXMLDocumentController.dtequipset.insert()) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Set Equipment Berhasil Disimpan", ButtonType.OK);
-                a.showAndWait();
-                btnresetklik(event);
-            } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Set Equipment Gagal disimpan", ButtonType.OK);
-                a.showAndWait();
+                txtsetequipmentid.requestFocus();
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Set Equipment Gagal Disimpan", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Set Equipment Gagal Disimpan Karena Data Kurang", ButtonType.OK);
             a.showAndWait();
             txtsetequipmentid.requestFocus();
         }
@@ -81,6 +88,7 @@ public class FXML_InputEquipmentSetController implements Initializable {
 
     @FXML
     private void btnexitklik(ActionEvent event) {
+        Parent root;
         btnexit.getScene().getWindow().hide();
     }
 

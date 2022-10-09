@@ -103,9 +103,6 @@ public class FXMLDocumentController implements Initializable {
     public static DBEfek dtefek = new DBEfek();
 
     ObservableList<String> details = FXCollections.observableArrayList();
-    ObservableList<String> weapons = FXCollections.observableArrayList();
-    ObservableList<String> armors = FXCollections.observableArrayList();
-    ObservableList<String> belts = FXCollections.observableArrayList();
 
     private String weapon = "", armor = "", belt = "";
     @FXML
@@ -122,28 +119,49 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem displaydetailsetequip;
     @FXML
     private MenuItem displaydetailsetefek;
+    @FXML
+    private MenuItem btnexit;
 
     //
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setComboweapon();
+        setCombobelt();
+        setComboarmor();
+//        checkEquipped();
+//        loadEfek();
+//        loadSetEfek();
+    }
+
+    public void setComboweapon() {
+        cmbweapons.getItems().clear();
+        ObservableList<String> weapons = FXCollections.observableArrayList();
         for (int i = 0; i < dtequipments.LoadWeapon().size(); i++) {
             weapons.add(i, dtequipments.LoadWeapon().get(i).getEquipmentname());
         }
+        //System.out.println("loaded...");
         cmbweapons.getItems().addAll(weapons);
+    }
 
+    public void setComboarmor() {
+        cmbarmor.getItems().clear();
+        ObservableList<String> armors = FXCollections.observableArrayList();
         for (int i = 0; i < dtequipments.LoadArmor().size(); i++) {
             armors.add(i, dtequipments.LoadArmor().get(i).getEquipmentname());
         }
+        //System.out.println("loaded...");
         cmbarmor.getItems().addAll(armors);
+    }
 
+    public void setCombobelt() {
+        cmbbelt.getItems().clear();
+        ObservableList<String> belts = FXCollections.observableArrayList();
         for (int i = 0; i < dtequipments.LoadBelt().size(); i++) {
             belts.add(i, dtequipments.LoadBelt().get(i).getEquipmentname());
         }
+        //System.out.println("loaded...");
         cmbbelt.getItems().addAll(belts);
 
-        checkEquipped();
-        loadEfek();
-        loadSetEfek();
     }
 
     private void img1clicked(MouseEvent event) {
@@ -225,6 +243,7 @@ public class FXMLDocumentController implements Initializable {
                 System.out.println("Efek ID Array : " + efekid.get(i));
                 if (efekid.get(i).equals(efekdata.get(j).getEfekid())) {
                     EfekModel d = new EfekModel();
+                    d.setEfekid(efekdata.get(j).getEfekid());
                     d.setAtk(efekdata.get(j).getAtk());
                     d.setMatk(efekdata.get(j).getMatk());
                     d.setHp(efekdata.get(j).getHp());
@@ -304,8 +323,8 @@ public class FXMLDocumentController implements Initializable {
             nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow, itemsetnow));
         }
         for (int j = 0; j < nameset.size(); j++) {
-            System.out.println(nameset.get(j));
-            setnameakhir = setnameakhir + "\n" + nameset.get(j).toString();
+            //System.out.println(nameset.get(j));
+            setnameakhir = setnameakhir + nameset.get(j).toString() + "\n";
         }
         txtnamaset.setText(setnameakhir);
         return nameset;
@@ -609,6 +628,26 @@ public class FXMLDocumentController implements Initializable {
         checkEquipped();
         loadEfek();
         loadSetEfek();
+    }
+
+    @FXML
+    private void btnexitclick(ActionEvent event) {
+        System.exit(0);
+    }
+
+    @FXML
+    private void setWeapon(MouseEvent event) {
+        setComboweapon();
+    }
+
+    @FXML
+    private void setArmor(MouseEvent event) {
+        setComboarmor();
+    }
+
+    @FXML
+    private void setBelt(MouseEvent event) {
+        setCombobelt();
     }
 
 }

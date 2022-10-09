@@ -4,11 +4,15 @@
  */
 package uts.pkg2020130002;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -17,6 +21,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -86,48 +92,54 @@ public class FXML_InputEquipmentController implements Initializable {
 
     @FXML
     private void btnsimpanklik(ActionEvent event) {
-        EquipmentModel eq = new EquipmentModel();
-        eq.setEquipmentid(txtequipmentid.getText());
-        eq.setEquipmentname(txtequipmentname.getText());
-        eq.setEquipmenttype(cmbequipmenttype.getSelectionModel().getSelectedItem());
-        eq.setEquipmentrarity((int) sldrarity.getValue());
-        eq.setStr((int) sldstr.getValue());
-        eq.setIntl((int) sldintl.getValue());
-        eq.setAgi((int) sldagi.getValue());
-        eq.setCrit((int) sldcrit.getValue());
-        eq.setDex((int) slddex.getValue());
-        eq.setVit((int) sldvit.getValue());
-        System.out.println(eq.getEquipmentid());
-        System.out.println(eq.getEquipmentname());
-        System.out.println(eq.getEquipmentrarity());
-        System.out.println(eq.getEquipmenttype());
-        System.out.println(eq.getStr());
-        System.out.println(eq.getIntl());
-        System.out.println(eq.getAgi());
-        System.out.println(eq.getCrit());
-        System.out.println(eq.getDex());
-        System.out.println(eq.getVit());
-        FXMLDocumentController.dtequipments.setEquipmentModel(eq);
-        if (editdata) {
-            if (FXMLDocumentController.dtequipments.update()) {
-                Alert a = new Alert(Alert.AlertType.WARNING, "Data Equipment Berhasil Diperbaharui", ButtonType.OK);
-                a.showAndWait();
-                btnexitklik(event);
+        if (!txtequipmentid.getText().isEmpty() && !txtequipmentname.getText().isEmpty() && (cmbequipmenttype.getSelectionModel().getSelectedItem() != null)) {
+            EquipmentModel eq = new EquipmentModel();
+            eq.setEquipmentid(txtequipmentid.getText());
+            eq.setEquipmentname(txtequipmentname.getText());
+            eq.setEquipmenttype(cmbequipmenttype.getSelectionModel().getSelectedItem());
+            eq.setEquipmentrarity((int) sldrarity.getValue());
+            eq.setStr((int) sldstr.getValue());
+            eq.setIntl((int) sldintl.getValue());
+            eq.setAgi((int) sldagi.getValue());
+            eq.setCrit((int) sldcrit.getValue());
+            eq.setDex((int) slddex.getValue());
+            eq.setVit((int) sldvit.getValue());
+            System.out.println(eq.getEquipmentid());
+            System.out.println(eq.getEquipmentname());
+            System.out.println(eq.getEquipmentrarity());
+            System.out.println(eq.getEquipmenttype());
+            System.out.println(eq.getStr());
+            System.out.println(eq.getIntl());
+            System.out.println(eq.getAgi());
+            System.out.println(eq.getCrit());
+            System.out.println(eq.getDex());
+            System.out.println(eq.getVit());
+            FXMLDocumentController.dtequipments.setEquipmentModel(eq);
+            if (editdata) {
+                if (FXMLDocumentController.dtequipments.update()) {
+                    Alert a = new Alert(Alert.AlertType.WARNING, "Data Equipment Berhasil Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                    btnexitklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                }
+            } else if (FXMLDocumentController.dtequipments.validasi(eq.getEquipmentid()) <= 0) {
+                if (FXMLDocumentController.dtequipments.insert()) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Equipment Berhasil Disimpan", ButtonType.OK);
+                    a.showAndWait();
+                    btnresetklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Equipment Gagal Disimpan", ButtonType.OK);
+                    a.showAndWait();
+                }
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal Diperbaharui", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Sudah Ada!", ButtonType.OK);
                 a.showAndWait();
-            }
-        } else if (FXMLDocumentController.dtequipments.validasi(eq.getEquipmentid()) <= 0) {
-            if (FXMLDocumentController.dtequipments.insert()) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Equipment Berhasil Disimpan", ButtonType.OK);
-                a.showAndWait();
-                btnresetklik(event);
-            } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal disimpan", ButtonType.OK);
-                a.showAndWait();
+                txtequipmentid.requestFocus();
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Equipment Gagal Disimpan", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "DATA EQUIPMENT TIDAK LENGKAP!!!", ButtonType.OK);
             a.showAndWait();
             txtequipmentid.requestFocus();
         }
@@ -191,7 +203,7 @@ public class FXML_InputEquipmentController implements Initializable {
     private void sldcritclick() {
         sldcrit.valueProperty().addListener((observable, oldvalue, newvalue) -> {
             lblcrit.setText(String.valueOf(newvalue.intValue()));
-        }); 
+        });
     }
 
     public void execute(EquipmentModel eq) {

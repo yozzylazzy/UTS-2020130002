@@ -15,7 +15,7 @@
       <Button fx:id="btnreset" layoutX="346.0" layoutY="685.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="90.0" text="RESET" />
       <Button fx:id="btnexit" cancelButton="true" layoutX="454.0" layoutY="685.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="77.0" text="EXIT" />
       <Line endX="100.0" layoutX="221.0" layoutY="311.0" startX="-100.0" strokeWidth="5.0" />
-      <Label fx:id="lblrarity" layoutX="635.0" layoutY="261.0" text="0" />
+      <Label fx:id="lblrarity" layoutX="635.0" layoutY="261.0" text="1" />
       <Slider fx:id="sldrarity" blockIncrement="0.0" layoutX="326.0" layoutY="275.0" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="297.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
       <Label layoutX="120.0" layoutY="261.0" text="EQUIPMENT RARITY :">
          <font>

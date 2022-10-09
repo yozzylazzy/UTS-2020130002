@@ -4,11 +4,15 @@
  */
 package uts.pkg2020130002;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -16,6 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -147,40 +153,46 @@ public class FXML_InputEfekController implements Initializable {
 
     @FXML
     private void btnsimpanklik(ActionEvent event) {
-        EfekModel eq = new EfekModel();
-        eq.setEfekid(txtefekid.getText());
-        eq.setAtk((int) sldatk.getValue());
-        eq.setMatk((int) sldmatk.getValue());
-        eq.setCriticaldamage((int) sldcdmg.getValue());
-        eq.setCriticalrate((int) sldcrate.getValue());
-        eq.setCspd((int) sldcspd.getValue());
-        eq.setDef((int) slddef.getValue());
-        eq.setHp((int) sldhp.getValue());
-        eq.setHit((int) sldhit.getValue());
-        eq.setMatk((int) sldmatk.getValue());
-        eq.setMdef((int) sldmdef.getValue());
-        eq.setMp((int) sldmp.getValue());
-        FXMLDocumentController.dtefek.setEfekModel(eq);
-        if (editdata) {
-            if (FXMLDocumentController.dtefek.update()) {
-                Alert a = new Alert(Alert.AlertType.WARNING, "Data Equipment Berhasil Diperbaharui", ButtonType.OK);
-                a.showAndWait();
-                btnexitklik(event);
+        if ((!txtefekid.getText().isEmpty())) {
+            EfekModel eq = new EfekModel();
+            eq.setEfekid(txtefekid.getText());
+            eq.setAtk((int) sldatk.getValue());
+            eq.setMatk((int) sldmatk.getValue());
+            eq.setCriticaldamage((int) sldcdmg.getValue());
+            eq.setCriticalrate((int) sldcrate.getValue());
+            eq.setCspd((int) sldcspd.getValue());
+            eq.setDef((int) slddef.getValue());
+            eq.setHp((int) sldhp.getValue());
+            eq.setHit((int) sldhit.getValue());
+            eq.setMatk((int) sldmatk.getValue());
+            eq.setMdef((int) sldmdef.getValue());
+            eq.setMp((int) sldmp.getValue());
+            FXMLDocumentController.dtefek.setEfekModel(eq);
+            if (editdata) {
+                if (FXMLDocumentController.dtefek.update()) {
+                    Alert a = new Alert(Alert.AlertType.WARNING, "Data Efek Berhasil Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                    btnexitklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Efek Gagal Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                }
+            } else if (FXMLDocumentController.dtefek.validasi(eq.getEfekid()) <= 0) {
+                if (FXMLDocumentController.dtefek.insert()) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Efek Berhasil Disimpan", ButtonType.OK);
+                    a.showAndWait();
+                    btnresetklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Efek Gagal disimpan", ButtonType.OK);
+                    a.showAndWait();
+                }
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal Diperbaharui", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Data Efek Gagal disimpan Krena Sudah Ada", ButtonType.OK);
                 a.showAndWait();
-            }
-        } else if (FXMLDocumentController.dtefek.validasi(eq.getEfekid()) <= 0) {
-            if (FXMLDocumentController.dtefek.insert()) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Equipment Berhasil Disimpan", ButtonType.OK);
-                a.showAndWait();
-                btnresetklik(event);
-            } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Equipment Gagal disimpan", ButtonType.OK);
-                a.showAndWait();
+                txtefekid.requestFocus();
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Equipment Gagal Disimpan", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Efek ID Kosong, Gagal Menyimpan Data Efek!", ButtonType.OK);
             a.showAndWait();
             txtefekid.requestFocus();
         }
