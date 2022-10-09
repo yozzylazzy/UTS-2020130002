@@ -220,11 +220,11 @@ public class FXMLDocumentController implements Initializable {
     public ObservableList<EfekModel> LoadEfekSet(ArrayList<String> efekid) {
         ObservableList<EfekModel> tableData = FXCollections.observableArrayList();
         ObservableList<EfekModel> efekdata = FXMLDocumentController.dtefek.Load();
-        Koneksi con = new Koneksi();
         for (int i = 0; i < efekid.size(); i++) {
-            EfekModel d = new EfekModel();
             for (int j = 0; j < efekdata.size(); j++) {
+                System.out.println("Efek ID Array : " + efekid.get(i));
                 if (efekid.get(i).equals(efekdata.get(j).getEfekid())) {
+                    EfekModel d = new EfekModel();
                     d.setAtk(efekdata.get(j).getAtk());
                     d.setMatk(efekdata.get(j).getMatk());
                     d.setHp(efekdata.get(j).getHp());
@@ -236,15 +236,15 @@ public class FXMLDocumentController implements Initializable {
                     d.setCspd(efekdata.get(j).getCspd());
                     d.setCriticalrate(efekdata.get(j).getCriticalrate());
                     d.setCriticaldamage(efekdata.get(j).getCriticaldamage());
+                    tableData.add(d);
                 }
             }
-            tableData.add(d);
         }
         return tableData;
     }
 
     public void loadSetEfek() {
-        ObservableList<EfekModel> data = LoadEfekSet(loadEfek());
+        ObservableList<EfekModel> data = LoadEfekSet(loadEfekID());
         if (data != null) {
             tbvstatbelt.getColumns().clear();
             tbvstatbelt.getItems().clear();
@@ -289,7 +289,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             a.showAndWait();
-            tbvstatbelt.getScene().getWindow().hide();;
+            tbvstatbelt.getScene().getWindow().hide();
         }
     }
 
@@ -308,6 +308,23 @@ public class FXMLDocumentController implements Initializable {
             setnameakhir = setnameakhir + "\n" + nameset.get(j).toString();
         }
         txtnamaset.setText(setnameakhir);
+        return nameset;
+    }
+
+    public ArrayList<String> loadEfekID() {
+        ArrayList nameset = new ArrayList<String>();
+        String setequipnow = "", setnameakhir = "";
+        int itemsetnow = 0;
+        //txtnamaset.setText(nameset);
+        for (int i = 0; i < dtdetailsetefek.LoadEquipSet(weapon, armor, belt).size(); i++) {
+            setequipnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getSetequipid();
+            itemsetnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getItemset();
+            nameset.add(i, dtdetailsetefek.LoadEfekID(setequipnow, itemsetnow));
+        }
+        for (int j = 0; j < nameset.size(); j++) {
+            System.out.println(nameset.get(j));
+            setnameakhir = setnameakhir + "\n" + nameset.get(j).toString();
+        }
         return nameset;
     }
 
