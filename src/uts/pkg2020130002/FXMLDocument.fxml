@@ -44,7 +44,7 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#284012" height="90.0" layoutX="240.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="240.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -60,10 +60,10 @@
             <DropShadow />
          </effect>
          <image>
-            <Image url="@../../assets/a3.png" />
+            <Image url="@../../assets/weapon.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#284012" height="90.0" layoutX="77.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="77.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -79,10 +79,10 @@
             <DropShadow />
          </effect>
          <image>
-            <Image url="@../../assets/a6.png" />
+            <Image url="@../../assets/armor.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#284012" height="90.0" layoutX="427.0" layoutY="260.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="427.0" layoutY="260.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
@@ -98,7 +98,7 @@
             <DropShadow />
          </effect>
          <image>
-            <Image url="@../../assets/a1.png" />
+            <Image url="@../../assets/belt.png" />
          </image>
       </ImageView>
       <Label fx:id="efekweapon" layoutX="44.0" layoutY="655.0" text="Set Equipment Effect :">

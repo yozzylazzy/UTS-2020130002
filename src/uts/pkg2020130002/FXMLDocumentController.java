@@ -142,8 +142,8 @@ public class FXMLDocumentController implements Initializable {
         cmbbelt.getItems().addAll(belts);
 
         checkEquipped();
-
         loadEfek();
+        loadSetEfek();
     }
 
     private void img1clicked(MouseEvent event) {
@@ -298,10 +298,10 @@ public class FXMLDocumentController implements Initializable {
         String setequipnow = "", setnameakhir = "";
         int itemsetnow = 0;
         //txtnamaset.setText(nameset);
-        for (int i = 0; i < dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002").size(); i++) {
-            setequipnow = dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002").get(i).getSetequipid();
-            itemsetnow = dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002").get(i).getItemset();
-            nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow,itemsetnow));
+        for (int i = 0; i < dtdetailsetefek.LoadEquipSet(weapon, armor, belt).size(); i++) {
+            setequipnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getSetequipid();
+            itemsetnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getItemset();
+            nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow, itemsetnow));
         }
         for (int j = 0; j < nameset.size(); j++) {
             System.out.println(nameset.get(j));
@@ -312,7 +312,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void checkEquipped() {
-        ObservableList<DetailsetefekModel> data = FXMLDocumentController.dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002");
+        ObservableList<DetailsetefekModel> data = FXMLDocumentController.dtdetailsetefek.LoadEquipSet(weapon, armor, belt);
         if (data != null) {
             tbvstatarmor.getColumns().clear();
             tbvstatarmor.getItems().clear();
@@ -329,11 +329,11 @@ public class FXMLDocumentController implements Initializable {
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             a.showAndWait();
-            tbvstatarmor.getScene().getWindow().hide();;
+            tbvstatarmor.getScene().getWindow().hide();
         }
     }
 
-    public void loadStat(String x) {
+    public void loadStat() {
         ObservableList<EquipmentModel> data = FXMLDocumentController.dtequipments.LoadInHome(weapon, armor, belt);
         if (data != null) {
             tbvstat.getColumns().clear();
@@ -360,7 +360,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
             a.showAndWait();
-            tbvstat.getScene().getWindow().hide();;
+            tbvstat.getScene().getWindow().hide();
         }
     }
 
@@ -534,7 +534,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    /* Planningnya begini : (Sementara Uji Coba sampai jalan 3 dlu (Belt, Weapon, Armor)
+    /* Plan Awal : (Sementara Uji Coba sampai jalan 3 dlu (Belt, Weapon, Armor)
     0-belt
     1-necklace
     2-bracelet
@@ -545,31 +545,53 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void updatearmor(ActionEvent event) {
         String armorstat = cmbarmor.getSelectionModel().getSelectedItem();
-        int a = cmbarmor.getSelectionModel().getSelectedIndex();
-        scr3.setItems(FXCollections.observableArrayList(
-                dtequipments.Load().get(a).getEquipmentname(), String.valueOf(dtequipments.Load().get(a).getVit()), String.valueOf(dtequipments.Load().get(a).getEquipmentrarity())));
-        armor = dtequipments.Load().get(a).getEquipmentid();
-        loadStat(armorstat);
+        //System.out.println(armorstat);
+        for (int i = 0; i < dtequipments.Load().size(); i++) {
+            if (armorstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                scr3.setItems(FXCollections.observableArrayList(
+                        dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getVit()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                armor = dtequipments.Load().get(i).getEquipmentid();
+                System.out.println(armor);
+            }
+        }
+        loadStat();
+        checkEquipped();
+        loadEfek();
+        loadSetEfek();
     }
 
     @FXML
     private void updateBelt(ActionEvent event) {
         String beltstat = cmbbelt.getSelectionModel().getSelectedItem();
-        int a = cmbbelt.getSelectionModel().getSelectedIndex();
-        scr6.setItems(FXCollections.observableArrayList(
-                dtequipments.Load().get(a).getEquipmentname(), String.valueOf(dtequipments.Load().get(a).getVit()), String.valueOf(dtequipments.Load().get(a).getEquipmentrarity())));
-        belt = dtequipments.Load().get(a).getEquipmentid();
-        loadStat(beltstat);
+        for (int i = 0; i < dtequipments.Load().size(); i++) {
+            if (beltstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                scr6.setItems(FXCollections.observableArrayList(
+                        dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getVit()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                belt = dtequipments.Load().get(i).getEquipmentid();
+                System.out.println(belt);
+            }
+        }
+        loadStat();
+        checkEquipped();
+        loadEfek();
+        loadSetEfek();
     }
 
     @FXML
     private void updateWeapon(ActionEvent event) {
         String weapstat = cmbweapons.getSelectionModel().getSelectedItem();
-        int a = cmbweapons.getSelectionModel().getSelectedIndex();
-        scr2.setItems(FXCollections.observableArrayList(
-                dtequipments.Load().get(a).getEquipmentname(), String.valueOf(dtequipments.Load().get(a).getVit()), String.valueOf(dtequipments.Load().get(a).getEquipmentrarity())));
-        weapon = dtequipments.Load().get(a).getEquipmentid();
-        loadStat(weapstat);
+        for (int i = 0; i < dtequipments.Load().size(); i++) {
+            if (weapstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                scr2.setItems(FXCollections.observableArrayList(
+                        dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getVit()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                weapon = dtequipments.Load().get(i).getEquipmentid();
+                System.out.println(weapon);
+            }
+        }
+        loadStat();
+        checkEquipped();
+        loadEfek();
+        loadSetEfek();
     }
 
 }
