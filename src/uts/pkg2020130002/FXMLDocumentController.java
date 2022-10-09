@@ -4,10 +4,14 @@
  */
 package uts.pkg2020130002;
 
+import com.sun.org.apache.xerces.internal.impl.xs.opti.DefaultXMLDocumentHandler;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -88,7 +92,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuItem displaysetequip;
     @FXML
-    private TableView<?> tbvstatbelt;
+    private TableView<EfekModel> tbvstatbelt;
     @FXML
     private TableView<DetailsetefekModel> tbvstatarmor;
 
@@ -136,8 +140,10 @@ public class FXMLDocumentController implements Initializable {
             belts.add(i, dtequipments.LoadBelt().get(i).getEquipmentname());
         }
         cmbbelt.getItems().addAll(belts);
-        
+
         checkEquipped();
+
+        loadEfek();
     }
 
     private void img1clicked(MouseEvent event) {
@@ -209,6 +215,100 @@ public class FXMLDocumentController implements Initializable {
     private void exitscr6(MouseEvent event) {
         scr6.setDisable(true);
         scr6.setVisible(false);
+    }
+
+    public ObservableList<EfekModel> LoadEfekSet(ArrayList<String> efekid) {
+        ObservableList<EfekModel> tableData = FXCollections.observableArrayList();
+        ObservableList<EfekModel> efekdata = FXMLDocumentController.dtefek.Load();
+        Koneksi con = new Koneksi();
+        for (int i = 0; i < efekid.size(); i++) {
+            EfekModel d = new EfekModel();
+            for (int j = 0; j < efekdata.size(); j++) {
+                if (efekid.get(i).equals(efekdata.get(j).getEfekid())) {
+                    d.setAtk(efekdata.get(j).getAtk());
+                    d.setMatk(efekdata.get(j).getMatk());
+                    d.setHp(efekdata.get(j).getHp());
+                    d.setMp(efekdata.get(j).getMp());
+                    d.setDef(efekdata.get(j).getDef());
+                    d.setMdef(efekdata.get(j).getMdef());
+                    d.setHit(efekdata.get(j).getHit());
+                    d.setAspd(efekdata.get(j).getAspd());
+                    d.setCspd(efekdata.get(j).getCspd());
+                    d.setCriticalrate(efekdata.get(j).getCriticalrate());
+                    d.setCriticaldamage(efekdata.get(j).getCriticaldamage());
+                }
+            }
+            tableData.add(d);
+        }
+        return tableData;
+    }
+
+    public void loadSetEfek() {
+        ObservableList<EfekModel> data = LoadEfekSet(loadEfek());
+        if (data != null) {
+            tbvstatbelt.getColumns().clear();
+            tbvstatbelt.getItems().clear();
+            TableColumn col = new TableColumn("Efek_ID");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efekid"));
+            tbvstatbelt.getColumns().addAll(col);
+
+            col = new TableColumn("ATK");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Atk"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("MATK");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Matk"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("HP");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Hp"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("MP");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Mp"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("DEF");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Def"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("MDEF");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Mdef"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("HIT");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Hit"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("ASPD");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Aspd"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("CSPD");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Cspd"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("Critical_Rate");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Criticalrate"));
+            tbvstatbelt.getColumns().addAll(col);
+            col = new TableColumn("Critical_Damage");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Criticaldamage"));
+            tbvstatbelt.getColumns().addAll(col);
+            tbvstatbelt.setItems(data);
+        } else {
+            Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
+            a.showAndWait();
+            tbvstatbelt.getScene().getWindow().hide();;
+        }
+    }
+
+    public ArrayList<String> loadEfek() {
+        ArrayList nameset = new ArrayList<String>();
+        String setequipnow = "", setnameakhir = "";
+        int itemsetnow = 0;
+        //txtnamaset.setText(nameset);
+        for (int i = 0; i < dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002").size(); i++) {
+            setequipnow = dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002").get(i).getSetequipid();
+            itemsetnow = dtdetailsetefek.LoadEquipSet("W00001", "A00001", "E00002").get(i).getItemset();
+            nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow,itemsetnow));
+        }
+        for (int j = 0; j < nameset.size(); j++) {
+            System.out.println(nameset.get(j));
+            setnameakhir = setnameakhir + "\n" + nameset.get(j).toString();
+        }
+        txtnamaset.setText(setnameakhir);
+        return nameset;
     }
 
     public void checkEquipped() {
