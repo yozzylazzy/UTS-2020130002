@@ -106,31 +106,37 @@ public class FXML_InputDetailSetEfekController implements Initializable {
 
     @FXML
     private void btnsimpanklik(ActionEvent event) {
-        DetailsetefekModel eqsetefek = new DetailsetefekModel();
-        eqsetefek.setSetequipid(txtsetequipid.getText());
-        eqsetefek.setEfekid(txtefekid.getText());
-        eqsetefek.setItemset((int) slditemset.getValue());
-        FXMLDocumentController.dtdetailsetefek.setDetailsetefekModel(eqsetefek);
-        if (editdata) {
-            if (FXMLDocumentController.dtdetailsetefek.update()) {
-                Alert a = new Alert(Alert.AlertType.WARNING, "Data Detail Set Efek Berhasil Diperbaharui", ButtonType.OK);
-                a.showAndWait();
-                btnexitklik(event);
+        if ((!txtsetequipid.getText().equals("")) && (!txtefekid.getText().equals(""))) {
+            DetailsetefekModel eqsetefek = new DetailsetefekModel();
+            eqsetefek.setSetequipid(txtsetequipid.getText());
+            eqsetefek.setEfekid(txtefekid.getText());
+            eqsetefek.setItemset((int) slditemset.getValue());
+            FXMLDocumentController.dtdetailsetefek.setDetailsetefekModel(eqsetefek);
+            if (editdata) {
+                if (FXMLDocumentController.dtdetailsetefek.update()) {
+                    Alert a = new Alert(Alert.AlertType.WARNING, "Data Detail Set Efek Berhasil Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                    btnexitklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Detail Set Efek Gagal Diperbaharui", ButtonType.OK);
+                    a.showAndWait();
+                }
+            } else if (FXMLDocumentController.dtdetailsetefek.validasi(eqsetefek.getEfekid(), eqsetefek.getSetequipid()) <= 0) {
+                if (FXMLDocumentController.dtdetailsetefek.insert()) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Detail Set Efek Berhasil Disimpan", ButtonType.OK);
+                    a.showAndWait();
+                    btnresetklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Detail Set Efek Equipment Gagal disimpan", ButtonType.OK);
+                    a.showAndWait();
+                }
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Detail Set Efek Gagal Diperbaharui", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Set Detail Set Efek Gagal Disimpan", ButtonType.OK);
                 a.showAndWait();
-            }
-        } else if (FXMLDocumentController.dtdetailsetefek.validasi(eqsetefek.getSetequipid(), eqsetefek.getEfekid()) <= 0) {
-            if (FXMLDocumentController.dtdetailsetefek.insert()) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Detail Set Efek Berhasil Disimpan", ButtonType.OK);
-                a.showAndWait();
-                btnresetklik(event);
-            } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Detail Set Efek Equipment Gagal disimpan", ButtonType.OK);
-                a.showAndWait();
+                txtsetequipid.requestFocus();
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Set Detail Set Efek Gagal Disimpan", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Data Set Detail Set Efek Kosong, Tidak Dapat Disimpan!", ButtonType.OK);
             a.showAndWait();
             txtsetequipid.requestFocus();
         }

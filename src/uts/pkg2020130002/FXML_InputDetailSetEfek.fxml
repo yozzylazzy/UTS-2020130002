@@ -20,8 +20,8 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtsetequipid" layoutX="335.0" layoutY="121.0" prefHeight="31.0" prefWidth="222.0" />
-      <TextField fx:id="txtefekid" layoutX="335.0" layoutY="171.0" prefHeight="31.0" prefWidth="222.0" />
+      <TextField fx:id="txtsetequipid" editable="false" layoutX="335.0" layoutY="121.0" prefHeight="31.0" prefWidth="222.0" />
+      <TextField fx:id="txtefekid" editable="false" layoutX="335.0" layoutY="171.0" prefHeight="31.0" prefWidth="222.0" />
       <Label layoutX="245.0" layoutY="36.0" text="INPUT DATA DETAILSET EFEK">
          <font>
             <Font name="Arial Black" size="24.0" />
@@ -39,7 +39,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Slider fx:id="slditemset" layoutX="335.0" layoutY="233.0" max="3.0" prefHeight="21.0" prefWidth="222.0" />
-      <Label fx:id="lblitemset" layoutX="575.0" layoutY="230.0" text="0" />
+      <Slider fx:id="slditemset" layoutX="335.0" layoutY="233.0" max="3.0" min="1.0" prefHeight="21.0" prefWidth="222.0" value="1.0" />
+      <Label fx:id="lblitemset" layoutX="575.0" layoutY="230.0" text="1" />
    </children>
 </AnchorPane>

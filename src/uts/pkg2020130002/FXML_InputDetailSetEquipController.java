@@ -52,39 +52,48 @@ public class FXML_InputDetailSetEquipController implements Initializable {
 
     @FXML
     private void btnsimpanklik(ActionEvent event) {
-        DetailequipsetModel eqsetdetail = new DetailequipsetModel();
-        eqsetdetail.setSetequipid(txtsetequipid.getText());
-        eqsetdetail.setEquipmentid(txtequipmentid.getText());
-        FXMLDocumentController.dtdetailequipset.setDetailequipsetModel(eqsetdetail);
-        if (FXMLDocumentController.dtdetailequipset.validasi(eqsetdetail.getSetequipid(), eqsetdetail.getEquipmentid()) <= 0) {
-            if (FXMLDocumentController.dtdetailequipset.insert()) {
-                Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Detail Set Efek Berhasil Disimpan", ButtonType.OK);
-                a.showAndWait();
-                btnresetklik(event);
+        if ((!txtsetequipid.getText().equals("") || !txtsetequipid.getText().isEmpty()) && (!txtequipmentid.getText().isEmpty() || !txtequipmentid.getText().equals(""))) {
+            DetailequipsetModel eqsetdetail = new DetailequipsetModel();
+            eqsetdetail.setSetequipid(txtsetequipid.getText());
+            eqsetdetail.setEquipmentid(txtequipmentid.getText());
+            FXMLDocumentController.dtdetailequipset.setDetailequipsetModel(eqsetdetail);
+            if (FXMLDocumentController.dtdetailequipset.validasi(eqsetdetail.getEquipmentid(), eqsetdetail.getSetequipid()) <= 0) {
+                if (FXMLDocumentController.dtdetailequipset.insert()) {
+                    Alert a = new Alert(Alert.AlertType.INFORMATION, "Data Detail Equip Set Berhasil Disimpan", ButtonType.OK);
+                    a.showAndWait();
+                    btnresetklik(event);
+                } else {
+                    Alert a = new Alert(Alert.AlertType.ERROR, "Data Detail Equip Set Gagal disimpan", ButtonType.OK);
+                    a.showAndWait();
+                }
             } else {
-                Alert a = new Alert(Alert.AlertType.ERROR, "Data Detail Set Efek Equipment Gagal disimpan", ButtonType.OK);
+                Alert a = new Alert(Alert.AlertType.ERROR, "Detail Equip Set Gagal Disimpan", ButtonType.OK);
                 a.showAndWait();
+                txtsetequipid.requestFocus();
             }
         } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Set Detail Set Efek Gagal Disimpan", ButtonType.OK);
+            Alert a = new Alert(Alert.AlertType.ERROR, "Detail Equip Set Gagal Disimpan Karena Data Kosong!", ButtonType.OK);
             a.showAndWait();
             txtsetequipid.requestFocus();
         }
     }
 
     @FXML
-    private void btnresetklik(ActionEvent event) {
+    private void btnresetklik(ActionEvent event
+    ) {
         txtequipmentid.setText("");
         txtsetequipid.setText("");
     }
 
     @FXML
-    private void btnexitklik(ActionEvent event) {
+    private void btnexitklik(ActionEvent event
+    ) {
         btnexit.getScene().getWindow().hide();
     }
 
     @FXML
-    private void btnloadsetequipidclick(ActionEvent event) {
+    private void btnloadsetequipidclick(ActionEvent event
+    ) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEquipmentSet.fxml"));
             Parent root = (Parent) loader.load();
@@ -105,7 +114,8 @@ public class FXML_InputDetailSetEquipController implements Initializable {
     }
 
     @FXML
-    private void btnloadequipidclick(ActionEvent event) {
+    private void btnloadequipidclick(ActionEvent event
+    ) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEquipment.fxml"));
             Parent root = (Parent) loader.load();

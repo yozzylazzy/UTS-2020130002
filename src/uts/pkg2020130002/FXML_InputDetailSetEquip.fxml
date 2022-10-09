@@ -22,8 +22,8 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="txtequipmentid" layoutX="325.0" layoutY="161.0" prefHeight="31.0" prefWidth="222.0" />
-      <TextField fx:id="txtsetequipid" layoutX="325.0" layoutY="111.0" prefHeight="31.0" prefWidth="222.0" />
+      <TextField fx:id="txtequipmentid" editable="false" layoutX="325.0" layoutY="161.0" prefHeight="31.0" prefWidth="222.0" />
+      <TextField fx:id="txtsetequipid" editable="false" layoutX="325.0" layoutY="111.0" prefHeight="31.0" prefWidth="222.0" />
       <Label layoutX="117.0" layoutY="167.0" text="EQUIPMENT ID :">
          <font>
             <Font name="System Bold" size="18.0" />
