@@ -240,7 +240,7 @@ public class FXMLDocumentController implements Initializable {
         ObservableList<EfekModel> efekdata = FXMLDocumentController.dtefek.Load();
         for (int i = 0; i < efekid.size(); i++) {
             for (int j = 0; j < efekdata.size(); j++) {
-                System.out.println("Efek ID Array : " + efekid.get(i));
+                //System.out.println("Efek ID Array : " + efekid.get(i));
                 if (efekid.get(i).equals(efekdata.get(j).getEfekid())) {
                     EfekModel d = new EfekModel();
                     d.setEfekid(efekdata.get(j).getEfekid());
@@ -341,7 +341,7 @@ public class FXMLDocumentController implements Initializable {
             nameset.add(i, dtdetailsetefek.LoadEfekID(setequipnow, itemsetnow));
         }
         for (int j = 0; j < nameset.size(); j++) {
-            System.out.println(nameset.get(j));
+            //System.out.println(nameset.get(j));
             setnameakhir = setnameakhir + "\n" + nameset.get(j).toString();
         }
         return nameset;
