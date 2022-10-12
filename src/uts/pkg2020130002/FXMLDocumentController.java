@@ -211,7 +211,7 @@ public class FXMLDocumentController implements Initializable {
     public ObservableList<EfekModel> LoadEfekSet(ArrayList<String> efekid) {
         ObservableList<EfekModel> tableData = FXCollections.observableArrayList();
         ObservableList<EfekModel> efekdata = FXMLDocumentController.dtefek.Load();
-        System.out.println(efekid.size());
+        //System.out.println(efekid.size());
         for (int i = 0; i < efekid.size(); i++) {
             for (int j = 0; j < efekdata.size(); j++) {
                 if (efekid.get(i).equals(efekdata.get(j).getEfekid())) {
@@ -313,7 +313,9 @@ public class FXMLDocumentController implements Initializable {
             setequipnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getSetequipid();
             itemsetnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getItemset();
             //System.out.println(setequipnow + " --- " + itemsetnow);
-            nameset.add(i, dtdetailsetefek.LoadEfekID(setequipnow, itemsetnow));
+            for (int k = 0; k < dtdetailsetefek.LoadEfekID(setequipnow, itemsetnow).size(); k++) {
+                nameset.add(k, dtdetailsetefek.LoadEfekID(setequipnow, itemsetnow).get(k));
+            }
         }
         for (int j = 0; j < nameset.size(); j++) {
             System.out.println(nameset.get(j) + " " + nameset.size());
@@ -563,7 +565,7 @@ public class FXMLDocumentController implements Initializable {
                     scr3.setItems(FXCollections.observableArrayList(
                             dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getVit()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
                     armor = dtequipments.Load().get(i).getEquipmentid();
-                    System.out.println(armor);
+                    //System.out.println(armor);
                 }
             }
         }
@@ -583,7 +585,7 @@ public class FXMLDocumentController implements Initializable {
                     scr6.setItems(FXCollections.observableArrayList(
                             dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getVit()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
                     belt = dtequipments.Load().get(i).getEquipmentid();
-                    System.out.println(belt);
+                    //System.out.println(belt);
                 }
             }
         }
@@ -603,7 +605,7 @@ public class FXMLDocumentController implements Initializable {
                     scr2.setItems(FXCollections.observableArrayList(
                             dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getStr()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
                     weapon = dtequipments.Load().get(i).getEquipmentid();
-                    System.out.println(weapon);
+                    // System.out.println(weapon);
                 }
             }
         }

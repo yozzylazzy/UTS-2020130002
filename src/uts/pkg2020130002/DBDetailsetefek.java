@@ -175,7 +175,7 @@ public class DBDetailsetefek {
             int i = 1;
             while (rs.next()) {
                 namaefek = rs.getString("set_name");
-                System.out.println(rs.getString("set_name"));
+                //System.out.println(rs.getString("set_name"));
                 i++;
             }
             con.tutupKoneksi();
@@ -186,8 +186,8 @@ public class DBDetailsetefek {
         }
     }
 
-    public String LoadEfekID(String setequipid, int jumlahset) {
-        String namaefek = "";
+    public ArrayList<String> LoadEfekID(String setequipid, int jumlahset) {
+        ArrayList namaefek = new ArrayList<String>();
         try {
             //ObservableList<DetailsetefekModel> tableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
@@ -198,8 +198,8 @@ public class DBDetailsetefek {
                     + "where ds.set_equip_id = '" + setequipid + "' and item_set <= '" + jumlahset + "'");
             int i = 1;
             while (rs.next()) {
-                namaefek = rs.getString("efek_id");
-                System.out.println(rs.getString("efek_id"));
+                namaefek.add(rs.getString("efek_id"));
+                //System.out.println(rs.getString("efek_id")); ->Sesuai
                 i++;
             }
             con.tutupKoneksi();
