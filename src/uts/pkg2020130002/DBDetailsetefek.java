@@ -171,7 +171,7 @@ public class DBDetailsetefek {
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery("Select set_name from detail_set_efek ds "
                     + "join equipment_set es on(ds.set_equip_id=es.set_equip_id) "
-                    + "where ds.set_equip_id = '" + setequipid + "' and item_set = '" + jumlahset + "'");
+                    + "where ds.set_equip_id = '" + setequipid + "' and item_set <= '" + jumlahset + "'");
             int i = 1;
             while (rs.next()) {
                 namaefek = rs.getString("set_name");
@@ -195,7 +195,7 @@ public class DBDetailsetefek {
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery("Select efek_id from detail_set_efek ds "
                     + "join equipment_set es on(ds.set_equip_id=es.set_equip_id) "
-                    + "where ds.set_equip_id = '" + setequipid + "' and item_set = '" + jumlahset + "'");
+                    + "where ds.set_equip_id = '" + setequipid + "' and item_set <= '" + jumlahset + "'");
             int i = 1;
             while (rs.next()) {
                 namaefek = rs.getString("efek_id");
