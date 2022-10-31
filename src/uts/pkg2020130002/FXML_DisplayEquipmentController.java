@@ -76,24 +76,8 @@ public class FXML_DisplayEquipmentController implements Initializable {
             col = new TableColumn("Equipment_Rarity");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Equipmentrarity"));
             tbvequipment.getColumns().addAll(col);
-            tbvequipment.setItems(data);
-            col = new TableColumn("STR");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Str"));
-            tbvequipment.getColumns().addAll(col);
-            col = new TableColumn("INT");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Intl"));
-            tbvequipment.getColumns().addAll(col);
-            col = new TableColumn("AGI");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Agi"));
-            tbvequipment.getColumns().addAll(col);
-            col = new TableColumn("DEX");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Dex"));
-            tbvequipment.getColumns().addAll(col);
-            col = new TableColumn("VIT");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Vit"));
-            tbvequipment.getColumns().addAll(col);
-            col = new TableColumn("CRIT");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Crit"));
+            col = new TableColumn("Equipment Efek ID");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Efekid"));
             tbvequipment.getColumns().addAll(col);
             tbvequipment.setItems(data);
         } else {

@@ -47,32 +47,12 @@ public class FXML_InputEquipmentController implements Initializable {
     private TextField txtequipmentid;
     @FXML
     private ComboBox<String> cmbequipmenttype;
-    @FXML
-    private Slider sldstr;
-    @FXML
-    private Slider sldintl;
-    @FXML
-    private Slider sldvit;
-    @FXML
-    private Slider sldagi;
-    @FXML
-    private Label lblstr;
-    @FXML
-    private Label lblintl;
-    @FXML
-    private Label lblvit;
-    @FXML
-    private Label lblagi;
-    @FXML
-    private Label lbldex;
-    @FXML
-    private Slider slddex;
-    @FXML
-    private Slider sldcrit;
-    @FXML
-    private Label lblcrit;
 
     private boolean editdata = false;
+    @FXML
+    private TextField txtefekid;
+    @FXML
+    private Button btnloadefek;
 
     /**
      * Initializes the controller class.
@@ -82,12 +62,6 @@ public class FXML_InputEquipmentController implements Initializable {
         // TODO
         cmbequipmenttype.setItems(FXMLDocumentController.dtequipments.LoadEquipmentType());
         sldrarityclick();
-        sldagiclick();
-        sldcritclick();
-        slddexclick();
-        sldintlclick();
-        sldstrclick();
-        sldvitclick();
     }
 
     @FXML
@@ -98,22 +72,7 @@ public class FXML_InputEquipmentController implements Initializable {
             eq.setEquipmentname(txtequipmentname.getText());
             eq.setEquipmenttype(cmbequipmenttype.getSelectionModel().getSelectedItem());
             eq.setEquipmentrarity((int) sldrarity.getValue());
-            eq.setStr((int) sldstr.getValue());
-            eq.setIntl((int) sldintl.getValue());
-            eq.setAgi((int) sldagi.getValue());
-            eq.setCrit((int) sldcrit.getValue());
-            eq.setDex((int) slddex.getValue());
-            eq.setVit((int) sldvit.getValue());
-            System.out.println(eq.getEquipmentid());
-            System.out.println(eq.getEquipmentname());
-            System.out.println(eq.getEquipmentrarity());
-            System.out.println(eq.getEquipmenttype());
-            System.out.println(eq.getStr());
-            System.out.println(eq.getIntl());
-            System.out.println(eq.getAgi());
-            System.out.println(eq.getCrit());
-            System.out.println(eq.getDex());
-            System.out.println(eq.getVit());
+            eq.setEfekid(txtefekid.getText());
             FXMLDocumentController.dtequipments.setEquipmentModel(eq);
             if (editdata) {
                 if (FXMLDocumentController.dtequipments.update()) {
@@ -151,12 +110,7 @@ public class FXML_InputEquipmentController implements Initializable {
         txtequipmentname.setText("");
         cmbequipmenttype.getSelectionModel().select(null);
         sldrarity.setValue(0);
-        sldstr.setValue(0);
-        sldintl.setValue(0);
-        sldagi.setValue(0);
-        slddex.setValue(0);
-        sldvit.setValue(0);
-        sldcrit.setValue(0);
+        txtefekid.setText("");
     }
 
     @FXML
@@ -170,42 +124,6 @@ public class FXML_InputEquipmentController implements Initializable {
         });
     }
 
-    private void sldstrclick() {
-        sldstr.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblstr.setText(String.valueOf(newvalue.intValue()));
-        });
-    }
-
-    private void sldintlclick() {
-        sldintl.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblintl.setText(String.valueOf(newvalue.intValue()));
-        });
-    }
-
-    private void sldvitclick() {
-        sldvit.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblvit.setText(String.valueOf(newvalue.intValue()));
-        });
-    }
-
-    private void sldagiclick() {
-        sldagi.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblagi.setText(String.valueOf(newvalue.intValue()));
-        });
-    }
-
-    private void slddexclick() {
-        slddex.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lbldex.setText(String.valueOf(newvalue.intValue()));
-        });
-    }
-
-    private void sldcritclick() {
-        sldcrit.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblcrit.setText(String.valueOf(newvalue.intValue()));
-        });
-    }
-
     public void execute(EquipmentModel eq) {
         if (!eq.getEquipmentid().isEmpty()) {
             editdata = true;
@@ -214,13 +132,29 @@ public class FXML_InputEquipmentController implements Initializable {
             txtequipmentname.setText(eq.getEquipmentname());
             cmbequipmenttype.getSelectionModel().select(eq.getEquipmenttype());
             sldrarity.setValue(eq.getEquipmentrarity());
-            sldstr.setValue(eq.getStr());
-            sldintl.setValue(eq.getIntl());
-            sldagi.setValue(eq.getAgi());
-            slddex.setValue(eq.getDex());
-            sldvit.setValue(eq.getVit());
-            sldcrit.setValue(eq.getCrit());
+            txtefekid.setText(eq.getEfekid());
             btnreset.setDisable(true);
+        }
+    }
+
+    @FXML
+    private void btnloadefekklik(ActionEvent event) {
+         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEfek.fxml"));
+            Parent root = (Parent) loader.load();
+            FXML_PilihEfekController isidt = (FXML_PilihEfekController) loader.getController();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.showAndWait();
+            if (isidt.getHasil() == 1) {
+                txtefekid.setText(isidt.getIdHasil());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

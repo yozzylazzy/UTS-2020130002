@@ -67,38 +67,12 @@ public class FXML_DisplayEfekController implements Initializable {
             col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efekid"));
             tbvefekequip.getColumns().addAll(col);
 
-            col = new TableColumn("ATK");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Atk"));
+           
+            col = new TableColumn("Efek_Type");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Efektype"));
             tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("MATK");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Matk"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("HP");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Hp"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("MP");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Mp"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("DEF");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Def"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("MDEF");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Mdef"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("HIT");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Hit"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("ASPD");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Aspd"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("CSPD");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Cspd"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("Critical_Rate");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Criticalrate"));
-            tbvefekequip.getColumns().addAll(col);
-            col = new TableColumn("Critical_Damage");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Criticaldamage"));
+            col = new TableColumn("Efek_Value");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Efekvalue"));
             tbvefekequip.getColumns().addAll(col);
             tbvefekequip.setItems(data);
         } else {

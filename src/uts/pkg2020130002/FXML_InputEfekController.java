@@ -7,6 +7,8 @@ package uts.pkg2020130002;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -31,14 +34,6 @@ import javafx.stage.Stage;
 public class FXML_InputEfekController implements Initializable {
 
     @FXML
-    private Label lblmatk;
-    @FXML
-    private Label lblatk;
-    @FXML
-    private Slider sldmatk;
-    @FXML
-    private Slider sldatk;
-    @FXML
     private TextField txtefekid;
     @FXML
     private Button btnexit;
@@ -46,44 +41,14 @@ public class FXML_InputEfekController implements Initializable {
     private Button btnreset;
     @FXML
     private Button btnsimpan;
-    @FXML
-    private Label lblmdef;
-    @FXML
-    private Slider sldmdef;
-    @FXML
-    private Slider slddef;
-    @FXML
-    private Label lbldef;
-    @FXML
-    private Label lblmp;
-    @FXML
-    private Label lblhp;
-    @FXML
-    private Slider sldmp;
-    @FXML
-    private Slider sldhp;
-    @FXML
-    private Slider sldhit;
-    @FXML
-    private Slider sldaspd;
-    @FXML
-    private Label lblhit;
-    @FXML
-    private Label lblaspd;
-    @FXML
-    private Label lblcspd;
-    @FXML
-    private Slider sldcspd;
-    @FXML
-    private Slider sldcrate;
-    @FXML
-    private Label lblcrate;
-    @FXML
-    private Label lblcdmg;
-    @FXML
-    private Slider sldcdmg;
 
     private boolean editdata = false;
+    @FXML
+    private Label lblsldvalue;
+    @FXML
+    private Slider sldvalue;
+    @FXML
+    private ComboBox<String> cmbefektype;
 
     /**
      * Initializes the controller class.
@@ -91,42 +56,15 @@ public class FXML_InputEfekController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cmbefektype.setItems(FXCollections.observableArrayList(
+                "ATK", "MATK", "DEF", "MDEF"));
+        cmbefektype.getSelectionModel().select(0);
         updateSlider();
     }
 
     public void updateSlider() {
-        sldatk.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblatk.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldmatk.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblmatk.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldhp.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblhp.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldmp.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblmp.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldaspd.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblaspd.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldcspd.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblcspd.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        slddef.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lbldef.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldmdef.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblmdef.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldcrate.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblcrate.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldcdmg.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblcdmg.setText(String.valueOf(newvalue.intValue()) + "%");
-        });
-        sldhit.valueProperty().addListener((observable, oldvalue, newvalue) -> {
-            lblhit.setText(String.valueOf(newvalue.intValue()) + "%");
+        sldvalue.valueProperty().addListener((observable, oldvalue, newvalue) -> {
+            lblsldvalue.setText(String.valueOf(newvalue.intValue() * 100));
         });
     }
 
@@ -138,17 +76,9 @@ public class FXML_InputEfekController implements Initializable {
     @FXML
     private void btnresetklik(ActionEvent event) {
         txtefekid.setText("");
-        sldatk.setValue(0);
-        sldmatk.setValue(0);
-        sldhp.setValue(0);
-        sldmp.setValue(0);
-        slddef.setValue(0);
-        sldmdef.setValue(0);
-        sldaspd.setValue(0);
-        sldcspd.setValue(0);
-        sldcrate.setValue(0);
-        sldcdmg.setValue(0);
-        sldhit.setValue(0);
+        cmbefektype.getSelectionModel().select(null);
+        sldvalue.setValue(0);
+
     }
 
     @FXML
@@ -156,17 +86,9 @@ public class FXML_InputEfekController implements Initializable {
         if ((!txtefekid.getText().isEmpty())) {
             EfekModel eq = new EfekModel();
             eq.setEfekid(txtefekid.getText());
-            eq.setAtk((int) sldatk.getValue());
-            eq.setMatk((int) sldmatk.getValue());
-            eq.setCriticaldamage((int) sldcdmg.getValue());
-            eq.setCriticalrate((int) sldcrate.getValue());
-            eq.setCspd((int) sldcspd.getValue());
-            eq.setDef((int) slddef.getValue());
-            eq.setHp((int) sldhp.getValue());
-            eq.setHit((int) sldhit.getValue());
-            eq.setMatk((int) sldmatk.getValue());
-            eq.setMdef((int) sldmdef.getValue());
-            eq.setMp((int) sldmp.getValue());
+            eq.setEfektype(cmbefektype.getSelectionModel().getSelectedItem());
+            eq.setEfekvalue((int) sldvalue.getValue());
+
             FXMLDocumentController.dtefek.setEfekModel(eq);
             if (editdata) {
                 if (FXMLDocumentController.dtefek.update()) {
@@ -203,17 +125,8 @@ public class FXML_InputEfekController implements Initializable {
             editdata = true;
             txtefekid.setText(eq.getEfekid());
             txtefekid.setEditable(false);
-            sldatk.setValue(eq.getAtk());
-            sldmatk.setValue(eq.getMatk());
-            sldhp.setValue(eq.getHp());
-            sldmp.setValue(eq.getMp());
-            sldaspd.setValue(eq.getAspd());
-            sldcspd.setValue(eq.getCspd());
-            sldhit.setValue(eq.getHit());
-            slddef.setValue(eq.getDef());
-            sldmdef.setValue(eq.getMdef());
-            sldcrate.setValue(eq.getCriticalrate());
-            sldcdmg.setValue(eq.getCriticaldamage());
+            cmbefektype.getSelectionModel().select(eq.getEfektype());
+            sldvalue.setValue(eq.getEfekvalue());
             btnreset.setDisable(true);
         }
     }

@@ -38,17 +38,8 @@ public class DBEfek {
             while (rs.next()) {
                 EfekModel d = new EfekModel();
                 d.setEfekid(rs.getString("efek_id"));
-                d.setAtk(rs.getInt("atk"));
-                d.setMatk(rs.getInt("matk"));
-                d.setHp(rs.getInt("hp"));
-                d.setMp(rs.getInt("mp"));
-                d.setDef(rs.getInt("def"));
-                d.setMdef(rs.getInt("mdef"));
-                d.setHit(rs.getInt("hit"));
-                d.setAspd(rs.getInt("aspd"));
-                d.setCspd(rs.getInt("cspd"));
-                d.setCriticalrate(rs.getInt("critical_rate"));
-                d.setCriticaldamage(rs.getInt("critical_damage"));
+                d.setEfektype(rs.getString("efek_type"));
+                d.setEfekvalue(rs.getInt("efek_value"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -105,20 +96,10 @@ public class DBEfek {
         try {
             con.bukaKoneksi();
             con.preparedStatement = con.dbKoneksi.prepareStatement("insert into efek("
-                    + "efek_id,atk,matk,hp,"
-                    + "mp,def,mdef,hit,aspd,cspd,critical_rate,critical_damage) values (?,?,?,?,?,?,?,?,?,?,?,?)");
+                    + "efek_id,efek_type,efek_value) values (?,?,?)");
             con.preparedStatement.setString(1, getEfekModel().getEfekid());
-            con.preparedStatement.setInt(2, getEfekModel().getAtk());
-            con.preparedStatement.setInt(3, getEfekModel().getMatk());
-            con.preparedStatement.setInt(4, getEfekModel().getHp());
-            con.preparedStatement.setInt(5, getEfekModel().getMp());
-            con.preparedStatement.setInt(6, getEfekModel().getDef());
-            con.preparedStatement.setInt(7, getEfekModel().getMdef());
-            con.preparedStatement.setInt(8, getEfekModel().getHit());
-            con.preparedStatement.setInt(9, getEfekModel().getAspd());
-            con.preparedStatement.setInt(10, getEfekModel().getCspd());
-            con.preparedStatement.setInt(11, getEfekModel().getCriticalrate());
-            con.preparedStatement.setInt(12, getEfekModel().getCriticaldamage());
+            con.preparedStatement.setString(2, getEfekModel().getEfektype());
+            con.preparedStatement.setInt(3, getEfekModel().getEfekvalue());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -136,21 +117,10 @@ public class DBEfek {
         try {
             con.bukaKoneksi();
             con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
-                    "update efek set atk = ?, matk = ?, "
-                    + "hp = ?, mp = ?, def = ?, mdef = ?, hit = ?,"
-                    + "aspd=?, cspd=?, critical_rate = ?, critical_damage=?  where efek_id = ?;");
-            con.preparedStatement.setInt(1, getEfekModel().getAtk());
-            con.preparedStatement.setInt(2, getEfekModel().getMatk());
-            con.preparedStatement.setInt(3, getEfekModel().getHp());
-            con.preparedStatement.setInt(4, getEfekModel().getMp());
-            con.preparedStatement.setInt(5, getEfekModel().getDef());
-            con.preparedStatement.setInt(6, getEfekModel().getMdef());
-            con.preparedStatement.setInt(7, getEfekModel().getHit());
-            con.preparedStatement.setInt(8, getEfekModel().getAspd());
-            con.preparedStatement.setInt(9, getEfekModel().getCspd());
-            con.preparedStatement.setInt(10, getEfekModel().getCriticalrate());
-            con.preparedStatement.setInt(11, getEfekModel().getCriticaldamage());
-            con.preparedStatement.setString(12, getEfekModel().getEfekid());
+                    "update efek set efek_type = ?, efek_value = ? where efek_id = ?;");
+            con.preparedStatement.setString(1, getEfekModel().getEfektype());
+            con.preparedStatement.setInt(2, getEfekModel().getEfekvalue());
+            con.preparedStatement.setString(3, getEfekModel().getEfekid());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -174,17 +144,8 @@ public class DBEfek {
             while (rs.next()) {
                 EfekModel d = new EfekModel();
                 d.setEfekid(rs.getString("efek_id"));
-                d.setAtk(rs.getInt("atk"));
-                d.setMatk(rs.getInt("matk"));
-                d.setHp(rs.getInt("hp"));
-                d.setMp(rs.getInt("mp"));
-                d.setDef(rs.getInt("def"));
-                d.setMdef(rs.getInt("mdef"));
-                d.setHit(rs.getInt("hit"));
-                d.setAspd(rs.getInt("aspd"));
-                d.setCspd(rs.getInt("cspd"));
-                d.setCriticalrate(rs.getInt("critical_rate"));
-                d.setCriticaldamage(rs.getInt("critical_damage"));
+                d.setEfektype(rs.getString("efek_type"));
+                d.setEfekvalue(rs.getInt("efek_value"));
                 tableData.add(d);
                 i++;
             }
@@ -195,8 +156,8 @@ public class DBEfek {
             return null;
         }
     }
-    
-     public ObservableList<EfekModel> LoadEfekSet(String dt) {
+
+    public ObservableList<EfekModel> LoadEfekSet(String dt) {
         try {
             ObservableList<EfekModel> tableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
@@ -208,17 +169,8 @@ public class DBEfek {
             while (rs.next()) {
                 EfekModel d = new EfekModel();
                 d.setEfekid(rs.getString("efek_id"));
-                d.setAtk(rs.getInt("atk"));
-                d.setMatk(rs.getInt("matk"));
-                d.setHp(rs.getInt("hp"));
-                d.setMp(rs.getInt("mp"));
-                d.setDef(rs.getInt("def"));
-                d.setMdef(rs.getInt("mdef"));
-                d.setHit(rs.getInt("hit"));
-                d.setAspd(rs.getInt("aspd"));
-                d.setCspd(rs.getInt("cspd"));
-                d.setCriticalrate(rs.getInt("critical_rate"));
-                d.setCriticaldamage(rs.getInt("critical_damage"));
+                d.setEfektype(rs.getString("efek_type"));
+                d.setEfekvalue(rs.getInt("efek_value"));
                 tableData.add(d);
                 i++;
             }

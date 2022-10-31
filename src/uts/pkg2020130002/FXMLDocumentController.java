@@ -218,17 +218,8 @@ public class FXMLDocumentController implements Initializable {
                     System.out.println("Efek ID Array : " + efekid.get(i));
                     EfekModel d = new EfekModel();
                     d.setEfekid(efekdata.get(j).getEfekid());
-                    d.setAtk(efekdata.get(j).getAtk());
-                    d.setMatk(efekdata.get(j).getMatk());
-                    d.setHp(efekdata.get(j).getHp());
-                    d.setMp(efekdata.get(j).getMp());
-                    d.setDef(efekdata.get(j).getDef());
-                    d.setMdef(efekdata.get(j).getMdef());
-                    d.setHit(efekdata.get(j).getHit());
-                    d.setAspd(efekdata.get(j).getAspd());
-                    d.setCspd(efekdata.get(j).getCspd());
-                    d.setCriticalrate(efekdata.get(j).getCriticalrate());
-                    d.setCriticaldamage(efekdata.get(j).getCriticaldamage());
+                    d.setEfektype(efekdata.get(j).getEfektype());
+                    d.setEfekvalue(efekdata.get(j).getEfekvalue());
                     tableData.add(d);
                 }
             }
@@ -245,38 +236,11 @@ public class FXMLDocumentController implements Initializable {
             col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efekid"));
             tbvstatbelt.getColumns().addAll(col);
 
-            col = new TableColumn("ATK");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Atk"));
+            col = new TableColumn("Efek_Type");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efektype"));
             tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("MATK");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Matk"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("HP");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Hp"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("MP");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Mp"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("DEF");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Def"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("MDEF");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Mdef"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("HIT");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Hit"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("ASPD");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Aspd"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("CSPD");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Cspd"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("Critical_Rate");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Criticalrate"));
-            tbvstatbelt.getColumns().addAll(col);
-            col = new TableColumn("Critical_Damage");
-            col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Criticaldamage"));
+            col = new TableColumn("Efek_Value");
+            col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efekvalue"));
             tbvstatbelt.getColumns().addAll(col);
             tbvstatbelt.setItems(data);
         } else {
@@ -563,7 +527,7 @@ public class FXMLDocumentController implements Initializable {
             for (int i = 0; i < dtequipments.Load().size(); i++) {
                 if (armorstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
                     scr3.setItems(FXCollections.observableArrayList(
-                            dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getVit()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                            dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
                     armor = dtequipments.Load().get(i).getEquipmentid();
                     //System.out.println(armor);
                 }
@@ -583,7 +547,7 @@ public class FXMLDocumentController implements Initializable {
             for (int i = 0; i < dtequipments.Load().size(); i++) {
                 if (beltstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
                     scr6.setItems(FXCollections.observableArrayList(
-                            dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getVit()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                            dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
                     belt = dtequipments.Load().get(i).getEquipmentid();
                     //System.out.println(belt);
                 }
@@ -603,7 +567,7 @@ public class FXMLDocumentController implements Initializable {
             for (int i = 0; i < dtequipments.Load().size(); i++) {
                 if (weapstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
                     scr2.setItems(FXCollections.observableArrayList(
-                            dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getStr()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                            dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
                     weapon = dtequipments.Load().get(i).getEquipmentid();
                     // System.out.println(weapon);
                 }

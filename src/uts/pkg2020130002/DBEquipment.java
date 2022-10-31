@@ -41,12 +41,7 @@ public class DBEquipment {
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
-                d.setStr(rs.getInt("str"));
-                d.setIntl(rs.getInt("intl"));
-                d.setVit(rs.getInt("vit"));
-                d.setAgi(rs.getInt("agi"));
-                d.setDex(rs.getInt("dex"));
-                d.setCrit(rs.getInt("crit"));
+                d.setEfekid(rs.getString("efek_id"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -77,13 +72,7 @@ public class DBEquipment {
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
-                d.setStr(rs.getInt("str"));
-                d.setIntl(rs.getInt("intl"));
-                d.setVit(rs.getInt("vit"));
-                d.setAgi(rs.getInt("agi"));
-                d.setDex(rs.getInt("dex"));
-                d.setCrit(rs.getInt("crit"));
-
+                d.setEfekid(rs.getString("efek_id"));
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
                 TableData.add(d);
@@ -112,12 +101,7 @@ public class DBEquipment {
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
-                d.setStr(rs.getInt("str"));
-                d.setIntl(rs.getInt("intl"));
-                d.setVit(rs.getInt("vit"));
-                d.setAgi(rs.getInt("agi"));
-                d.setDex(rs.getInt("dex"));
-                d.setCrit(rs.getInt("crit"));
+                d.setEfekid(rs.getString("efek_id"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -147,12 +131,7 @@ public class DBEquipment {
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
-                d.setStr(rs.getInt("str"));
-                d.setIntl(rs.getInt("intl"));
-                d.setVit(rs.getInt("vit"));
-                d.setAgi(rs.getInt("agi"));
-                d.setDex(rs.getInt("dex"));
-                d.setCrit(rs.getInt("crit"));
+                d.setEfekid(rs.getString("efek_id"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -182,12 +161,7 @@ public class DBEquipment {
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
-                d.setStr(rs.getInt("str"));
-                d.setIntl(rs.getInt("intl"));
-                d.setVit(rs.getInt("vit"));
-                d.setAgi(rs.getInt("agi"));
-                d.setDex(rs.getInt("dex"));
-                d.setCrit(rs.getInt("crit"));
+                d.setEfekid(rs.getString("efek_id"));
 
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
@@ -267,18 +241,12 @@ public class DBEquipment {
         try {
             con.bukaKoneksi();
             con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipments("
-                    + "equipment_id,equipment_type,equipment_name,equipment_rarity,"
-                    + "str,intl,vit,agi,dex,crit) values (?,?,?,?,?,?,?,?,?,?)");
+                    + "equipment_id,equipment_type,equipment_name,equipment_rarity,efek_id) values (?,?,?,?,?)");
             con.preparedStatement.setString(1, getEquipmentModel().getEquipmentid());
             con.preparedStatement.setString(2, getEquipmentModel().getEquipmenttype());
             con.preparedStatement.setString(3, getEquipmentModel().getEquipmentname());
             con.preparedStatement.setInt(4, getEquipmentModel().getEquipmentrarity());
-            con.preparedStatement.setInt(5, getEquipmentModel().getStr());
-            con.preparedStatement.setInt(6, getEquipmentModel().getIntl());
-            con.preparedStatement.setInt(7, getEquipmentModel().getVit());
-            con.preparedStatement.setInt(8, getEquipmentModel().getAgi());
-            con.preparedStatement.setInt(9, getEquipmentModel().getDex());
-            con.preparedStatement.setInt(10, getEquipmentModel().getCrit());
+            con.preparedStatement.setString(5, getEquipmentModel().getEfekid());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -297,18 +265,12 @@ public class DBEquipment {
             con.bukaKoneksi();
             con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
                     "update equipments set equipment_type = ?, equipment_name = ?, "
-                    + "equipment_rarity = ?, str = ?, intl = ?, vit = ?, agi = ?,"
-                    + "dex=?, crit=?  where equipment_id = ?;");
+                    + "equipment_rarity = ?,efek_id=?  where equipment_id = ?;");
             con.preparedStatement.setString(1, getEquipmentModel().getEquipmenttype());
             con.preparedStatement.setString(2, getEquipmentModel().getEquipmentname());
             con.preparedStatement.setInt(3, getEquipmentModel().getEquipmentrarity());
-            con.preparedStatement.setInt(4, getEquipmentModel().getStr());
-            con.preparedStatement.setInt(5, getEquipmentModel().getIntl());
-            con.preparedStatement.setInt(6, getEquipmentModel().getVit());
-            con.preparedStatement.setInt(7, getEquipmentModel().getAgi());
-            con.preparedStatement.setInt(8, getEquipmentModel().getDex());
-            con.preparedStatement.setInt(9, getEquipmentModel().getCrit());
-            con.preparedStatement.setString(10, getEquipmentModel().getEquipmentid());
+            con.preparedStatement.setString(4, getEquipmentModel().getEfekid());
+            con.preparedStatement.setString(5, getEquipmentModel().getEquipmentid());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {

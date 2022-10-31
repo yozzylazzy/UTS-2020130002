@@ -23,9 +23,8 @@ Nama Jenis Eq :
  */
 public class EquipmentModel {
 
-    private String equipmentid,equipmenttype,equipmentname;
-    private int equipmentrarity, str, intl, vit, agi, dex, crit;
-
+    private String equipmentid,equipmenttype,equipmentname, efekid;
+    private int equipmentrarity;
     public String getEquipmentid() {
         return equipmentid;
     }
@@ -58,51 +57,12 @@ public class EquipmentModel {
         this.equipmentrarity = equipmentrarity;
     }
 
-    public int getStr() {
-        return str;
+    public String getEfekid() {
+        return efekid;
     }
 
-    public void setStr(int str) {
-        this.str = str;
+    public void setEfekid(String efekid) {
+        this.efekid = efekid;
     }
 
-    public int getIntl() {
-        return intl;
-    }
-
-    public void setIntl(int intl) {
-        this.intl = intl;
-    }
-
-    public int getVit() {
-        return vit;
-    }
-
-    public void setVit(int vit) {
-        this.vit = vit;
-    }
-
-    public int getAgi() {
-        return agi;
-    }
-
-    public void setAgi(int agi) {
-        this.agi = agi;
-    }
-
-    public int getDex() {
-        return dex;
-    }
-
-    public void setDex(int dex) {
-        this.dex = dex;
-    }
-
-    public int getCrit() {
-        return crit;
-    }
-
-    public void setCrit(int crit) {
-        this.crit = crit;
-    }
 }

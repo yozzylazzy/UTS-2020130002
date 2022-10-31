@@ -8,48 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="781.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXML_InputEfekController">
+<AnchorPane id="AnchorPane" prefHeight="383.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXML_InputEfekController">
    <children>
-      <Line endX="100.0" layoutX="470.0" layoutY="666.0" startX="-100.0" strokeWidth="5.0" />
-      <Line endX="100.0" layoutX="165.0" layoutY="664.0" startX="-100.0" strokeWidth="5.0" />
-      <Label fx:id="lblmdef" layoutX="568.0" layoutY="380.0" text="0" />
-      <Slider fx:id="sldmdef" blockIncrement="0.0" layoutX="296.0" layoutY="383.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Slider fx:id="slddef" blockIncrement="0.0" layoutX="296.0" layoutY="344.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Label fx:id="lbldef" layoutX="568.0" layoutY="341.0" text="0" />
-      <Label fx:id="lblmp" layoutX="568.0" layoutY="302.0" text="0" />
-      <Label fx:id="lblhp" layoutX="568.0" layoutY="263.0" text="0" />
-      <Label fx:id="lblmatk" layoutX="568.0" layoutY="220.0" text="0" />
-      <Label fx:id="lblatk" layoutX="568.0" layoutY="176.0" text="0" />
-      <Slider fx:id="sldmp" blockIncrement="0.0" layoutX="296.0" layoutY="305.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Slider fx:id="sldhp" blockIncrement="0.0" layoutX="296.0" layoutY="266.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Slider fx:id="sldmatk" blockIncrement="0.0" layoutX="296.0" layoutY="223.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Slider fx:id="sldatk" blockIncrement="0.0" layoutX="295.0" layoutY="179.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Label layoutX="72.0" layoutY="382.0" text="Magic Defense (MDEF) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="72.0" layoutY="343.0" text="Defense (DEF) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="73.0" layoutY="303.0" text="Mana Potion (MP) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="72.0" layoutY="266.0" text="Health Point (HP) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="71.0" layoutY="222.0" text="Magic Attack (MATK) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="71.0" layoutY="178.0" text="Attack (ATK) :" textAlignment="CENTER">
+      <Line endX="100.0" layoutX="473.0" layoutY="274.0" startX="-100.0" strokeWidth="5.0" />
+      <Line endX="100.0" layoutX="168.0" layoutY="272.0" startX="-100.0" strokeWidth="5.0" />
+      <Label fx:id="lblsldvalue" layoutX="587.0" layoutY="210.0" text="0" />
+      <Slider fx:id="sldvalue" blockIncrement="0.0" layoutX="280.0" layoutY="220.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="304.0" showTickMarks="true" snapToTicks="true" />
+      <Label layoutX="71.0" layoutY="219.0" text="Efek Value :" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
@@ -65,43 +30,14 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="btnexit" cancelButton="true" layoutX="405.0" layoutY="693.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="77.0" text="EXIT" />
-      <Button fx:id="btnreset" layoutX="297.0" layoutY="693.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="90.0" text="RESET" />
-      <Button fx:id="btnsimpan" defaultButton="true" layoutX="181.0" layoutY="693.0" mnemonicParsing="false" onAction="#btnsimpanklik" prefHeight="39.0" prefWidth="99.0" text="SIMPAN" />
-      <Label layoutX="71.0" layoutY="421.0" text="Accuracy (HIT) :" textAlignment="CENTER">
+      <Button fx:id="btnexit" cancelButton="true" layoutX="408.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="77.0" text="EXIT" />
+      <Button fx:id="btnreset" layoutX="300.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="90.0" text="RESET" />
+      <Button fx:id="btnsimpan" defaultButton="true" layoutX="184.0" layoutY="301.0" mnemonicParsing="false" onAction="#btnsimpanklik" prefHeight="39.0" prefWidth="99.0" text="SIMPAN" />
+      <Label layoutX="71.0" layoutY="175.0" text="Efek Type :" textAlignment="CENTER">
          <font>
             <Font name="Bell MT Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="72.0" layoutY="458.0" text="Attack Speed (ASPD) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="71.0" layoutY="498.0" text="Cast Speed (CSPD) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="71.0" layoutY="537.0" text="Critical Rate (CRATE) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
-      <Slider fx:id="sldhit" blockIncrement="0.0" layoutX="295.0" layoutY="421.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Slider fx:id="sldaspd" blockIncrement="0.0" layoutX="295.0" layoutY="460.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Label fx:id="lblhit" layoutX="567.0" layoutY="418.0" text="0" />
-      <Label fx:id="lblaspd" layoutX="567.0" layoutY="457.0" text="0" />
-      <Label fx:id="lblcspd" layoutX="567.0" layoutY="496.0" text="0" />
-      <Slider fx:id="sldcspd" blockIncrement="0.0" layoutX="295.0" layoutY="499.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Slider fx:id="sldcrate" blockIncrement="0.0" layoutX="295.0" layoutY="538.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Label fx:id="lblcrate" layoutX="567.0" layoutY="535.0" text="0" />
-      <Label fx:id="lblcdmg" layoutX="567.0" layoutY="572.0" text="0" />
-      <Slider fx:id="sldcdmg" blockIncrement="0.0" layoutX="295.0" layoutY="575.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" prefHeight="21.0" prefWidth="258.0" showTickMarks="true" snapToTicks="true" />
-      <Label layoutX="71.0" layoutY="574.0" text="Critical Damage (CDMG) :" textAlignment="CENTER">
-         <font>
-            <Font name="Bell MT Bold" size="18.0" />
-         </font>
-      </Label>
+      <ComboBox fx:id="cmbefektype" layoutX="279.0" layoutY="167.0" prefHeight="39.0" prefWidth="297.0" />
    </children>
 </AnchorPane>
