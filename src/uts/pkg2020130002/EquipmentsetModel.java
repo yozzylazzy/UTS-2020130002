@@ -10,7 +10,33 @@ package uts.pkg2020130002;
  */
 public class EquipmentsetModel {
 
-    private String setequipid, setname;
+    private String setequipid, equipmentid,setname;
+    private String equipmentiddua, equipmentidtiga;
+
+    public String getEquipmentiddua() {
+        return equipmentiddua;
+    }
+
+    public void setEquipmentiddua(String equipmentiddua) {
+        this.equipmentiddua = equipmentiddua;
+    }
+
+    public String getEquipmentidtiga() {
+        return equipmentidtiga;
+    }
+
+    public void setEquipmentidtiga(String equipmentidtiga) {
+        this.equipmentidtiga = equipmentidtiga;
+    }
+
+    
+    public String getEquipmentid() {
+        return equipmentid;
+    }
+
+    public void setEquipmentid(String equipmentid) {
+        this.equipmentid = equipmentid;
+    }
 
     public String getSetequipid() {
         return setequipid;

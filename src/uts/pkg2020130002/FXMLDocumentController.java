@@ -97,7 +97,7 @@ public class FXMLDocumentController implements Initializable {
     private TableView<DetailsetefekModel> tbvstatarmor;
 
     public static DBEquipmentset dtequipset = new DBEquipmentset();
-    public static DBDetailequipset dtdetailequipset = new DBDetailequipset();
+    //public static DBDetailequipset dtdetailequipset = new DBDetailequipset();
     public static DBDetailsetefek dtdetailsetefek = new DBDetailsetefek();
     public static DBEquipment dtequipments = new DBEquipment();
     public static DBEfek dtefek = new DBEfek();
@@ -110,13 +110,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuItem masterequipmentset;
     @FXML
-    private MenuItem masterdetailequipset;
-    @FXML
     private MenuItem masterdetailsetefek;
     @FXML
     private MenuItem displayequipment;
-    @FXML
-    private MenuItem displaydetailsetequip;
     @FXML
     private MenuItem displaydetailsetefek;
     @FXML
@@ -268,11 +264,14 @@ public class FXMLDocumentController implements Initializable {
         return nameset;
     }
 
+    
+    //Ini Masih Bermasalah
     public ArrayList<String> loadEfekID() {
         ArrayList nameset = new ArrayList<String>();
         String setequipnow = "", setnameakhir = "";
         int itemsetnow = 0;
         //txtnamaset.setText(nameset);
+        //System.out.println(dtdetailsetefek.LoadEquipSet(weapon, armor, belt).size());
         for (int i = 0; i < dtdetailsetefek.LoadEquipSet(weapon, armor, belt).size(); i++) {
             setequipnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getSetequipid();
             itemsetnow = dtdetailsetefek.LoadEquipSet(weapon, armor, belt).get(i).getItemset();
@@ -295,11 +294,11 @@ public class FXMLDocumentController implements Initializable {
             tbvstatarmor.getItems().clear();
 
             TableColumn col = new TableColumn("Set_Equip_ID");
-            col.setCellValueFactory(new PropertyValueFactory<DetailequipsetModel, String>("Setequipid"));
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setequipid"));
             tbvstatarmor.getColumns().addAll(col);
 
             col = new TableColumn("Item_Set");
-            col.setCellValueFactory(new PropertyValueFactory<DetailequipsetModel, String>("Itemset"));
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Itemset"));
             tbvstatarmor.getColumns().addAll(col);
 
             tbvstatarmor.setItems(data);
@@ -315,23 +314,17 @@ public class FXMLDocumentController implements Initializable {
         if (data != null) {
             tbvstat.getColumns().clear();
             tbvstat.getItems().clear();
-            TableColumn col = new TableColumn("STR");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Str"));
+            TableColumn col = new TableColumn("Equipment_ID");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Equipmentid"));
             tbvstat.getColumns().addAll(col);
-            col = new TableColumn("INT");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Intl"));
+            col = new TableColumn("Equipment_Type");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Equipmenttype"));
             tbvstat.getColumns().addAll(col);
-            col = new TableColumn("AGI");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Agi"));
+            col = new TableColumn("Efek_Type");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Efektype"));
             tbvstat.getColumns().addAll(col);
-            col = new TableColumn("DEX");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Dex"));
-            tbvstat.getColumns().addAll(col);
-            col = new TableColumn("VIT");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Vit"));
-            tbvstat.getColumns().addAll(col);
-            col = new TableColumn("CRIT");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Crit"));
+            col = new TableColumn("Efek_Value");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Efekvalue"));
             tbvstat.getColumns().addAll(col);
             tbvstat.setItems(data);
         } else {
@@ -392,27 +385,11 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
-    private void displaydetailsetequipclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailEquipSet.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     private void displaydetailsetefekclick(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailSetEfek.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayMasterDetilEfek.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -463,7 +440,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void masterdetailsetefekclick(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailSetEfek.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputMasterDetilEfek.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -477,7 +454,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
     private void masterdetailequipsetclick(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailSetEquip.fxml"));

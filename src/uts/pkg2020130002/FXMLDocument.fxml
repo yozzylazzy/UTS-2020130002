@@ -24,14 +24,13 @@
           </Menu>
             <Menu mnemonicParsing="false" text="TRANSAKSI">
                <items>
-                  <MenuItem fx:id="masterdetailequipset" mnemonicParsing="false" onAction="#masterdetailequipsetclick" text="DETAIL EQUIPMENT SET" />
                   <MenuItem fx:id="masterdetailsetefek" mnemonicParsing="false" onAction="#masterdetailsetefekclick" text="DETAIL SET EFEK" />
+                  <MenuItem fx:id="masterdetailsetefek" mnemonicParsing="false" onAction="#masterdetailsetefekclick" text="MASTER DETIL EFEK" />
                </items>
             </Menu>
           <Menu fx:id="showweapon" mnemonicParsing="false" onAction="#showweaponklik" text="DISPLAY">
             <items>
                   <MenuItem fx:id="displayequipment" mnemonicParsing="false" onAction="#displayequipmentclick" text="EQUIPMENT" />
-                  <MenuItem fx:id="displaydetailsetequip" mnemonicParsing="false" onAction="#displaydetailsetequipclick" text="DETAIL SET EQUIP" />
                   <MenuItem fx:id="displaysetequip" mnemonicParsing="false" onAction="#displaysetequipclick" text="EQUIPMENT SET" />
                   <MenuItem fx:id="displaydetailsetefek" mnemonicParsing="false" onAction="#displaydetailsetefekclick" text="DETAIL SET EFEK" />
                   <MenuItem fx:id="displayefek" mnemonicParsing="false" onAction="#displayefekclick" text="EFEK" />
@@ -117,7 +116,7 @@
       <ListView fx:id="scr2" disable="true" layoutX="240.0" layoutY="196.0" onMouseExited="#exitscr2" prefHeight="200.0" prefWidth="200.0" visible="false" />
       <ListView fx:id="scr3" disable="true" layoutX="77.0" layoutY="350.0" onMouseExited="#exitscr3" prefHeight="200.0" prefWidth="200.0" visible="false" />
       <ListView fx:id="scr6" disable="true" layoutX="300.0" layoutY="350.0" onMouseExited="#exitscr6" prefHeight="200.0" prefWidth="231.0" visible="false" />
-      <TableView fx:id="tbvstat" layoutX="599.0" layoutY="81.0" prefHeight="104.0" prefWidth="491.0">
+      <TableView fx:id="tbvstat" layoutX="600.0" layoutY="73.0" prefHeight="104.0" prefWidth="491.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />

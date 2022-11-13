@@ -65,15 +65,15 @@ public class FXML_DisplayDetailSetEfekController implements Initializable {
             tbvdetailsetefek.getItems().clear();
 
             TableColumn col = new TableColumn("Set_Equip_ID");
-            col.setCellValueFactory(new PropertyValueFactory<DetailequipsetModel, String>("Setequipid"));
+            col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("Setequipid"));
             tbvdetailsetefek.getColumns().addAll(col);
 
             col = new TableColumn("Efekid");
-            col.setCellValueFactory(new PropertyValueFactory<DetailequipsetModel, String>("Efekid"));
+            col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("Efekid"));
             tbvdetailsetefek.getColumns().addAll(col);
 
             col = new TableColumn("Item_Set");
-            col.setCellValueFactory(new PropertyValueFactory<DetailequipsetModel, String>("Itemset"));
+            col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("Itemset"));
             tbvdetailsetefek.getColumns().addAll(col);
 
             tbvdetailsetefek.setItems(data);

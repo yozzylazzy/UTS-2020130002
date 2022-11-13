@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="825.0" prefWidth="1264.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_InputMasterDetilEquipmentSetController">
+   <children>
+      <TextField fx:id="txtnamaset" layoutX="748.0" layoutY="147.0" prefHeight="39.0" prefWidth="214.0" />
+      <ComboBox fx:id="cmbequipefek" layoutX="206.0" layoutY="415.0" prefHeight="39.0" prefWidth="214.0" />
+      <TextField fx:id="txtequipmentstats" editable="false" layoutX="207.0" layoutY="472.0" prefHeight="39.0" prefWidth="214.0" />
+      <Label layoutX="43.0" layoutY="472.0" text="Equipment Stats :" />
+      <Label layoutX="46.0" layoutY="421.0" text="Equipment Efek :" />
+      <Button fx:id="btnloadequipment" layoutX="434.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnloadequipmentklik" text="LOOKUP" />
+      <TableView fx:id="tbvdetilequip" layoutX="551.0" layoutY="249.0" onMouseClicked="#tbvdetilequipklik" prefHeight="426.0" prefWidth="671.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnclear" layoutX="331.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnclearklik" text="CLEAR" />
+      <Button fx:id="btnhapus" layoutX="242.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnhapusklik" text="HAPUS" />
+      <Button fx:id="btntambah" layoutX="135.0" layoutY="608.0" mnemonicParsing="false" onAction="#btntambahklik" text="TAMBAH" />
+      <Label layoutX="43.0" layoutY="533.0" text="Rarity :" />
+      <TextField fx:id="txtrarity" layoutX="206.0" layoutY="527.0" prefHeight="39.0" prefWidth="214.0" />
+      <TextField fx:id="txtequipmentid" layoutX="202.0" layoutY="252.0" prefHeight="39.0" prefWidth="214.0" />
+      <Label layoutX="43.0" layoutY="258.0" text="Equipment ID :" />
+      <Label layoutX="215.0" layoutY="152.0" text="Set Equip ID :" />
+      <Label layoutX="628.0" layoutY="153.0" text="Nama Set :" />
+      <TextField fx:id="txtsetequipid" layoutX="333.0" layoutY="147.0" onKeyPressed="#setequipidcek" prefHeight="39.0" prefWidth="214.0" />
+      <Button fx:id="btnsimpan" layoutX="493.0" layoutY="743.0" mnemonicParsing="false" onAction="#btnsimpanklik" text="Simpan" />
+      <Button fx:id="btnreset" layoutX="588.0" layoutY="743.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="84.0" text="Reset" />
+      <Button fx:id="btnexit" layoutX="687.0" layoutY="743.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="84.0" text="Exit" />
+      <Label layoutX="327.0" layoutY="55.0" text="INPUT DATA MASTER DETIL EQUIPMENT SET ">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="366.0" text="Equipment Type :" />
+      <ComboBox fx:id="cmbequiptype" layoutX="206.0" layoutY="360.0" prefHeight="39.0" prefWidth="214.0" />
+      <Label layoutX="43.0" layoutY="313.0" text="Equipment Name :" />
+      <TextField fx:id="txtequipmentname" editable="false" layoutX="203.0" layoutY="307.0" prefHeight="39.0" prefWidth="214.0" />
+   </children>
+</AnchorPane>

@@ -62,7 +62,7 @@ public class DBEquipment {
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select * from equipments where"
+            ResultSet rs = con.statement.executeQuery("Select * from equipments e join efek f on(e.efek_id = f.efek_id) where"
                     + " equipment_id in ('" + equipidone + "', '" + equipidtwo + "', '" + equipidthree + "')");
 
             int i = 1;
@@ -73,6 +73,8 @@ public class DBEquipment {
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
                 d.setEfekid(rs.getString("efek_id"));
+                d.setEfektype(rs.getString("efek_type"));
+                d.setEfekvalue(rs.getInt("efek_value"));
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
                 TableData.add(d);

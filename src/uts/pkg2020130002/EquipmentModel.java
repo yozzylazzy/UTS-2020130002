@@ -23,14 +23,30 @@ Nama Jenis Eq :
  */
 public class EquipmentModel {
 
-    private String equipmentid,equipmenttype,equipmentname, efekid;
-    private int equipmentrarity;
+    private String equipmentid,equipmenttype,equipmentname, efekid, efektype;
+    private int equipmentrarity, efekvalue;
     public String getEquipmentid() {
         return equipmentid;
     }
 
     public void setEquipmentid(String equipmentid) {
         this.equipmentid = equipmentid;
+    }
+
+    public String getEfektype() {
+        return efektype;
+    }
+
+    public void setEfektype(String efektype) {
+        this.efektype = efektype;
+    }
+
+    public int getEfekvalue() {
+        return efekvalue;
+    }
+
+    public void setEfekvalue(int efekvalue) {
+        this.efekvalue = efekvalue;
     }
 
     public String getEquipmenttype() {

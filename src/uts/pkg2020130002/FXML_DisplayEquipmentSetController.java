@@ -68,6 +68,11 @@ public class FXML_DisplayEquipmentSetController implements Initializable {
             col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setequipid"));
             tbvequipset.getColumns().addAll(col);
 
+                        
+               col = new TableColumn("Equipment_ID");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Equipmentid"));
+            tbvequipset.getColumns().addAll(col);
+            
             col = new TableColumn("Set_Name");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setname"));
             tbvequipset.getColumns().addAll(col);

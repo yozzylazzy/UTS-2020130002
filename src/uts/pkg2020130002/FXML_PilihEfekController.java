@@ -50,8 +50,8 @@ public class FXML_PilihEfekController implements Initializable {
     @FXML
     private Button btnawal;
 
-    private int hasil = 0;
-    private String idhasil = "";
+    private int hasil = 0, efekvalue;
+    private String idhasil = "", efektype;
 
     public int getHasil() {
         return (hasil);
@@ -61,6 +61,14 @@ public class FXML_PilihEfekController implements Initializable {
         return (idhasil);
     }
 
+    public String getEfektype(){
+        return (efektype);
+    }
+    
+    public int getEfekvalue(){
+        return (efekvalue);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -138,6 +146,8 @@ public class FXML_PilihEfekController implements Initializable {
         hasil = 1;
         int pilihan = tbvefek.getSelectionModel().getSelectedCells().get(0).getRow();
         idhasil = tbvefek.getItems().get(pilihan).getEfekid();
+        efektype = tbvefek.getItems().get(pilihan).getEfektype();
+        efekvalue = tbvefek.getItems().get(pilihan).getEfekvalue();
         btnpilih.getScene().getWindow().hide();
     }
 
