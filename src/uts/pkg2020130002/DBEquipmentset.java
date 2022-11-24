@@ -57,11 +57,8 @@ public class DBEquipmentset {
             while (rs.next()) {
                 EquipmentsetModel d = new EquipmentsetModel();
                 d.setSetequipid(rs.getString("set_equip_id"));
-                d.setEquipmentid(rs.getString("equipment_id"));
                 d.setSetname(rs.getString("set_name"));
-
-                //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
-                // + rs.getInt("weapon_rarity"));
+                //System.out.println(d.getSetname());
                 TableData.add(d);
                 i++;
             }
@@ -110,7 +107,8 @@ public class DBEquipmentset {
             data2.clear();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery(
-                    "Select * from detail_equipment_set d join equipments e on (d.equipment_id=e.equipment_id) where set_equip_id = '" + getEquipmentsetModel().getSetequipid() + "'");
+                    "Select * from detail_equipment_set d join equipments e on (d.equipment_id=e.equipment_id)"
+                            + " join efek f on (e.efek_id=f.efek_id) where set_equip_id = '" + getEquipmentsetModel().getSetequipid() + "'");
             int i = 1;
             while (rs.next()) {
                 DetailequipmentsetModel d = new DetailequipmentsetModel();
@@ -118,6 +116,7 @@ public class DBEquipmentset {
                 d.setEquipmentid(rs.getString("equipment_id"));
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(Integer.parseInt(rs.getString("equipment_rarity")));
+                d.setEfekid(rs.getString("efek_id"));
                 d.setEfekvalue(Integer.parseInt(rs.getString("efek_value")));
                 d.setEfektype(rs.getString("efek_type"));
                 d.setEquipmenttype(rs.getString("equipment_type"));

@@ -143,7 +143,7 @@ public class DBDetailsetefek {
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery(""
                     + "select es.set_equip_id, Count(es.SET_EQUIP_ID) as \"Terpakai\"\n"
-                    + " from equipment_set es join equipments de2 on(de2.`EQUIPMENT_ID` = es.`EQUIPMENT_ID`)"
+                    + " from detail_equipment_set es join equipments de2 on(de2.`EQUIPMENT_ID` = es.`EQUIPMENT_ID`)"
                     + "  where de2.`EQUIPMENT_ID` IN ('" + armorid + "', '" + weaponid + "', '" + beltid + "')\n"
                     + "   GROUP BY es.SET_EQUIP_ID ");
             int i = 1;

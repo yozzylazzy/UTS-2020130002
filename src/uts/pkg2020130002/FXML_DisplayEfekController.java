@@ -66,7 +66,6 @@ public class FXML_DisplayEfekController implements Initializable {
             TableColumn col = new TableColumn("Efek_ID");
             col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efekid"));
             tbvefekequip.getColumns().addAll(col);
-
            
             col = new TableColumn("Efek_Type");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Efektype"));
@@ -173,4 +172,5 @@ public class FXML_DisplayEfekController implements Initializable {
             showData();
         }
     }
+    
 }

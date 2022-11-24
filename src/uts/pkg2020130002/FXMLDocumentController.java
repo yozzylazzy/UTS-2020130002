@@ -110,13 +110,17 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuItem masterequipmentset;
     @FXML
-    private MenuItem masterdetailsetefek;
-    @FXML
     private MenuItem displayequipment;
     @FXML
     private MenuItem displaydetailsetefek;
     @FXML
     private MenuItem btnexit;
+    @FXML
+    private MenuItem displaydetailequipset;
+    @FXML
+    private MenuItem masterdetailequipset;
+    @FXML
+    private MenuItem masterdetailsetefek;
 
     //
     @Override
@@ -231,7 +235,6 @@ public class FXMLDocumentController implements Initializable {
             TableColumn col = new TableColumn("Efek_ID");
             col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efekid"));
             tbvstatbelt.getColumns().addAll(col);
-
             col = new TableColumn("Efek_Type");
             col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efektype"));
             tbvstatbelt.getColumns().addAll(col);
@@ -264,7 +267,6 @@ public class FXMLDocumentController implements Initializable {
         return nameset;
     }
 
-    
     //Ini Masih Bermasalah
     public ArrayList<String> loadEfekID() {
         ArrayList nameset = new ArrayList<String>();
@@ -385,7 +387,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-
     @FXML
     private void displaydetailsetefekclick(ActionEvent event) {
         try {
@@ -454,9 +455,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    @FXML
     private void masterdetailequipsetclick(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailSetEquip.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputMasterDetilEquipmentSet.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -516,8 +518,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void updateBelt(ActionEvent event
-    ) {
+    private void updateBelt(ActionEvent event) {
         String beltstat = cmbbelt.getSelectionModel().getSelectedItem();
         if (cmbbelt.getSelectionModel().getSelectedItem() != null) {
             for (int i = 0; i < dtequipments.Load().size(); i++) {
@@ -536,8 +537,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void updateWeapon(ActionEvent event
-    ) {
+    private void updateWeapon(ActionEvent event) {
         String weapstat = cmbweapons.getSelectionModel().getSelectedItem();
         if (cmbweapons.getSelectionModel().getSelectedItem() != null) {
             for (int i = 0; i < dtequipments.Load().size(); i++) {
@@ -556,27 +556,40 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void btnexitclick(ActionEvent event
-    ) {
+    private void btnexitclick(ActionEvent event) {
         System.exit(0);
     }
 
     @FXML
-    private void setWeapon(MouseEvent event
-    ) {
+    private void setWeapon(MouseEvent event) {
         setComboweapon();
     }
 
     @FXML
-    private void setArmor(MouseEvent event
-    ) {
+    private void setArmor(MouseEvent event) {
         setComboarmor();
     }
 
     @FXML
-    private void setBelt(MouseEvent event
-    ) {
+    private void setBelt(MouseEvent event) {
         setCombobelt();
     }
 
+    @FXML
+    private void displaydetailequipsetclick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailEquipSet.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 }

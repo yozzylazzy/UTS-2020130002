@@ -29,7 +29,6 @@ public class EquipmentsetModel {
         this.equipmentidtiga = equipmentidtiga;
     }
 
-    
     public String getEquipmentid() {
         return equipmentid;
     }

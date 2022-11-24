@@ -24,13 +24,14 @@
           </Menu>
             <Menu mnemonicParsing="false" text="TRANSAKSI">
                <items>
-                  <MenuItem fx:id="masterdetailsetefek" mnemonicParsing="false" onAction="#masterdetailsetefekclick" text="DETAIL SET EFEK" />
+                  <MenuItem fx:id="masterdetailequipset" mnemonicParsing="false" onAction="#masterdetailequipsetclick" text="MASTER DETIL EQUIP SET" />
                   <MenuItem fx:id="masterdetailsetefek" mnemonicParsing="false" onAction="#masterdetailsetefekclick" text="MASTER DETIL EFEK" />
                </items>
             </Menu>
           <Menu fx:id="showweapon" mnemonicParsing="false" onAction="#showweaponklik" text="DISPLAY">
             <items>
                   <MenuItem fx:id="displayequipment" mnemonicParsing="false" onAction="#displayequipmentclick" text="EQUIPMENT" />
+                  <MenuItem fx:id="displaydetailequipset" mnemonicParsing="false" onAction="#displaydetailequipsetclick" text="DETAIL EQUIP SET" />
                   <MenuItem fx:id="displaysetequip" mnemonicParsing="false" onAction="#displaysetequipclick" text="EQUIPMENT SET" />
                   <MenuItem fx:id="displaydetailsetefek" mnemonicParsing="false" onAction="#displaydetailsetefekclick" text="DETAIL SET EFEK" />
                   <MenuItem fx:id="displayefek" mnemonicParsing="false" onAction="#displayefekclick" text="EFEK" />

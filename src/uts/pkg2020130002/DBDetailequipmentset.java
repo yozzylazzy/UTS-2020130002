@@ -127,22 +127,22 @@ public class DBDetailequipmentset {
         }
     }
 
-    public ObservableList<DetailsetefekModel> LoadEquipSet(String armorid, String weaponid, String beltid) {
+    public ObservableList<DetailequipmentsetModel> LoadEquipSet(String armorid, String weaponid, String beltid) {
         try {
-            ObservableList<DetailsetefekModel> tableData = FXCollections.observableArrayList();
+            ObservableList<DetailequipmentsetModel> tableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery(""
                     + "select es.set_equip_id, Count(es.SET_EQUIP_ID) as \"Terpakai\"\n"
-                    + " from equipment_set es join equipments de2 on(de2.`EQUIPMENT_ID` = es.`EQUIPMENT_ID`)"
+                    + " from detail_equipment_set es join equipments de2 on(de2.`EQUIPMENT_ID` = es.`EQUIPMENT_ID`)"
                     + "  where de2.`EQUIPMENT_ID` IN ('" + armorid + "', '" + weaponid + "', '" + beltid + "')\n"
                     + "   GROUP BY es.SET_EQUIP_ID ");
             int i = 1;
             while (rs.next()) {
-                DetailsetefekModel d = new DetailsetefekModel();
+                DetailequipmentsetModel d = new DetailequipmentsetModel();
                 d.setSetequipid(rs.getString("set_equip_id"));
-                d.setItemset(rs.getInt("Terpakai"));
+                d.setEquipmentid(rs.getString("equipment_id"));
                 tableData.add(d);
                 i++;
             }
@@ -154,54 +154,6 @@ public class DBDetailequipmentset {
         }
     }
 
-    public String LoadSetEfek(String setequipid, int jumlahset) {
-        String namaefek = "";
-        try {
-            ObservableList<DetailsetefekModel> tableData = FXCollections.observableArrayList();
-            Koneksi con = new Koneksi();
-            con.bukaKoneksi();
-            con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select set_name from detail_set_efek ds "
-                    + "join equipment_set es on(ds.set_equip_id=es.set_equip_id) "
-                    + "where ds.set_equip_id = '" + setequipid + "' and item_set <= '" + jumlahset + "'"
-                            + "GROUP BY item_set");
-            int i = 1;
-            while (rs.next()) {
-                namaefek = rs.getString("set_name");
-                //System.out.println(rs.getString("set_name"));
-                i++;
-            }
-            con.tutupKoneksi();
-            return namaefek;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
-    public ArrayList<String> LoadEfekID(String setequipid, int jumlahset) {
-        ArrayList namaefek = new ArrayList<String>();
-        try {
-            //ObservableList<DetailsetefekModel> tableData = FXCollections.observableArrayList();
-            Koneksi con = new Koneksi();
-            con.bukaKoneksi();
-            con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select efek_id from detail_set_efek ds "
-                    + "join equipment_set es on(ds.set_equip_id=es.set_equip_id) "
-                    + "where ds.set_equip_id = '" + setequipid + "' and item_set <= '" + jumlahset + "'"
-                            + "GROUP BY item_set");
-            int i = 1;
-            while (rs.next()) {
-                namaefek.add(rs.getString("efek_id"));
-                //System.out.println(rs.getString("efek_id")); ->Sesuai
-                i++;
-            }
-            con.tutupKoneksi();
-            return namaefek;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return null;
-
-        }
-    }
 }
+
+//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

@@ -10,8 +10,16 @@ package uts.pkg2020130002;
  */
 public class DetailequipmentsetModel {
     private String setequipid, equipmentid;
-    private String equipmenttype,equipmentname, efektype;
+    private String equipmenttype,equipmentname, efektype, efekid;
     private int equipmentrarity, efekvalue;
+
+    public String getEfekid() {
+        return efekid;
+    }
+
+    public void setEfekid(String efekid) {
+        this.efekid = efekid;
+    }
 
     public String getEquipmenttype() {
         return equipmenttype;
