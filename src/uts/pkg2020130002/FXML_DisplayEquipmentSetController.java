@@ -66,8 +66,8 @@ public class FXML_DisplayEquipmentSetController implements Initializable {
             TableColumn col = new TableColumn("Set_Equip_ID");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setequipid"));
             tbvequipset.getColumns().addAll(col);
-               col = new TableColumn("Equipment_ID");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Equipmentid"));
+               col = new TableColumn("Set_Name");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setname"));
             tbvequipset.getColumns().addAll(col);
 
             tbvequipset.setItems(data);
@@ -133,7 +133,7 @@ public class FXML_DisplayEquipmentSetController implements Initializable {
         EquipmentsetModel eq = new EquipmentsetModel();
         eq = tbvequipset.getSelectionModel().getSelectedItem();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputEquipmentSet.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputMasterDetilEquipmentSet.fxml"));
             Parent root = (Parent) loader.load();
             FXML_InputEquipmentSetController isidt = loader.getController();
             isidt.execute(eq);

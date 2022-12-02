@@ -50,7 +50,8 @@ public class FXML_PilihEquipmentController implements Initializable {
     @FXML
     private Button btnexit;
 
-    private int hasil = 0;
+    private int hasil = 0, rarity=0;
+    private String name, type;
     private String idhasil = "";
 
     public int getHasil() {
@@ -60,7 +61,19 @@ public class FXML_PilihEquipmentController implements Initializable {
     public String getIdHasil() {
         return (idhasil);
     }
-
+    
+    public String getEquipName(){
+        return(name);
+    }
+    
+    public String getType(){
+        return(type);
+    }
+    
+    public int getRarity(){
+        return(rarity);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -141,6 +154,10 @@ public class FXML_PilihEquipmentController implements Initializable {
         hasil = 1;
         int pilihan = tbvequipment.getSelectionModel().getSelectedCells().get(0).getRow();
         idhasil = tbvequipment.getItems().get(pilihan).getEquipmentid();
+        name = tbvequipment.getItems().get(pilihan).getEquipmentname();
+        type = tbvequipment.getItems().get(pilihan).getEquipmenttype();
+        rarity = tbvequipment.getItems().get(pilihan).getEquipmentrarity();
+        
         btnpilih.getScene().getWindow().hide();
     }
 

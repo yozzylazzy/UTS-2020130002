@@ -44,8 +44,6 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
     @FXML
     private TextField txtsetequipid;
     @FXML
-    private TextField txtkodeequipsatu;
-    @FXML
     private TextField txtefekid;
     @FXML
     private TextField txtitemset;
@@ -60,21 +58,11 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
     @FXML
     private Button btnloadefek;
     @FXML
-    private Button btnloadequipmentsatu;
-    @FXML
     private TextField txtefekvalue;
     @FXML
     private ComboBox<String> cmbefektype;
     @FXML
     private TextField txtnamaset;
-    @FXML
-    private Button btnloadequipmentdua;
-    @FXML
-    private TextField txtkodeequipdua;
-    @FXML
-    private TextField txtkodeequiptiga;
-    @FXML
-    private Button btnloadequipmenttiga;
 
     private boolean editmode = false;
     public static DBEquipmentset data = new DBEquipmentset(); //Masukan ke FXML_DocumentController agar dapat dibuat static dan dipakai dimana2
@@ -91,7 +79,7 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
         data.getDetailsetEfekModel().clear();
         cmbefektype.setItems(FXCollections.observableArrayList(
                 "ATK", "MATK", "HP", "MP", "DEF", "MDEF", "HIT", "CRIT", "ASPD", "CSPD"));
-        cmbefektype.getSelectionModel().select(0);
+        //cmbefektype.getSelectionModel().select(0);
         //Untuk mengambil tanggal hari ini otomatis
         showData();
     }
@@ -100,14 +88,17 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
         //Melaod data sesuai database
         tbvdetilefek.getColumns().clear();
         tbvdetilefek.getItems().clear();
-        TableColumn col = new TableColumn("Set_Equip_ID");
-        col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("set_equip_id"));
+        TableColumn col = new TableColumn("Efek_ID");
+        col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efekid"));
         tbvdetilefek.getColumns().addAll(col);
-        col = new TableColumn("Efek_ID");
-        col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("efek_id"));
+        col = new TableColumn("Efek_Type");
+        col.setCellValueFactory(new PropertyValueFactory<EfekModel, String>("Efektype"));
+        tbvdetilefek.getColumns().addAll(col);
+        col = new TableColumn("Efek_Value");
+        col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Efekvalue"));
         tbvdetilefek.getColumns().addAll(col);
         col = new TableColumn("Item_Set");
-        col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, Integer>("item_set"));
+        col.setCellValueFactory(new PropertyValueFactory<EfekModel, Integer>("Itemset"));
         tbvdetilefek.getColumns().addAll(col);
     }
 
@@ -122,9 +113,7 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
         txtefekid.setText("");
         txtefekvalue.setText("");
         txtitemset.setText("");
-        txtkodeequipsatu.setText("");
-        txtkodeequipdua.setText("");
-        txtkodeequiptiga.setText("");
+        txtnamaset.setText("");
         txtsetequipid.setText("");
         txtnamaset.setText("");
         data.getDetailsetEfekModel().clear();
@@ -135,9 +124,6 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
     @FXML
     private void btnsimpanklik(ActionEvent event) {
         data.getEquipmentsetModel().setSetequipid(txtsetequipid.getText());
-        data.getEquipmentsetModel().setEquipmentid(txtkodeequipsatu.getText());
-        data.getEquipmentsetModel().setEquipmentiddua(txtkodeequipdua.getText());
-        data.getEquipmentsetModel().setEquipmentidtiga(txtkodeequiptiga.getText());
         data.getEquipmentsetModel().setSetname(txtnamaset.getText());
         if (data.saveall()) {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Data berhasil disimpan ", ButtonType.OK);
@@ -236,8 +222,8 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
             int total = 0;
             for (int i = 0; i < tbvdetilefek.getItems().size(); i++) {
                 DetailsetefekModel n = tbvdetilefek.getItems().get(i);
-                System.out.println(i);
-                System.out.println(n);
+//                System.out.println(i);
+//                System.out.println(n);
             }
             //txttotalbayar.setText(String.valueOf(total));
         }
@@ -267,99 +253,15 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
         }
     }
 
-    @FXML
-    private void btnloadequipmentsatuklik(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEquipment.fxml"));
-            Parent root = (Parent) loader.load();
-            FXML_PilihEquipmentController isidt = (FXML_PilihEquipmentController) loader.getController();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.showAndWait();
-            if (isidt.getHasil() == 1) {
-                if (txtkodeequiptiga.getText() != isidt.getIdHasil() && txtkodeequipdua.getText() != isidt.getIdHasil()) {
-                    txtkodeequipsatu.setText(isidt.getIdHasil());
-                } else {
-                    Alert a = new Alert(Alert.AlertType.ERROR, "Data EquipmentID sudah di load", ButtonType.OK);
-                    a.showAndWait();
-                }
-                //data.getJualModel().set
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void btnloadequipmentduaklik(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEquipment.fxml"));
-            Parent root = (Parent) loader.load();
-            FXML_PilihEquipmentController isidt = (FXML_PilihEquipmentController) loader.getController();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.showAndWait();
-            if (isidt.getHasil() == 1) {
-                if (txtkodeequipsatu.getText() != isidt.getIdHasil() && txtkodeequiptiga.getText() != isidt.getIdHasil()) {
-                    txtkodeequipdua.setText(isidt.getIdHasil());
-                } else {
-                    Alert a = new Alert(Alert.AlertType.ERROR, "Data EquipmentID sudah di load", ButtonType.OK);
-                    a.showAndWait();
-                }
-                //data.getJualModel().set
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void btnloadequipmenttigaklik(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEquipment.fxml"));
-            Parent root = (Parent) loader.load();
-            FXML_PilihEquipmentController isidt = (FXML_PilihEquipmentController) loader.getController();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.showAndWait();
-            if (isidt.getHasil() == 1) {
-                if (txtkodeequipsatu.getText() != isidt.getIdHasil() && txtkodeequipdua.getText() != isidt.getIdHasil()) {
-                    txtkodeequiptiga.setText(isidt.getIdHasil());
-                } else {
-                    Alert a = new Alert(Alert.AlertType.ERROR, "Data EquipmentID sudah di load", ButtonType.OK);
-                    a.showAndWait();
-                }
-                //data.getJualModel().set
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-     public void execute(EquipmentsetModel d) {
+    public void execute(EquipmentsetModel d) {
         if (!d.getSetequipid().isEmpty()) {
             FXML_InputMasterDetilEfekController.data.getEquipmentsetModel().setSetequipid(d.getSetequipid());
             if (FXML_InputMasterDetilEfekController.data.validasi(d.getSetequipid()) >= 1) {
                 EquipmentsetModel tmp = FXML_InputMasterDetilEfekController.data.getdata(d.getSetequipid());
                 editmode = true;
                 FXML_InputMasterDetilEfekController.data.setEquipmentsetModel(d);
-                txtefekid.setText(d.getSetequipid());
+                txtsetequipid.setText(d.getSetequipid());
                 txtnamaset.setText(d.getSetname());
-                txtkodeequipsatu.setText(d.getEquipmentid());
-                txtkodeequipdua.setText(d.getEquipmentiddua());
-                txtkodeequiptiga.setText(d.getEquipmentidtiga());
                 ObservableList<DetailsetefekModel> data
                         = FXML_InputMasterDetilEfekController.data.LoadDetil();
                 if (data != null) {

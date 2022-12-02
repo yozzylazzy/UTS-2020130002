@@ -82,6 +82,7 @@ public class FXML_DisplayMasterDetilEfekController implements Initializable {
         col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("Itemset"));
         tbvdetilsetefek.getColumns().addAll(col);
         showData();
+        
     }
 
     private void showData() {

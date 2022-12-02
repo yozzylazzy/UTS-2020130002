@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
  * @author Yosef Adrian
  */
 public class DBEquipmentset {
-    
+
     private EquipmentsetModel data = new EquipmentsetModel();
     private HashMap<String, DetailsetefekModel> data2 = new HashMap<String, DetailsetefekModel>();
     private HashMap<String, DetailequipmentsetModel> dataequipset = new HashMap<String, DetailequipmentsetModel>();
@@ -25,27 +25,27 @@ public class DBEquipmentset {
     public EquipmentsetModel getEquipmentsetModel() {
         return (data);
     }
-    
+
     public void setEquipmentsetModel(EquipmentsetModel s) {
         data = s;
     }
-    
+
     public HashMap<String, DetailsetefekModel> getDetailsetEfekModel() {
         return (data2);
     }
-    
+
     public void setDetailsetEfekModel(DetailsetefekModel d) {
         data2.put(d.getEfekid(), d);
     }
-    
+
     public HashMap<String, DetailequipmentsetModel> getDetailEquipmentSetModel() {
         return (dataequipset);
     }
-    
-    public void setDetailsetEfekModel(DetailequipmentsetModel d) {
+
+    public void setDetailEquipmentSetModel(DetailequipmentsetModel d) {
         dataequipset.put(d.getEquipmentid(), d);
     }
-    
+
     public ObservableList<EquipmentsetModel> Load() {
         try {
             ObservableList<EquipmentsetModel> TableData = FXCollections.observableArrayList();
@@ -69,7 +69,7 @@ public class DBEquipmentset {
             return null;
         }
     }
-    
+
     public ObservableList<DetailsetefekModel> LoadDetil() {
         try {
             ObservableList<DetailsetefekModel> tableData = FXCollections.observableArrayList();
@@ -98,7 +98,7 @@ public class DBEquipmentset {
             return null;
         }
     }
-    
+
     public ObservableList<DetailequipmentsetModel> LoadDetilEquipset() {
         try {
             ObservableList<DetailequipmentsetModel> tableData = FXCollections.observableArrayList();
@@ -108,7 +108,7 @@ public class DBEquipmentset {
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery(
                     "Select * from detail_equipment_set d join equipments e on (d.equipment_id=e.equipment_id)"
-                            + " join efek f on (e.efek_id=f.efek_id) where set_equip_id = '" + getEquipmentsetModel().getSetequipid() + "'");
+                    + " join efek f on (e.efek_id=f.efek_id) where set_equip_id = '" + getEquipmentsetModel().getSetequipid() + "'");
             int i = 1;
             while (rs.next()) {
                 DetailequipmentsetModel d = new DetailequipmentsetModel();
@@ -121,7 +121,7 @@ public class DBEquipmentset {
                 d.setEfektype(rs.getString("efek_type"));
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 tableData.add(d);
-                setDetailsetEfekModel(d);
+                setDetailEquipmentSetModel(d);
                 i++;
             }
             con.tutupKoneksi();
@@ -131,7 +131,7 @@ public class DBEquipmentset {
             return null;
         }
     }
-    
+
     public int validasi(String id) {
         int val = 0;
         try {
@@ -148,7 +148,7 @@ public class DBEquipmentset {
         }
         return val;
     }
-    
+
     public boolean Delete(String id) {
         boolean berhasil = false;
         Koneksi con = new Koneksi();
@@ -167,7 +167,7 @@ public class DBEquipmentset {
             return berhasil;
         }
     }
-    
+
     public boolean insert() {
         boolean berhasil = false;
         Koneksi con = new Koneksi();
@@ -187,7 +187,7 @@ public class DBEquipmentset {
             return berhasil;
         }
     }
-    
+
     public boolean update() {
         boolean berhasil = false;
         Koneksi con = new Koneksi();
@@ -207,7 +207,7 @@ public class DBEquipmentset {
             return berhasil;
         }
     }
-    
+
     public ObservableList<EquipmentsetModel> LookUp(String fld, String dt) {
         try {
             ObservableList<EquipmentsetModel> tableData = FXCollections.observableArrayList();
@@ -232,7 +232,7 @@ public class DBEquipmentset {
             return null;
         }
     }
-    
+
     public boolean saveall() {
         boolean berhasil = false;
         Koneksi con = new Koneksi();
@@ -269,8 +269,8 @@ public class DBEquipmentset {
             return berhasil;
         }
     }
-    
-      public boolean savealldetailequipset() {
+
+    public boolean savealldetailequipset() {
         boolean berhasil = false;
         Koneksi con = new Koneksi();
         try {
@@ -305,7 +305,7 @@ public class DBEquipmentset {
             return berhasil;
         }
     }
-      
+
     public EquipmentsetModel getdata(String nomor) {
         EquipmentsetModel tmp = new EquipmentsetModel();
         try {
@@ -325,5 +325,5 @@ public class DBEquipmentset {
         }
         return tmp;
     }
-    
+
 }

@@ -93,7 +93,6 @@ public class FXML_DisplayDetailEquipSetController implements Initializable {
         col = new TableColumn("Equipment_Rarity");
         col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("Equipmentrarity"));
         tbvdetilsetequip.getColumns().addAll(col);
-
         showData();
     }
 
@@ -136,7 +135,7 @@ public class FXML_DisplayDetailEquipSetController implements Initializable {
     @FXML
     private void awalklik(ActionEvent event) {
         tbvequipmentset.getSelectionModel().selectFirst();
-        //showDetil();
+        showdetil();
         tbvequipmentset.requestFocus();
     }
 
@@ -171,7 +170,6 @@ public class FXML_DisplayDetailEquipSetController implements Initializable {
         tbvequipmentset.getSelectionModel().selectBelowCell();
         showdetil();
         tbvequipmentset.requestFocus();
-
     }
 
     @FXML
@@ -201,9 +199,9 @@ public class FXML_DisplayDetailEquipSetController implements Initializable {
         EquipmentsetModel s = new EquipmentsetModel();
         s = tbvequipmentset.getSelectionModel().getSelectedItem();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputMasterDetilEfek.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputMasterDetilEquipmentSet.fxml"));
             Parent root = (Parent) loader.load();
-            FXML_InputMasterDetilEfekController isidt = (FXML_InputMasterDetilEfekController) loader.getController();
+            FXML_InputMasterDetilEquipmentSetController isidt = (FXML_InputMasterDetilEquipmentSetController) loader.getController();
             isidt.execute(s);
             Scene scene = new Scene(root);
             Stage stg = new Stage();
