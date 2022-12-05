@@ -25,6 +25,7 @@ public class EquipmentModel {
 
     private String equipmentid,equipmenttype,equipmentname, efekid, efektype;
     private int equipmentrarity, efekvalue;
+    
     public String getEquipmentid() {
         return equipmentid;
     }

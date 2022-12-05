@@ -32,7 +32,8 @@ public class DBEquipment {
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select * from equipments");
+            ResultSet rs = con.statement.executeQuery("Select e.*, f.* from equipments "
+                    + "e join efek f on(e.efek_id = f.efek_id)");
 
             int i = 1;
             while (rs.next()) {
@@ -42,9 +43,8 @@ public class DBEquipment {
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
                 d.setEfekid(rs.getString("efek_id"));
-
-                //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
-                // + rs.getInt("weapon_rarity"));
+                d.setEfektype(rs.getString("efek_type"));
+                d.setEfekvalue(rs.getInt("efek_value"));
                 TableData.add(d);
                 i++;
             }
@@ -164,7 +164,7 @@ public class DBEquipment {
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
                 d.setEfekid(rs.getString("efek_id"));
-
+                
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
                 TableData.add(d);
@@ -290,8 +290,10 @@ public class DBEquipment {
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select equipment_id,equipment_type,equipment_name,equipment_rarity "
-                    + "from equipments where " + fld + " like '%" + dt + "%'");
+            ResultSet rs = con.statement.executeQuery("Select equipment_id,equipment_type,equipment_name,equipment_rarity,"
+                    + " e.efek_id, efek_type, efek_value "
+                    + "from equipments e join efek f on(e.efek_id = f.efek_id) "
+                    + "where " + fld + " like '%" + dt + "%'");
             int i = 1;
             while (rs.next()) {
                 EquipmentModel d = new EquipmentModel();
@@ -299,6 +301,9 @@ public class DBEquipment {
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
+                d.setEfekid(rs.getString("efek_id"));
+                d.setEfektype(rs.getString("efek_type"));
+                d.setEfekvalue(rs.getInt("efek_value"));
                 tableData.add(d);
                 i++;
             }

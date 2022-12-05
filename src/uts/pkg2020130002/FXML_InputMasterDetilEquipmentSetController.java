@@ -141,7 +141,6 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
         tmp.setEquipmentid(txtequipmentid.getText());
         tmp.setEquipmentname(txtequipmentname.getText());
         tmp.setEfektype(cmbequipefek.getSelectionModel().getSelectedItem());
-        //   tmp.setEfektype(Integer.parseInt(txtitemset.getText()));
         tmp.setEfekvalue(Integer.parseInt(txtequipmentstats.getText()));
         tmp.setEquipmenttype(cmbequiptype.getSelectionModel().getSelectedItem());
         tmp.setEquipmentrarity(Integer.parseInt(txtrarity.getText()));
@@ -178,14 +177,11 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
         TableColumn col = new TableColumn("Equipment_ID");
         col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentid"));
         tbvdetilequip.getColumns().addAll(col);
-        col = new TableColumn("Equipment_Type");
-        col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equimenttype"));
-        tbvdetilequip.getColumns().addAll(col);
         col = new TableColumn("Equipment_Name");
         col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Equipmentname"));
         tbvdetilequip.getColumns().addAll(col);
-        col = new TableColumn("Efek_ID");
-        col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Efekid"));
+        col = new TableColumn("Equipment_Type");
+        col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmenttype"));
         tbvdetilequip.getColumns().addAll(col);
         col = new TableColumn("Efek_Type");
         col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, Integer>("Efektype"));
@@ -246,13 +242,11 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
             stg.showAndWait();
             if (isidt.getHasil() == 1) {
                 txtequipmentid.setText(isidt.getIdHasil());
-                txtequipmentname.setText(String.valueOf(isidt.getHasil()));
-                txtequipmentid.setText("");
-                txtequipmentname.setText("");
-                txtequipmentstats.setText("");
-                txtrarity.setText("");
-                cmbequiptype.getSelectionModel().select(0);
-                cmbequipefek.getSelectionModel().select(0);
+                txtequipmentname.setText(String.valueOf(isidt.getEquipName()));
+                cmbequiptype.getSelectionModel().select(isidt.getType());
+                cmbequipefek.getSelectionModel().select(isidt.getEfek());
+                txtequipmentstats.setText(String.valueOf(isidt.getStats()));
+                txtrarity.setText(String.valueOf(isidt.getRarity()));
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -50,9 +50,10 @@ public class FXML_PilihEquipmentController implements Initializable {
     @FXML
     private Button btnexit;
 
-    private int hasil = 0, rarity=0;
+    private int hasil = 0, rarity = 0, stats = 0;
     private String name, type;
     private String idhasil = "";
+    private String efek = "";
 
     public int getHasil() {
         return (hasil);
@@ -61,19 +62,33 @@ public class FXML_PilihEquipmentController implements Initializable {
     public String getIdHasil() {
         return (idhasil);
     }
-    
-    public String getEquipName(){
-        return(name);
+
+    public String getEquipName() {
+        return (name);
     }
-    
-    public String getType(){
-        return(type);
+
+    public String getType() {
+        return (type);
     }
-    
-    public int getRarity(){
-        return(rarity);
+
+    public int getRarity() {
+        return (rarity);
     }
-    
+
+    public int getStats() {
+        return (stats);
+    }
+
+    public String getName() {
+        return (name);
+    }
+    public String getIdhasil() {
+        return (idhasil);
+    }
+    public String getEfek() {
+        return (efek);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -95,12 +110,17 @@ public class FXML_PilihEquipmentController implements Initializable {
             TableColumn col = new TableColumn("Equipment_ID");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentid"));
             tbvequipment.getColumns().addAll(col);
-
             col = new TableColumn("Equipment_Name");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentname"));
             tbvequipment.getColumns().addAll(col);
             col = new TableColumn("Equipment_Type");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmenttype"));
+            tbvequipment.getColumns().addAll(col);
+            col = new TableColumn("Equipment_Efek");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("efektype"));
+            tbvequipment.getColumns().addAll(col);
+            col = new TableColumn("Equipment_Stats");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("efekvalue"));
             tbvequipment.getColumns().addAll(col);
             col = new TableColumn("Equipment_Rarity");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentrarity"));
@@ -157,6 +177,8 @@ public class FXML_PilihEquipmentController implements Initializable {
         name = tbvequipment.getItems().get(pilihan).getEquipmentname();
         type = tbvequipment.getItems().get(pilihan).getEquipmenttype();
         rarity = tbvequipment.getItems().get(pilihan).getEquipmentrarity();
+        stats = tbvequipment.getItems().get(pilihan).getEfekvalue();
+        efek = tbvequipment.getItems().get(pilihan).getEfektype();
         
         btnpilih.getScene().getWindow().hide();
     }

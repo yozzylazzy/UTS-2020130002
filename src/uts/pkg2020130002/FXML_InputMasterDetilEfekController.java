@@ -222,8 +222,6 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
             int total = 0;
             for (int i = 0; i < tbvdetilefek.getItems().size(); i++) {
                 DetailsetefekModel n = tbvdetilefek.getItems().get(i);
-//                System.out.println(i);
-//                System.out.println(n);
             }
             //txttotalbayar.setText(String.valueOf(total));
         }
