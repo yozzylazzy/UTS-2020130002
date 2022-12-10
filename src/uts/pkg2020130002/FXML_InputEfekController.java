@@ -49,6 +49,7 @@ public class FXML_InputEfekController implements Initializable {
     private Slider sldvalue;
     @FXML
     private ComboBox<String> cmbefektype;
+    
 
     /**
      * Initializes the controller class.
@@ -57,7 +58,7 @@ public class FXML_InputEfekController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         cmbefektype.setItems(FXCollections.observableArrayList(
-                "ATK", "MATK", "DEF", "MDEF"));
+                "HP","MP","ATK", "MATK", "DEF", "MDEF","HIT","FLEE","ASPD","CSPD"));
         cmbefektype.getSelectionModel().select(0);
         updateSlider();
     }

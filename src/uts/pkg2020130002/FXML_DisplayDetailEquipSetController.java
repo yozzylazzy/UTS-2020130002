@@ -34,7 +34,7 @@ public class FXML_DisplayDetailEquipSetController implements Initializable {
     @FXML
     private TableView<EquipmentsetModel> tbvequipmentset;
     @FXML
-    private TableView<DetailequipmentsetModel> tbvdetilsetequip;
+    private TableView<DetailefekModel> tbvdetilsetequip;
     @FXML
     private Button btnawal;
     @FXML
@@ -111,15 +111,15 @@ public class FXML_DisplayDetailEquipSetController implements Initializable {
     private void showdetil() {
         FXML_InputMasterDetilEquipmentSetController.data.getEquipmentsetModel().setSetequipid(
                 tbvequipmentset.getSelectionModel().getSelectedItem().getSetequipid());
-        ObservableList<DetailequipmentsetModel> data = FXML_InputMasterDetilEquipmentSetController.data.LoadDetilEquipset();
-        if (data != null) {
-            tbvdetilsetequip.setItems(data);
-            tbvdetilsetequip.getSelectionModel().selectFirst();
-        } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
-            a.showAndWait();
-            tbvdetilsetequip.getScene().getWindow().hide();;
-        }
+//        ObservableList<DetailefekModel> data = FXML_InputMasterDetilEquipmentSetController.data.LoadDetilEquipset();
+//        if (data != null) {
+//            tbvdetilsetequip.setItems(data);
+//            tbvdetilsetequip.getSelectionModel().selectFirst();
+//        } else {
+//            Alert a = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);
+//            a.showAndWait();
+//            tbvdetilsetequip.getScene().getWindow().hide();;
+//        }
     }
 
     @FXML

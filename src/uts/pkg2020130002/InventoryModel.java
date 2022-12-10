@@ -8,10 +8,25 @@ package uts.pkg2020130002;
  *
  * @author Yosef Adrian
  */
-public class DetailequipmentsetModel {
-    private String setequipid, equipmentid;
-    private String equipmenttype,equipmentname, efektype, efekid;
-    private int equipmentrarity, efekvalue;
+public class InventoryModel {
+    private String userid, equipmentid, efekid, efektype, setequipid,equipmenttype,equipmentname;
+    private int equipmentrarity, efekvalue;    
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getEquipmentid() {
+        return equipmentid;
+    }
+
+    public void setEquipmentid(String equipmentid) {
+        this.equipmentid = equipmentid;
+    }
 
     public String getEfekid() {
         return efekid;
@@ -19,6 +34,22 @@ public class DetailequipmentsetModel {
 
     public void setEfekid(String efekid) {
         this.efekid = efekid;
+    }
+
+    public String getEfektype() {
+        return efektype;
+    }
+
+    public void setEfektype(String efektype) {
+        this.efektype = efektype;
+    }
+
+    public String getSetequipid() {
+        return setequipid;
+    }
+
+    public void setSetequipid(String setequipid) {
+        this.setequipid = setequipid;
     }
 
     public String getEquipmenttype() {
@@ -37,14 +68,6 @@ public class DetailequipmentsetModel {
         this.equipmentname = equipmentname;
     }
 
-    public String getEfektype() {
-        return efektype;
-    }
-
-    public void setEfektype(String efektype) {
-        this.efektype = efektype;
-    }
-
     public int getEquipmentrarity() {
         return equipmentrarity;
     }
@@ -60,22 +83,5 @@ public class DetailequipmentsetModel {
     public void setEfekvalue(int efekvalue) {
         this.efekvalue = efekvalue;
     }
-    
-    public String getSetequipid() {
-        return setequipid;
-    }
-
-    public void setSetequipid(String setequipid) {
-        this.setequipid = setequipid;
-    }
-
-    public String getEquipmentid() {
-        return equipmentid;
-    }
-
-    public void setEquipmentid(String equipmentid) {
-        this.equipmentid = equipmentid;
-    }
-    
     
 }

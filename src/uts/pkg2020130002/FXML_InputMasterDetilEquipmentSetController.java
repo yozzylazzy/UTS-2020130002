@@ -42,7 +42,7 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
     @FXML
     private TextField txtequipmentstats;
     @FXML
-    private TableView<DetailequipmentsetModel> tbvdetilequip;
+    private TableView<DetailefekModel> tbvdetilequip;
     @FXML
     private Button btnclear;
     @FXML
@@ -62,7 +62,7 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
     @FXML
     private Button btnexit;
     @FXML
-    private ComboBox<String> cmbequiptype;
+    private ComboBox<Integer> cmbequiptype;
     @FXML
     private TextField txtequipmentname;
     @FXML
@@ -79,10 +79,10 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        data.getDetailEquipmentSetModel().clear();
+//        // TODO
+//        data.getDetailEquipmentSetModel().clear();
         cmbequiptype.setItems(FXCollections.observableArrayList(
-                "Weapon", "Armor", "Belt"));
+                1,2,3,4,5));
         cmbequipefek.setItems(FXCollections.observableArrayList(
                 "ATK", "MATK", "HP", "MP", "DEF", "MDEF", "HIT", "CRIT", "ASPD", "CSPD"));
         //cmbefektype.getSelectionModel().select(0);
@@ -92,17 +92,17 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
 
     @FXML
     private void tbvdetilequipklik(MouseEvent event) {
-        DetailequipmentsetModel tmp = tbvdetilequip.getSelectionModel().getSelectedItem();
+        DetailefekModel tmp = tbvdetilequip.getSelectionModel().getSelectedItem();
         if (tmp != null) {
-            txtequipmentid.setText(tmp.getEquipmentid());
-            txtequipmentname.setText(tmp.getEquipmentname());
+            txtequipmentid.setText(tmp.getSetequipid());
+            txtequipmentname.setText(tmp.getSetname());
             txtequipmentstats.setText(String.valueOf(tmp.getEfekvalue()));
-            txtrarity.setText(String.valueOf(tmp.getEquipmentrarity()));
-            cmbequiptype.getSelectionModel().select(tmp.getEquipmenttype());
+            txtrarity.setText(String.valueOf(tmp.getJumlah()));
+           // cmbequiptype.getSelectionModel().select(tmp.getEfekid());
             cmbequipefek.getSelectionModel().select(tmp.getEfektype());
             int total = 0;
             for (int i = 0; i < tbvdetilequip.getItems().size(); i++) {
-                DetailequipmentsetModel n = tbvdetilequip.getItems().get(i);
+                DetailefekModel n = tbvdetilequip.getItems().get(i);
 //                System.out.println(i);
 //                System.out.println(n);
             }
@@ -122,7 +122,7 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
 
     @FXML
     private void btnhapusklik(ActionEvent event) {
-        DetailequipmentsetModel tmp = tbvdetilequip.getSelectionModel().getSelectedItem();
+        DetailefekModel tmp = tbvdetilequip.getSelectionModel().getSelectedItem();
         if (tmp != null) {
             tbvdetilequip.getItems().remove(tmp);
             data.getDetailsetEfekModel().remove(tmp.getEfekid());
@@ -136,33 +136,31 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
 
     @FXML
     private void btntambahklik(ActionEvent event) {
-        DetailequipmentsetModel tmp = new DetailequipmentsetModel();
-        tmp.setSetequipid(txtsetequipid.getText());
-        tmp.setEquipmentid(txtequipmentid.getText());
-        tmp.setEquipmentname(txtequipmentname.getText());
-        tmp.setEfektype(cmbequipefek.getSelectionModel().getSelectedItem());
-        tmp.setEfekvalue(Integer.parseInt(txtequipmentstats.getText()));
-        tmp.setEquipmenttype(cmbequiptype.getSelectionModel().getSelectedItem());
-        tmp.setEquipmentrarity(Integer.parseInt(txtrarity.getText()));
-        if (data.getDetailEquipmentSetModel().get(txtequipmentid.getText()) == null) {
-            data.setDetailEquipmentSetModel(tmp);
-            tbvdetilequip.getItems().add(tmp);
-        } else {
-            int p = -1;
-            for (int i = 0; i < tbvdetilequip.getItems().size(); i++) {
-                if (tbvdetilequip.getItems().get(i).getEfekid().equalsIgnoreCase(
-                        txtequipmentid.getText())) {
-                    p = i;
-                }
-            }
-            if (p >= 0) {
-                tbvdetilequip.getItems().set(p, tmp);
-                data.getDetailsetEfekModel().remove(txtequipmentid.getText());
-                data.setDetailEquipmentSetModel(tmp);
-            }
-        }
-        //hitungTotal();
-        btnclearklik(event);
+//        DetailefekModel tmp = new DetailefekModel();
+//        tmp.setSetequipid(txtsetequipid.getText());
+//        tmp.setEfektype(cmbequipefek.getSelectionModel().getSelectedItem());
+//        tmp.setEfekvalue(Integer.parseInt(txtequipmentstats.getText()));
+//        tmp.setJumlah(cmbequiptype.getSelectionModel().getSelectedItem());
+//        //tmp.setEfekidtxtrarity.getText());
+//        if (data.getDetailEquipmentSetModel().get(txtequipmentid.getText()) == null) {
+//            data.setDetailEquipmentSetModel(tmp);
+//            tbvdetilequip.getItems().add(tmp);
+//        } else {
+//            int p = -1;
+//            for (int i = 0; i < tbvdetilequip.getItems().size(); i++) {
+//                if (tbvdetilequip.getItems().get(i).getEfekid().equalsIgnoreCase(
+//                        txtequipmentid.getText())) {
+//                    p = i;
+//                }
+//            }
+//            if (p >= 0) {
+//                tbvdetilequip.getItems().set(p, tmp);
+//                data.getDetailsetEfekModel().remove(txtequipmentid.getText());
+////                data.setDetailEquipmentSetModel(tmp);
+//            }
+//        }
+//        //hitungTotal();
+//        btnclearklik(event);
     }
 
     @FXML
@@ -196,16 +194,16 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
 
     @FXML
     private void btnsimpanklik(ActionEvent event) {
-        data.getEquipmentsetModel().setSetequipid(txtsetequipid.getText());
-        data.getEquipmentsetModel().setSetname(txtnamaset.getText());
-        if (data.savealldetailequipset()) {
-            Alert a = new Alert(Alert.AlertType.INFORMATION, "Data berhasil disimpan ", ButtonType.OK);
-            a.showAndWait();
-            btnresetklik(event);
-        } else {
-            Alert a = new Alert(Alert.AlertType.ERROR, "Data gagal disimpan ", ButtonType.OK);
-            a.showAndWait();
-        }
+//        data.getEquipmentsetModel().setSetequipid(txtsetequipid.getText());
+//        data.getEquipmentsetModel().setSetname(txtnamaset.getText());
+//        if (data.savealldetailequipset()) {
+//            Alert a = new Alert(Alert.AlertType.INFORMATION, "Data berhasil disimpan ", ButtonType.OK);
+//            a.showAndWait();
+//            btnresetklik(event);
+//        } else {
+//            Alert a = new Alert(Alert.AlertType.ERROR, "Data gagal disimpan ", ButtonType.OK);
+//            a.showAndWait();
+//        }
     }
 
     @FXML
@@ -243,7 +241,7 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
             if (isidt.getHasil() == 1) {
                 txtequipmentid.setText(isidt.getIdHasil());
                 txtequipmentname.setText(String.valueOf(isidt.getEquipName()));
-                cmbequiptype.getSelectionModel().select(isidt.getType());
+               // cmbequiptype.getSelectionModel().select(isidt.getType());
                 cmbequipefek.getSelectionModel().select(isidt.getEfek());
                 txtequipmentstats.setText(String.valueOf(isidt.getStats()));
                 txtrarity.setText(String.valueOf(isidt.getRarity()));
@@ -262,13 +260,13 @@ public class FXML_InputMasterDetilEquipmentSetController implements Initializabl
                 FXML_InputMasterDetilEquipmentSetController.data.setEquipmentsetModel(d);
                 txtsetequipid.setText(d.getSetequipid());
                 txtnamaset.setText(d.getSetname());
-                ObservableList<DetailequipmentsetModel> data
-                        = FXML_InputMasterDetilEquipmentSetController.data.LoadDetilEquipset();
-                if (data != null) {
-                    tbvdetilequip.setItems(data);
-                }
-                txtsetequipid.setEditable(false);
-                txtnamaset.requestFocus();
+//                ObservableList<DetailequipmentsetModel> data
+//                        = FXML_InputMasterDetilEquipmentSetController.data.LoadDetilEquipset();
+//                if (data != null) {
+//                    tbvdetilequip.setItems(data);
+//                }
+//                txtsetequipid.setEditable(false);
+//                txtnamaset.requestFocus();
             }
         }
     }

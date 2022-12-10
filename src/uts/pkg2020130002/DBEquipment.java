@@ -56,14 +56,14 @@ public class DBEquipment {
         }
     }
 
-    public ObservableList<EquipmentModel> LoadInHome(String equipidone, String equipidtwo, String equipidthree) {
+    public ObservableList<EquipmentModel> LoadInHome(String equipidone, String equipidtwo, String equipidthree, String equipidfour, String equipidfive) {
         try {
             ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
             ResultSet rs = con.statement.executeQuery("Select * from equipments e join efek f on(e.efek_id = f.efek_id) where"
-                    + " equipment_id in ('" + equipidone + "', '" + equipidtwo + "', '" + equipidthree + "')");
+                    + " equipment_id in ('" + equipidone + "', '" + equipidtwo + "', '" + equipidthree + "', '" + equipidfour + "', '" + equipidfive + "')");
 
             int i = 1;
             while (rs.next()) {
@@ -164,7 +164,66 @@ public class DBEquipment {
                 d.setEquipmentname(rs.getString("equipment_name"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
                 d.setEfekid(rs.getString("efek_id"));
-                
+
+                //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
+                // + rs.getInt("weapon_rarity"));
+                TableData.add(d);
+                i++;
+            }
+            con.tutupKoneksi();
+            return TableData;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<EquipmentModel> LoadRing() {
+        try {
+            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select * from equipments where equipment_type = 'Ring'");
+
+            int i = 1;
+            while (rs.next()) {
+                EquipmentModel d = new EquipmentModel();
+                d.setEquipmentid(rs.getString("equipment_id"));
+                d.setEquipmenttype(rs.getString("equipment_type"));
+                d.setEquipmentname(rs.getString("equipment_name"));
+                d.setEquipmentrarity(rs.getInt("equipment_rarity"));
+                d.setEfekid(rs.getString("efek_id"));
+
+                //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
+                // + rs.getInt("weapon_rarity"));
+                TableData.add(d);
+                i++;
+            }
+            con.tutupKoneksi();
+            return TableData;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<EquipmentModel> LoadNecklace() {
+        try {
+            ObservableList<EquipmentModel> TableData = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery("Select * from equipments where equipment_type = 'Necklace'");
+
+            int i = 1;
+            while (rs.next()) {
+                EquipmentModel d = new EquipmentModel();
+                d.setEquipmentid(rs.getString("equipment_id"));
+                d.setEquipmenttype(rs.getString("equipment_type"));
+                d.setEquipmentname(rs.getString("equipment_name"));
+                d.setEquipmentrarity(rs.getInt("equipment_rarity"));
+                d.setEfekid(rs.getString("efek_id"));
                 //System.out.println(rs.getString("weapon_id") + rs.getString("status_id") + rs.getString("weapon_name") + rs.getString(rs.getInt("weapon_atk"))
                 // + rs.getInt("weapon_rarity"));
                 TableData.add(d);
@@ -304,6 +363,33 @@ public class DBEquipment {
                 d.setEfekid(rs.getString("efek_id"));
                 d.setEfektype(rs.getString("efek_type"));
                 d.setEfekvalue(rs.getInt("efek_value"));
+                tableData.add(d);
+                i++;
+            }
+            con.tutupKoneksi();
+            return tableData;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<SetcountModel> LoadEquipSet(String armorid, String weaponid, String beltid, String ringid, String necklaceid) {
+        try {
+            ObservableList<SetcountModel> tableData = FXCollections.observableArrayList();
+            Koneksi con = new Koneksi();
+            con.bukaKoneksi();
+            con.statement = con.dbKoneksi.createStatement();
+            ResultSet rs = con.statement.executeQuery(""
+                    + "select set_equip_id, Count(SET_EQUIP_ID) as \"Terpakai\"\n"
+                    + " from equipments"
+                    + " where equipment_id IN ('" + armorid + "', '" + weaponid + "', '" + beltid + "','" + ringid + "','" + necklaceid + "')\n"
+                    + " GROUP BY SET_EQUIP_ID ");
+            int i = 1;
+            while (rs.next()) {
+                SetcountModel d = new SetcountModel();
+                d.setSetequipid(rs.getString("set_equip_id"));
+                d.setJumlah(rs.getInt("Terpakai"));
                 tableData.add(d);
                 i++;
             }

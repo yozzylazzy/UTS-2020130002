@@ -11,7 +11,16 @@ package uts.pkg2020130002;
 public class EquipmentsetModel {
 
     private String setequipid, equipmentid,setname;
+    private int jumlahmax;
     private String equipmentiddua, equipmentidtiga;
+
+    public int getJumlahmax() {
+        return jumlahmax;
+    }
+
+    public void setJumlahmax(int jumlahmax) {
+        this.jumlahmax = jumlahmax;
+    }
 
     public String getEquipmentiddua() {
         return equipmentiddua;

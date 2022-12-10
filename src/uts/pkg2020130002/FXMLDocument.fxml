@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
@@ -10,10 +12,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="751.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="691.0" prefWidth="1549.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXMLDocumentController">
     <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000aed" height="403.0" layoutX="-1.0" layoutY="41.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-      <MenuBar prefHeight="39.0" prefWidth="1090.0">
+      <MenuBar prefHeight="39.0" prefWidth="1432.0">
         <menus>
           <Menu mnemonicParsing="false" text="MASTER">
             <items>
@@ -44,15 +45,29 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="240.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+      <ImageView fx:id="imgbackground" depthTest="ENABLE" fitHeight="891.0" fitWidth="1553.0" layoutX="-4.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
          <effect>
             <DropShadow />
          </effect>
-      </Rectangle>
-      <ImageView fx:id="img2" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="245.0" layoutY="112.0" onMouseClicked="#img2clicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/backgroundpbol.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgbackground1" depthTest="ENABLE" fitHeight="640.0" fitWidth="170.0" layoutX="19.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../assets/UI/menupane.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgchar" depthTest="ENABLE" fitHeight="409.0" fitWidth="302.0" layoutX="390.0" layoutY="308.0" onMouseClicked="#img3clicked" pickOnBounds="true" preserveRatio="true">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
@@ -60,81 +75,345 @@
             <DropShadow />
          </effect>
          <image>
-            <Image url="@../../assets/weapon.png" />
+            <Image url="@../../assets/charuimenu/charUIalyssa.gif" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="77.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="589.0" layoutX="1057.0" layoutY="66.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="463.0" />
+      <AnchorPane fx:id="equipmentmenu" layoutX="257.0" layoutY="53.0" prefHeight="628.0" prefWidth="1278.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="36.0" layoutY="313.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="431.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="431.0" layoutY="220.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ComboBox fx:id="cmbnecklace" layoutX="395.0" layoutY="144.0" onAction="#updateNecklace" onMouseClicked="#setNecklace" prefHeight="39.0" prefWidth="162.0" />
+            <ImageView fx:id="img3" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="41.0" layoutY="318.0" onMouseClicked="#img3clicked" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../../assets/armor.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="cmbweapons" layoutX="8.0" layoutY="214.0" onAction="#updateWeapon" onMouseClicked="#setWeapon" prefHeight="39.0" prefWidth="162.0" />
+            <ComboBox fx:id="cmbarmor" layoutY="405.0" onAction="#updatearmor" onMouseClicked="#setArmor" prefHeight="39.0" prefWidth="162.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="44.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ImageView fx:id="img2" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="49.0" layoutY="129.0" onMouseClicked="#img2clicked" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../../assets/weapon.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="cmbbelt" layoutX="395.0" layoutY="314.0" onAction="#updateBelt" onMouseClicked="#setBelt" prefHeight="39.0" prefWidth="162.0" />
+            <ImageView fx:id="img6" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="436.0" layoutY="225.0" onMouseClicked="#img6clicked" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../../assets/belt.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="cmbring" layoutX="395.0" layoutY="495.0" onAction="#updatering" onMouseClicked="#setRing" prefHeight="39.0" prefWidth="162.0" />
+            <ImageView fx:id="imgnecklace" depthTest="ENABLE" fitHeight="80.0" fitWidth="90.0" layoutX="436.0" layoutY="55.0" onMouseClicked="#imgnecklaceclicked" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../../assets/necklace.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="431.0" layoutY="403.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
+            <ImageView fx:id="imgring" depthTest="ENABLE" fitHeight="80.0" fitWidth="100.0" layoutX="441.0" layoutY="408.0" onMouseClicked="#imgringclicked" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <image>
+                  <Image url="@../../../../assetsmyself/ring.png" />
+               </image>
+            </ImageView>
+            <ListView fx:id="scr6" disable="true" layoutX="428.0" layoutY="221.0" onMouseExited="#exitscr6" prefHeight="164.0" prefWidth="232.0" visible="false" />
+            <ListView fx:id="scr2" disable="true" layoutX="43.0" layoutY="125.0" onMouseExited="#exitscr2" prefHeight="164.0" prefWidth="200.0" visible="false" />
+            <ListView fx:id="scr3" disable="true" layoutX="35.0" layoutY="313.0" onMouseExited="#exitscr3" prefHeight="213.0" prefWidth="200.0" visible="false" />
+            <ListView fx:id="scrring" disable="true" layoutX="431.0" layoutY="401.0" onMouseExited="#exitscrring" prefHeight="183.0" prefWidth="188.0" visible="false" />
+            <TabPane layoutX="819.0" layoutY="74.0" prefHeight="514.0" prefWidth="428.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Armor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="equiparmorlist" blendMode="BLUE" prefHeight="514.0" prefWidth="428.0" style="-fx-background-color: #000000;" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Weapon">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="equipweaponlist" blendMode="BLUE" prefHeight="514.0" prefWidth="428.0" style="-fx-background-color: #F5D77D;" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Belt">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="equipbeltlist" blendMode="BLUE" prefHeight="514.0" prefWidth="428.0" style="-fx-background-color: #6EA83D;" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Necklace">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="equipnecklacelist" blendMode="BLUE" prefHeight="514.0" prefWidth="428.0" style="-fx-background-color: #45A858;" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Ring">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ListView fx:id="equipringlist" blendMode="BLUE" prefHeight="514.0" prefWidth="428.0" style="-fx-background-color: #A7F564;" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Label layoutX="819.0" layoutY="24.0" prefHeight="39.0" prefWidth="220.0" text="EQUIPMENT LIST : " textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="25.0" />
+               </font>
+            </Label>
+            <ListView fx:id="scrnecklace" disable="true" layoutX="429.0" layoutY="50.0" onMouseExited="#exitscrnecklace" prefHeight="155.0" prefWidth="200.0" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="statuspaneactiv" disable="true" layoutX="193.0" layoutY="156.0" prefHeight="352.0" prefWidth="836.0" visible="false">
+         <children>
+            <Label layoutX="613.0" text="STATUS" textFill="WHITE" />
+            <TextArea fx:id="txtnamaset" editable="false" layoutY="40.0" prefHeight="54.0" prefWidth="302.0" style="-fx-background-color: #0000ffff;">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor></TextArea>
+            <Label layoutY="17.0" text="Nama-Set Weapon :" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="-116.0" layoutY="-54.0">
+               <children>
+                  <Label layoutX="1022.0" layoutY="128.0" text="ATK" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1013.0" layoutY="289.0" text="MDEF" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalmatk" alignment="CENTER_RIGHT" layoutX="1235.0" layoutY="179.0" prefHeight="24.0" prefWidth="152.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2d9e00" height="29.0" layoutX="1081.0" stroke="BLACK" strokeType="INSIDE" width="332.0" />
+                  <Label fx:id="totalmdef" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1235.0" layoutY="292.0" prefHeight="24.0" prefWidth="152.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1024.0" layoutY="233.0" text="DEF" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totaldef" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1235.0" layoutY="236.0" prefHeight="24.0" prefWidth="152.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalhit" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1244.0" layoutY="342.0" prefHeight="24.0" prefWidth="143.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1026.0" layoutY="339.0" text="HIT" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffab00" height="7.0" layoutX="1011.0" layoutY="97.0" stroke="TRANSPARENT" strokeType="INSIDE" width="401.0" />
+                  <Label fx:id="totalaspd" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1244.0" layoutY="439.0" prefHeight="24.0" prefWidth="143.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalmp" alignment="CENTER_RIGHT" layoutX="1380.0" layoutY="48.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalflee" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1235.0" layoutY="391.0" prefHeight="24.0" prefWidth="152.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="29.0" layoutX="1081.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" width="332.0" />
+                  <Label layoutX="1017.0" layoutY="388.0" text="FLEE" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1014.0" layoutY="436.0" text="ASPD" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1011.0" layoutY="176.0" text="MATK" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalhp" alignment="CENTER_RIGHT" layoutX="1380.0" layoutY="3.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalcspd" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1235.0" layoutY="492.0" prefHeight="24.0" prefWidth="152.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1012.0" text="HP  :" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalatk" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1244.0" layoutY="131.0" prefHeight="24.0" prefWidth="143.0" text="0" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1009.0" layoutY="45.0" text="MP  :" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="1015.0" layoutY="489.0" text="CSPD" textFill="WHITE">
+                     <font>
+                        <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tbvstat" layoutX="453.0" layoutY="40.0" prefHeight="104.0" prefWidth="383.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tbvstatbelt" layoutX="452.0" layoutY="144.0" prefHeight="104.0" prefWidth="383.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+            </TableView>
+            <TableView fx:id="tbvstatarmor" layoutX="452.0" layoutY="248.0" prefHeight="104.0" prefWidth="383.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Rectangle fx:id="statuspaneactivated" arcHeight="5.0" arcWidth="5.0" disable="true" height="7.0" layoutX="72.0" layoutY="549.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="143.0">
+         <fill>
+            <LinearGradient endX="0.9507389162561576" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="0.00625" />
+                  <Stop color="#ffe81a" offset="0.5199107142857143" />
+                  <Stop color="#ff991a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
       </Rectangle>
-      <ImageView fx:id="img3" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="82.0" layoutY="270.0" onMouseClicked="#img3clicked" pickOnBounds="true" preserveRatio="true">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
-         <image>
-            <Image url="@../../assets/armor.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="427.0" layoutY="260.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
+      <Rectangle fx:id="equipmentpaneqctivated" arcHeight="5.0" arcWidth="5.0" height="7.0" layoutX="72.0" layoutY="357.0" stroke="TRANSPARENT" strokeType="INSIDE" width="143.0">
+         <fill>
+            <LinearGradient endX="0.9507389162561576" endY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="0.00625" />
+                  <Stop color="#ffe81a" offset="0.5199107142857143" />
+                  <Stop color="#ff991a" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
       </Rectangle>
-      <ImageView fx:id="img6" depthTest="ENABLE" fitHeight="80.0" fitWidth="80.0" layoutX="432.0" layoutY="265.0" onMouseClicked="#img6clicked" pickOnBounds="true" preserveRatio="true">
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor>
-         <effect>
-            <DropShadow />
-         </effect>
-         <image>
-            <Image url="@../../assets/belt.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="efekweapon" layoutX="44.0" layoutY="655.0" text="Set Equipment Effect :">
+      <Label fx:id="menuname" layoutX="89.0" layoutY="41.0" text="EQUIPMENT" textFill="#ffda00">
          <font>
-            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
-         </font></Label>
-      <Label layoutX="51.0" layoutY="519.0" text="Nama-Set Weapon :">
-         <font>
-            <Font name="Berlin Sans FB Demi Bold" size="18.0" />
-         </font></Label>
-      <TextArea fx:id="txtnamaset" editable="false" layoutX="240.0" layoutY="477.0" prefHeight="110.0" prefWidth="302.0" />
-      <TextArea fx:id="txteffect" editable="false" layoutX="240.0" layoutY="610.0" prefHeight="110.0" prefWidth="302.0" />
-      <ComboBox fx:id="cmbweapons" layoutX="204.0" layoutY="65.0" onAction="#updateWeapon" onMouseClicked="#setWeapon" prefHeight="39.0" prefWidth="162.0" />
-      <ComboBox fx:id="cmbarmor" layoutX="41.0" layoutY="357.0" onAction="#updatearmor" onMouseClicked="#setArmor" prefHeight="39.0" prefWidth="162.0" />
-      <ComboBox fx:id="cmbbelt" layoutX="391.0" layoutY="354.0" onAction="#updateBelt" onMouseClicked="#setBelt" prefHeight="39.0" prefWidth="162.0" />
-      <ListView fx:id="scr2" disable="true" layoutX="240.0" layoutY="196.0" onMouseExited="#exitscr2" prefHeight="200.0" prefWidth="200.0" visible="false" />
-      <ListView fx:id="scr3" disable="true" layoutX="77.0" layoutY="350.0" onMouseExited="#exitscr3" prefHeight="200.0" prefWidth="200.0" visible="false" />
-      <ListView fx:id="scr6" disable="true" layoutX="300.0" layoutY="350.0" onMouseExited="#exitscr6" prefHeight="200.0" prefWidth="231.0" visible="false" />
-      <TableView fx:id="tbvstat" layoutX="600.0" layoutY="73.0" prefHeight="104.0" prefWidth="491.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-      <Label layoutX="814.0" layoutY="46.0" text="STATUS" />
-      <TableView fx:id="tbvstatbelt" layoutX="599.0" layoutY="177.0" prefHeight="104.0" prefWidth="491.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
-         </columns>
-      </TableView>
-      <TableView fx:id="tbvstatarmor" layoutX="599.0" layoutY="281.0" prefHeight="104.0" prefWidth="491.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
-         </columns>
-      </TableView>
+            <Font name="Myanmar Text Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnstatusactiv" layoutX="72.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnstatuspaneactivated" opacity="0.06" prefHeight="97.0" prefWidth="112.0" style="-fx-background-image: url('/assets/belt.png');">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnequipmentmenuactiv" layoutX="72.0" layoutY="249.0" mnemonicParsing="false" onAction="#btnequipmentpaneactivated" opacity="0.06" prefHeight="97.0" prefWidth="112.0" style="-fx-background-image: url('/assets/belt.png');">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
     </children>
 </AnchorPane>
