@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
@@ -56,9 +57,6 @@ public class FXMLDocumentController implements Initializable {
     private ImageView img2;
     @FXML
     private ImageView img3;
-    @FXML
-    private TextArea txtnamaset;
-    private ListView<String> scr4;
     @FXML
     private ListView<String> scr2;
     @FXML
@@ -174,6 +172,7 @@ public class FXMLDocumentController implements Initializable {
     private Label totalcspd;
 
     private int hp = 0, mp = 0, atk = 0, matk = 0, def = 0, mdef = 0, hit = 0, flee = 0, aspd = 0, cspd = 0;
+    private int hpefek = 0, mpefek = 0, atkefek = 0, matkefek = 0, defefek = 0, mdefefek = 0, hitefek = 0, fleeefek = 0, aspdefek = 0, cspdefek = 0;
     @FXML
     private ListView<String> scrring;
     @FXML
@@ -198,6 +197,24 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void setComboweapon() {
+        if (!cmbweapons.getSelectionModel().isEmpty()) {
+            String weapstat = cmbweapons.getSelectionModel().getSelectedItem();
+            if (cmbweapons.getSelectionModel().getSelectedItem() != null) {
+                for (int i = 0; i < dtequipments.Load().size(); i++) {
+                    if (weapstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                        scr2.setItems(FXCollections.observableArrayList(
+                                dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                        weapon = "";
+                        reduceStatusCharacter(dtequipments.Load().get(i).getEfektype(), dtequipments.Load().get(i).getEfekvalue());
+                        // System.out.println(weapon);
+                    }
+                }
+            }
+            loadStat();
+            checkEquipped();
+            loadEfek();
+            loadSetEfek();
+        }
         cmbweapons.getSelectionModel().select(null);
         cmbweapons.getItems().clear();
         equipweaponlist.getItems().clear();
@@ -211,6 +228,26 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void setComboarmor() {
+        if (!cmbarmor.getSelectionModel().isEmpty()) {
+            String armorstat = cmbarmor.getSelectionModel().getSelectedItem();
+            if (cmbarmor.getSelectionModel().getSelectedItem() != null) {
+                //System.out.println(armorstat);
+                for (int i = 0; i < dtequipments.Load().size(); i++) {
+                    if (armorstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                        scr3.setItems(FXCollections.observableArrayList(
+                                dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEfektype() + " - "
+                                + dtequipments.Load().get(i).getEfekvalue()),
+                                String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                        armor = "";
+                        reduceStatusCharacter(dtequipments.Load().get(i).getEfektype(), dtequipments.Load().get(i).getEfekvalue());
+                    }
+                }
+            }
+            loadStat();
+            checkEquipped();
+            loadEfek();
+            loadSetEfek();
+        }
         cmbarmor.getSelectionModel().select(null);
         cmbarmor.getItems().clear();
         equiparmorlist.getItems().clear();
@@ -224,6 +261,24 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void setCombobelt() {
+        if (!cmbbelt.getSelectionModel().isEmpty()) {
+            String beltstat = cmbbelt.getSelectionModel().getSelectedItem();
+            if (cmbbelt.getSelectionModel().getSelectedItem() != null) {
+                for (int i = 0; i < dtequipments.Load().size(); i++) {
+                    if (beltstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                        scr6.setItems(FXCollections.observableArrayList(
+                                dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                        belt = "";
+                        //System.out.println(belt);
+                        reduceStatusCharacter(dtequipments.Load().get(i).getEfektype(), dtequipments.Load().get(i).getEfekvalue());
+                    }
+                }
+            }
+            loadStat();
+            checkEquipped();
+            loadEfek();
+            loadSetEfek();
+        }
         cmbbelt.getSelectionModel().select(null);
         cmbbelt.getItems().clear();
         equipbeltlist.getItems().clear();
@@ -237,6 +292,25 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void setCombonecklace() {
+        if (!cmbnecklace.getSelectionModel().isEmpty()) {
+            String necklacestat = cmbnecklace.getSelectionModel().getSelectedItem();
+            if (cmbnecklace.getSelectionModel().getSelectedItem() != null) {
+                for (int i = 0; i < dtequipments.Load().size(); i++) {
+                    if (necklacestat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                        scrnecklace.setItems(FXCollections.observableArrayList(
+                                dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEfektype() + " - "
+                                + dtequipments.Load().get(i).getEfekvalue()),
+                                String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                        necklace = "";
+                        reduceStatusCharacter(dtequipments.Load().get(i).getEfektype(), dtequipments.Load().get(i).getEfekvalue());
+                    }
+                }
+            }
+            loadStat();
+            checkEquipped();
+            loadEfek();
+            loadSetEfek();
+        }
         cmbnecklace.getSelectionModel().select(null);
         cmbnecklace.getItems().clear();
         equipnecklacelist.getItems().clear();
@@ -250,6 +324,26 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void setComboRing() {
+        if (!cmbring.getSelectionModel().isEmpty()) {
+            String ringstat = cmbring.getSelectionModel().getSelectedItem();
+            if (cmbring.getSelectionModel().getSelectedItem() != null) {
+                //System.out.println(armorstat);
+                for (int i = 0; i < dtequipments.Load().size(); i++) {
+                    if (ringstat.equals(dtequipments.Load().get(i).getEquipmentname())) {
+                        scrring.setItems(FXCollections.observableArrayList(
+                                dtequipments.Load().get(i).getEquipmentname(), String.valueOf(dtequipments.Load().get(i).getEquipmentname()), String.valueOf(dtequipments.Load().get(i).getEfektype() + " - "
+                                + dtequipments.Load().get(i).getEfekvalue()),
+                                String.valueOf(dtequipments.Load().get(i).getEquipmentrarity())));
+                        ring = "";
+                        reduceStatusCharacter(dtequipments.Load().get(i).getEfektype(), dtequipments.Load().get(i).getEfekvalue());
+                    }
+                }
+            }
+            loadStat();
+            checkEquipped();
+            loadEfek();
+            loadSetEfek();
+        }
         cmbring.getSelectionModel().select(null);
         cmbring.getItems().clear();
         equipringlist.getItems().clear();
@@ -315,6 +409,7 @@ public class FXMLDocumentController implements Initializable {
                     d.setEfekid(efekdata.get(j).getEfekid());
                     d.setEfektype(efekdata.get(j).getEfektype());
                     d.setEfekvalue(efekdata.get(j).getEfekvalue());
+                    updateStatusCharacterFromEfek(efekdata.get(j).getEfektype(), efekdata.get(j).getEfekvalue());
                     tableData.add(d);
                 }
             }
@@ -346,6 +441,8 @@ public class FXMLDocumentController implements Initializable {
 
     public ArrayList<String> loadEfek() {
         ArrayList nameset = new ArrayList<String>();
+        ArrayList itemmax = new ArrayList<Integer>();
+        ArrayList setnow = new ArrayList<Integer>();
         String setequipnow = "", setnameakhir = "";
         int itemsetnow = 0, jumlahmax = 0;
         //txtnamaset.setText(nameset);
@@ -353,7 +450,8 @@ public class FXMLDocumentController implements Initializable {
             setequipnow = dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).get(i).getSetequipid();
             itemsetnow = dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).get(i).getJumlah();
             jumlahmax = dtequipset.getdata(setequipnow).getJumlahmax();
-
+            itemmax.add(i, jumlahmax);
+            setnow.add(i, itemsetnow);
             if (itemsetnow >= jumlahmax) {
                 nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow, jumlahmax));
             } else {
@@ -363,12 +461,12 @@ public class FXMLDocumentController implements Initializable {
         for (int j = 0; j < nameset.size(); j++) {
             //System.out.println(nameset.get(j));
             if (setnameakhir != "") {
-                setnameakhir = setnameakhir + "\n" + nameset.get(j).toString();
+                setnameakhir = setnameakhir + "\n" + nameset.get(j).toString() + " - " + setnow.get(j) + "/" + itemmax.get(j);
             } else {
-                setnameakhir = nameset.get(j).toString();
+                setnameakhir = nameset.get(j).toString() + " - " + setnow.get(j) + "/" + itemmax.get(j);
             }
         }
-        txtnamaset.setText(setnameakhir);
+        txtequipset.setText(String.valueOf(setnameakhir));
         return nameset;
     }
 
@@ -618,37 +716,37 @@ public class FXMLDocumentController implements Initializable {
         loadSetEfek();
     }
 
-    public void updateStatusCharacter(String type, int value) {
+    public void reduceStatusCharacter(String type, int value) {
         switch (type.toLowerCase()) {
             case "hp":
-                hp = hp + value;
+                hp = hp - value;
                 break;
             case "mp":
-                mp = mp + value;
+                mp = mp - value;
                 break;
             case "atk":
-                atk = atk + value;
+                atk = atk - value;
                 break;
             case "matk":
-                matk = matk + value;
+                matk = matk - value;
                 break;
             case "def":
-                def = def + value;
+                def = def - value;
                 break;
             case "mdef":
-                mdef = mdef + value;
+                mdef = mdef - value;
                 break;
             case "hit":
-                hit = hit + value;
+                hit = hit - value;
                 break;
             case "flee":
-                flee = value;
+                flee = flee - value;
                 break;
             case "aspd":
-                aspd = value;
+                aspd = aspd - value;
                 break;
             case "cspd":
-                cspd = value;
+                cspd = cspd - value;
                 break;
             default:
                 throw new AssertionError();
@@ -663,6 +761,91 @@ public class FXMLDocumentController implements Initializable {
         totaldef.setText(String.valueOf(def));
         totalmdef.setText(String.valueOf(mdef));
         totalflee.setText(String.valueOf(flee));
+    }
+
+    public void updateStatusCharacter(String type, int value) {
+        switch (type.toLowerCase()) {
+            case "hp":
+                hp = hp + value + hpefek;
+                break;
+            case "mp":
+                mp = mp + value + mpefek;
+                break;
+            case "atk":
+                atk = atk + value + atkefek;
+                break;
+            case "matk":
+                matk = matk + value + matkefek;
+                break;
+            case "def":
+                def = def + value + defefek;
+                break;
+            case "mdef":
+                mdef = mdef + value + mdefefek;
+                break;
+            case "hit":
+                hit = hit + value + hitefek;
+                break;
+            case "flee":
+                flee = flee + value + fleeefek;
+                break;
+            case "aspd":
+                aspd = aspd + value + aspdefek;
+                break;
+            case "cspd":
+                cspd = cspd + value + cspdefek;
+                break;
+            default:
+                throw new AssertionError();
+        }
+        totalaspd.setText(String.valueOf(aspd));
+        totalcspd.setText(String.valueOf(cspd));
+        totalhit.setText(String.valueOf(hit));
+        totalhp.setText(String.valueOf(hp));
+        totalmp.setText(String.valueOf(mp));
+        totalatk.setText(String.valueOf(atk));
+        totalmatk.setText(String.valueOf(matk));
+        totaldef.setText(String.valueOf(def));
+        totalmdef.setText(String.valueOf(mdef));
+        totalflee.setText(String.valueOf(flee));
+    }
+
+    public void updateStatusCharacterFromEfek(String type, int value) {
+        switch (type.toLowerCase()) {
+            case "hp":
+                hpefek = value;
+                break;
+            case "mp":
+                mpefek = value;
+                break;
+            case "atk":
+                atkefek = value;
+                break;
+            case "matk":
+                matkefek = value;
+                break;
+            case "def":
+                defefek = value;
+                break;
+            case "mdef":
+                mdefefek = value;
+                break;
+            case "hit":
+                hitefek = value;
+                break;
+            case "flee":
+                fleeefek = value;
+                break;
+            case "aspd":
+                aspdefek = value;
+                break;
+            case "cspd":
+                cspdefek = value;
+                break;
+            default:
+                throw new AssertionError();
+        }
+        System.out.println(hpefek + mpefek + atkefek + matkefek+hitefek);
     }
 
     @FXML
