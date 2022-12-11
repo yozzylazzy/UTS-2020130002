@@ -66,9 +66,6 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
 
     private boolean editmode = false;
     public static DBEquipmentset data = new DBEquipmentset(); //Masukan ke FXML_DocumentController agar dapat dibuat static dan dipakai dimana2
-    String namalgn, alamat;
-    int harga;
-    String namabrg;
 
     /**
      * Initializes the controller class.

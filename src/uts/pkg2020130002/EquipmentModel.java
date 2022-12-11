@@ -23,8 +23,16 @@ Nama Jenis Eq :
  */
 public class EquipmentModel {
 
-    private String equipmentid,equipmenttype,equipmentname, efekid, efektype;
+    private String equipmentid,equipmenttype,equipmentname, efekid, efektype, setequipid;
     private int equipmentrarity, efekvalue;
+
+    public String getSetequipid() {
+        return setequipid;
+    }
+
+    public void setSetequipid(String setequipid) {
+        this.setequipid = setequipid;
+    }
     
     public String getEquipmentid() {
         return equipmentid;

@@ -25,14 +25,14 @@
           </Menu>
             <Menu mnemonicParsing="false" text="TRANSAKSI">
                <items>
-                  <MenuItem fx:id="masterdetailequipset" mnemonicParsing="false" onAction="#masterdetailequipsetclick" text="MASTER DETIL EQUIP SET" />
-                  <MenuItem fx:id="masterdetailsetefek" mnemonicParsing="false" onAction="#masterdetailsetefekclick" text="MASTER DETIL EFEK" />
+                  <MenuItem fx:id="masterdetailefek" mnemonicParsing="false" onAction="#masterdetailefekclick" text="MASTER DETIL EFEK" />
+                  <MenuItem fx:id="masterdetailsetefek" mnemonicParsing="false" onAction="#masterdetailsetefekclick" text="MASTER DETIL SET EFEK" />
                </items>
             </Menu>
           <Menu fx:id="showweapon" mnemonicParsing="false" onAction="#showweaponklik" text="DISPLAY">
             <items>
                   <MenuItem fx:id="displayequipment" mnemonicParsing="false" onAction="#displayequipmentclick" text="EQUIPMENT" />
-                  <MenuItem fx:id="displaydetailequipset" mnemonicParsing="false" onAction="#displaydetailequipsetclick" text="DETAIL EQUIP SET" />
+                  <MenuItem fx:id="displaydetailefek" mnemonicParsing="false" onAction="#displaydetailefekclick" text="DETAIL EFEK" />
                   <MenuItem fx:id="displaysetequip" mnemonicParsing="false" onAction="#displaysetequipclick" text="EQUIPMENT SET" />
                   <MenuItem fx:id="displaydetailsetefek" mnemonicParsing="false" onAction="#displaydetailsetefekclick" text="DETAIL SET EFEK" />
                   <MenuItem fx:id="displayefek" mnemonicParsing="false" onAction="#displayefekclick" text="EFEK" />
@@ -79,7 +79,7 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="589.0" layoutX="1057.0" layoutY="66.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" width="463.0" />
-      <AnchorPane fx:id="equipmentmenu" layoutX="257.0" layoutY="53.0" prefHeight="628.0" prefWidth="1278.0">
+      <AnchorPane fx:id="equipmentmenu" disable="true" layoutX="257.0" layoutY="53.0" prefHeight="628.0" prefWidth="1278.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ffd7" height="90.0" layoutX="36.0" layoutY="313.0" stroke="BLACK" strokeType="INSIDE" width="90.0">
                <cursor>
@@ -237,14 +237,14 @@
             <ListView fx:id="scrnecklace" disable="true" layoutX="429.0" layoutY="50.0" onMouseExited="#exitscrnecklace" prefHeight="155.0" prefWidth="200.0" visible="false" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="statuspaneactiv" disable="true" layoutX="193.0" layoutY="156.0" prefHeight="352.0" prefWidth="836.0" visible="false">
+      <AnchorPane fx:id="statuspaneactiv" layoutX="193.0" layoutY="156.0" prefHeight="352.0" prefWidth="836.0">
          <children>
             <Label layoutX="613.0" text="STATUS" textFill="WHITE" />
-            <TextArea fx:id="txtnamaset" editable="false" layoutY="40.0" prefHeight="54.0" prefWidth="302.0" style="-fx-background-color: #0000ffff;">
+            <TextArea fx:id="txtnamaset" editable="false" layoutY="40.0" prefHeight="65.0" prefWidth="302.0" style="-fx-background-color: #0000ffff;" visible="false">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor></TextArea>
-            <Label layoutY="17.0" text="Nama-Set Weapon :" textFill="WHITE">
+            <Label layoutY="17.0" text="Nama-Set Weapon :" textFill="WHITE" visible="false">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="18.0" />
                </font>
@@ -324,11 +324,6 @@
                         <Font name="Broadway" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalhp" alignment="CENTER_RIGHT" layoutX="1380.0" layoutY="3.0" text="0" textFill="WHITE">
-                     <font>
-                        <Font name="Bookman Old Style Bold" size="20.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="totalcspd" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1235.0" layoutY="492.0" prefHeight="24.0" prefWidth="152.0" text="0" textAlignment="RIGHT" textFill="WHITE">
                      <font>
                         <Font name="Bookman Old Style Bold" size="20.0" />
@@ -349,9 +344,24 @@
                         <Font name="Broadway" size="24.0" />
                      </font>
                   </Label>
+                  <Label fx:id="totalhp" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1242.0" layoutY="3.0" prefHeight="24.0" prefWidth="152.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
                   <Label layoutX="1015.0" layoutY="489.0" text="CSPD" textFill="WHITE">
                      <font>
                         <Font name="Broadway" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalmp" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1242.0" layoutY="48.0" prefHeight="24.0" prefWidth="152.0" text="0" textFill="WHITE">
+                     <font>
+                        <Font name="Bookman Old Style Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="txtequipset" alignment="TOP_LEFT" layoutX="131.0" layoutY="60.0" prefHeight="418.0" prefWidth="243.0" text="Equipment-Set :" textFill="WHITE">
+                     <font>
+                        <Font name="Bauhaus 93" size="25.0" />
                      </font>
                   </Label>
                </children>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="910.0" prefWidth="655.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_DisplayDetailEfekController">
+   <children>
+      <Button fx:id="btnkeluar" layoutX="470.0" layoutY="843.0" mnemonicParsing="false" onAction="#keluarklik" prefHeight="39.0" prefWidth="132.0" text="KELUAR" />
+      <Button fx:id="btnakhir" layoutX="470.0" layoutY="764.0" mnemonicParsing="false" onAction="#akhirklik" prefHeight="39.0" prefWidth="132.0" text="AKHIR" />
+      <Button fx:id="btnubah" layoutX="317.0" layoutY="843.0" mnemonicParsing="false" onAction="#ubahklik" prefHeight="39.0" prefWidth="132.0" text="UBAH" />
+      <Button fx:id="btnhapus" layoutX="168.0" layoutY="843.0" mnemonicParsing="false" onAction="#hapusklik" prefHeight="39.0" prefWidth="132.0" text="HAPUS" />
+      <Button fx:id="btnsesudah" layoutX="317.0" layoutY="764.0" mnemonicParsing="false" onAction="#sesudahklik" prefHeight="39.0" prefWidth="132.0" text="SESUDAH" />
+      <Button fx:id="btnsebelum" layoutX="168.0" layoutY="764.0" mnemonicParsing="false" onAction="#sebelumklik" prefHeight="39.0" prefWidth="132.0" text="SEBELUM" />
+      <Button fx:id="btntambah" layoutX="52.0" layoutY="843.0" mnemonicParsing="false" onAction="#tambahklik" prefHeight="39.0" prefWidth="98.0" text="TAMBAH" />
+      <Button fx:id="btnawal" layoutX="52.0" layoutY="764.0" mnemonicParsing="false" onAction="#awalklik" prefHeight="39.0" prefWidth="98.0" text="AWAL" />
+      <TableView fx:id="tbvdetilefek" layoutX="52.0" layoutY="351.0" onMouseClicked="#tbvdetailefekklik" prefHeight="369.0" prefWidth="550.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tbvsetcount" layoutX="52.0" layoutY="55.0" onMouseClicked="#tbvsetcountklik" prefHeight="274.0" prefWidth="550.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

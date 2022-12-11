@@ -105,10 +105,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuItem btnexit;
     @FXML
-    private MenuItem displaydetailequipset;
-    @FXML
-    private MenuItem masterdetailequipset;
-    @FXML
     private MenuItem masterdetailsetefek;
     @FXML
     private ImageView imgbackground;
@@ -182,6 +178,12 @@ public class FXMLDocumentController implements Initializable {
     private ListView<String> scrring;
     @FXML
     private ListView<String> scrnecklace;
+    @FXML
+    private MenuItem displaydetailefek;
+    @FXML
+    private MenuItem masterdetailefek;
+    @FXML
+    private Label txtequipset;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -345,12 +347,18 @@ public class FXMLDocumentController implements Initializable {
     public ArrayList<String> loadEfek() {
         ArrayList nameset = new ArrayList<String>();
         String setequipnow = "", setnameakhir = "";
-        int itemsetnow = 0;
+        int itemsetnow = 0, jumlahmax = 0;
         //txtnamaset.setText(nameset);
         for (int i = 0; i < dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).size(); i++) {
             setequipnow = dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).get(i).getSetequipid();
             itemsetnow = dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).get(i).getJumlah();
-            nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow, itemsetnow));
+            jumlahmax = dtequipset.getdata(setequipnow).getJumlahmax();
+
+            if (itemsetnow >= jumlahmax) {
+                nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow, jumlahmax));
+            } else {
+                nameset.add(i, dtdetailsetefek.LoadSetEfek(setequipnow, itemsetnow));
+            }
         }
         for (int j = 0; j < nameset.size(); j++) {
             //System.out.println(nameset.get(j));
@@ -368,15 +376,23 @@ public class FXMLDocumentController implements Initializable {
     public ArrayList<String> loadEfekID() {
         ArrayList nameset = new ArrayList<String>();
         String setequipnow = "", setnameakhir = "";
+        int jumlahmax;
         int itemsetnow = 0;
         //txtnamaset.setText(nameset);
         //System.out.println(dtdetailsetefek.LoadEquipSet(weapon, armor, belt).size());
         for (int i = 0; i < dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).size(); i++) {
             setequipnow = dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).get(i).getSetequipid();
             itemsetnow = dtequipments.LoadEquipSet(weapon, armor, belt, ring, necklace).get(i).getJumlah();
+            jumlahmax = dtequipset.getdata(setequipnow).getJumlahmax();
             //System.out.println(setequipnow + " --- " + itemsetnow);
-            for (int k = 0; k < dtdetailsetefek.LoadEfekID(setequipnow, itemsetnow).size(); k++) {
-                nameset.add(k, dtdetailsetefek.LoadEfekID(setequipnow, itemsetnow).get(k));
+            if (itemsetnow > jumlahmax) {
+                for (int k = 0; k < dtsetcount.LoadEquipSet(setequipnow, jumlahmax).size(); k++) {
+                    nameset.add(k, dtsetcount.LoadEquipSet(setequipnow, jumlahmax).get(k).getEfekid());
+                }
+            } else {
+                for (int k = 0; k < dtsetcount.LoadEquipSet(setequipnow, itemsetnow).size(); k++) {
+                    nameset.add(k, dtsetcount.LoadEquipSet(setequipnow, itemsetnow).get(k).getEfekid());
+                }
             }
         }
         for (int j = 0; j < nameset.size(); j++) {
@@ -397,11 +413,11 @@ public class FXMLDocumentController implements Initializable {
             tbvstatarmor.getItems().clear();
 
             TableColumn col = new TableColumn("Set_Equip_ID");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setequipid"));
+            col.setCellValueFactory(new PropertyValueFactory<SetcountModel, String>("Setequipid"));
             tbvstatarmor.getColumns().addAll(col);
 
             col = new TableColumn("Jumlah");
-            col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Jumlah"));
+            col.setCellValueFactory(new PropertyValueFactory<SetcountModel, String>("Jumlah"));
             tbvstatarmor.getColumns().addAll(col);
 
             tbvstatarmor.setItems(data);
@@ -543,23 +559,6 @@ public class FXMLDocumentController implements Initializable {
     private void masterdetailsetefekclick(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputMasterDetilEfek.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void masterdetailequipsetclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputMasterDetilEquipmentSet.fxml"));
             Parent root = (Parent) loader.load();
             Scene scene = new Scene(root);
             Stage stg = new Stage();
@@ -727,23 +726,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void displaydetailequipsetclick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailEquipSet.fxml"));
-            Parent root = (Parent) loader.load();
-            Scene scene = new Scene(root);
-            Stage stg = new Stage();
-            stg.initModality(Modality.APPLICATION_MODAL);
-            stg.setResizable(false);
-            stg.setIconified(false);
-            stg.setScene(scene);
-            stg.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
     private void updatering(ActionEvent event) {
         String ringstat = cmbring.getSelectionModel().getSelectedItem();
         if (cmbring.getSelectionModel().getSelectedItem() != null) {
@@ -793,7 +775,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void setNecklace(MouseEvent event) {
-        
+        setCombonecklace();
     }
 
     @FXML
@@ -819,6 +801,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void setRing(MouseEvent event) {
+        setComboRing();
     }
 
     @FXML
@@ -843,6 +826,40 @@ public class FXMLDocumentController implements Initializable {
     private void imgnecklaceclicked(MouseEvent event) {
         scrnecklace.setDisable(false);
         scrnecklace.setVisible(true);
+    }
+
+    @FXML
+    private void displaydetailefekclick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_DisplayDetailEfek.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void masterdetailefekclick(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_InputDetailEfek.fxml"));
+            Parent root = (Parent) loader.load();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

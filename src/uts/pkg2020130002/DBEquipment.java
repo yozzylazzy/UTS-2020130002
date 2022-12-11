@@ -44,6 +44,7 @@ public class DBEquipment {
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
                 d.setEfekid(rs.getString("efek_id"));
                 d.setEfektype(rs.getString("efek_type"));
+                d.setSetequipid(rs.getString("set_equip_id"));
                 d.setEfekvalue(rs.getInt("efek_value"));
                 TableData.add(d);
                 i++;
@@ -363,6 +364,7 @@ public class DBEquipment {
                 d.setEfekid(rs.getString("efek_id"));
                 d.setEfektype(rs.getString("efek_type"));
                 d.setEfekvalue(rs.getInt("efek_value"));
+                d.setSetequipid(rs.getString("set_equip_id"));
                 tableData.add(d);
                 i++;
             }

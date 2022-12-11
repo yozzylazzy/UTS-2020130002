@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="634.0" prefWidth="1289.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_InputDetailEfekController">
+   <children>
+      <TextField fx:id="txtjumlah" layoutX="743.0" layoutY="127.0" onKeyPressed="#nofakturcek" prefHeight="39.0" prefWidth="344.0" />
+      <ComboBox fx:id="cmbefektype" layoutX="210.0" layoutY="309.0" prefHeight="39.0" prefWidth="296.0" />
+      <TextField fx:id="txtefekvalue" editable="false" layoutX="210.0" layoutY="381.0" prefHeight="39.0" prefWidth="296.0" />
+      <Label layoutX="65.0" layoutY="387.0" text="Efek Value :" />
+      <Label layoutX="65.0" layoutY="315.0" text="Efek Type :" />
+      <Button fx:id="btnloadefek" layoutX="414.0" layoutY="230.0" mnemonicParsing="false" onAction="#btnloadefekklik" text="LOOKUP" />
+      <TableView fx:id="tbvdetilefek" layoutX="539.0" layoutY="217.0" onMouseClicked="#tbvdetilefekklik" prefHeight="282.0" prefWidth="671.0">
+         <columns>
+            <TableColumn prefWidth="75.0" text="C1" />
+            <TableColumn prefWidth="75.0" text="C2" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnclear" layoutX="418.0" layoutY="439.0" mnemonicParsing="false" onAction="#btnclearklik" text="CLEAR" />
+      <Button fx:id="btnhapus" layoutX="329.0" layoutY="439.0" mnemonicParsing="false" onAction="#btnhapusklik" text="HAPUS" />
+      <Button fx:id="btntambah" layoutX="222.0" layoutY="439.0" mnemonicParsing="false" onAction="#btntambahklik" text="TAMBAH" />
+      <TextField fx:id="txtefekid" layoutX="209.0" layoutY="230.0" prefHeight="39.0" prefWidth="194.0" />
+      <Label layoutX="64.0" layoutY="236.0" text="Efek ID :" />
+      <Label layoutX="137.0" layoutY="132.0" text="Set Equip ID :" />
+      <Label layoutX="656.0" layoutY="133.0" text="Jumlah :" />
+      <TextField fx:id="txtsetequipid" layoutX="255.0" layoutY="127.0" onKeyPressed="#nofakturcek" prefHeight="39.0" prefWidth="307.0" />
+      <Button fx:id="btnsimpan" layoutX="453.0" layoutY="542.0" mnemonicParsing="false" onAction="#btnsimpanklik" prefHeight="39.0" prefWidth="113.0" text="Simpan" />
+      <Button fx:id="btnreset" layoutX="583.0" layoutY="542.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="113.0" text="Reset" />
+      <Button fx:id="btnexit" layoutX="714.0" layoutY="542.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="113.0" text="Exit" />
+      <Label layoutX="332.0" layoutY="39.0" text="INPUT DATA MASTER DETIL EFEK SET COUNT">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -19,7 +19,7 @@ public class DBEquipmentset {
 
     private EquipmentsetModel data = new EquipmentsetModel();
     private HashMap<String, DetailsetefekModel> datasetdetail = new HashMap<String, DetailsetefekModel>();
-   
+
     //Mengarah kepada efekid dan itemsetnya untuk difokuskan
     public EquipmentsetModel getEquipmentsetModel() {
         return (data);
@@ -49,6 +49,7 @@ public class DBEquipmentset {
                 EquipmentsetModel d = new EquipmentsetModel();
                 d.setSetequipid(rs.getString("set_equip_id"));
                 d.setSetname(rs.getString("set_name"));
+                d.setJumlahmax(rs.getInt("jumlah_max"));
                 //System.out.println(d.getSetname());
                 TableData.add(d);
                 i++;
@@ -180,6 +181,7 @@ public class DBEquipmentset {
                 d.setSetequipid(rs.getString("set_equip_id"));
                 d.setEquipmentid(rs.getString("equipment_id"));
                 d.setSetname(rs.getString("set_name"));
+                d.setJumlahmax(rs.getInt("jumlah_max"));
                 tableData.add(d);
                 i++;
             }
