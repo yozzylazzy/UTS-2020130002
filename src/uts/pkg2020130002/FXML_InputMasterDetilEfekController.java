@@ -66,6 +66,8 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
 
     private boolean editmode = false;
     public static DBEquipmentset data = new DBEquipmentset(); //Masukan ke FXML_DocumentController agar dapat dibuat static dan dipakai dimana2
+    @FXML
+    private TextField txtjumlahmax;
 
     /**
      * Initializes the controller class.
@@ -122,6 +124,7 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
     private void btnsimpanklik(ActionEvent event) {
         data.getEquipmentsetModel().setSetequipid(txtsetequipid.getText());
         data.getEquipmentsetModel().setSetname(txtnamaset.getText());
+        data.getEquipmentsetModel().setJumlahmax(Integer.parseInt(txtjumlahmax.getText()));
         if (data.saveall()) {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Data berhasil disimpan ", ButtonType.OK);
             a.showAndWait();
@@ -257,6 +260,7 @@ public class FXML_InputMasterDetilEfekController implements Initializable {
                 FXML_InputMasterDetilEfekController.data.setEquipmentsetModel(d);
                 txtsetequipid.setText(d.getSetequipid());
                 txtnamaset.setText(d.getSetname());
+                txtjumlahmax.setText(String.valueOf(d.getJumlahmax()));
                 ObservableList<DetailsetefekModel> data
                         = FXML_InputMasterDetilEfekController.data.LoadDetil();
                 if (data != null) {

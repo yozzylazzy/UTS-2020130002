@@ -86,6 +86,9 @@ public class FXML_PilihEquipmentSetController implements Initializable {
             col = new TableColumn("Set_Name");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Setname"));
             tbvequipmentset.getColumns().addAll(col);
+            col = new TableColumn("Jumlah_Max");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Jumlahmax"));
+            tbvequipmentset.getColumns().addAll(col);
 
             tbvequipmentset.setItems(data);
         } else {

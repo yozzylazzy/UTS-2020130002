@@ -27,6 +27,7 @@ public class UTS2020130002 extends Application {
         stg.setTitle("Managemen Equipment Set dan Rarity Game RPG");
         stg.initModality(Modality.APPLICATION_MODAL);
         stg.setResizable(false);
+        stg.setFullScreen(false);
         stg.setIconified(false);
         stage.setScene(scene);
         stage.show();

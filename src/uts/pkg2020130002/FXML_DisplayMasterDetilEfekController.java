@@ -67,6 +67,9 @@ public class FXML_DisplayMasterDetilEfekController implements Initializable {
         col = new TableColumn("Set_Name");
         col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Setname"));
         tbvequipmentset.getColumns().addAll(col);
+        col = new TableColumn("Jumlah_Max");
+        col.setCellValueFactory(new PropertyValueFactory<EquipmentsetModel, String>("Jumlahmax"));
+        tbvequipmentset.getColumns().addAll(col);
 
         tbvdetilsetefek.getColumns().clear();
         tbvdetilsetefek.getItems().clear();
@@ -82,7 +85,7 @@ public class FXML_DisplayMasterDetilEfekController implements Initializable {
         col.setCellValueFactory(new PropertyValueFactory<DetailsetefekModel, String>("Itemset"));
         tbvdetilsetefek.getColumns().addAll(col);
         showData();
-        
+
     }
 
     private void showData() {

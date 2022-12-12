@@ -34,6 +34,8 @@ public class FXML_InputEquipmentSetController implements Initializable {
     private TextField txtname;
 
     private boolean editdata = false;
+    @FXML
+    private TextField txtjumlahmax;
 
     /**
      * Initializes the controller class.
@@ -49,6 +51,7 @@ public class FXML_InputEquipmentSetController implements Initializable {
             EquipmentsetModel eqset = new EquipmentsetModel();
             eqset.setSetequipid(txtsetequipmentid.getText());
             eqset.setSetname(txtname.getText());
+            eqset.setJumlahmax(Integer.parseInt(txtjumlahmax.getText()));
             FXMLDocumentController.dtequipset.setEquipmentsetModel(eqset);
             if (editdata) {
                 if (FXMLDocumentController.dtequipset.update()) {
@@ -83,6 +86,7 @@ public class FXML_InputEquipmentSetController implements Initializable {
     @FXML
     private void btnresetklik(ActionEvent event) {
         txtname.setText("");
+        txtjumlahmax.setText("");
         txtsetequipmentid.setText("");
     }
 

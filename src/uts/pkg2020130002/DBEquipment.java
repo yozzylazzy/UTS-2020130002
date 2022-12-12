@@ -303,7 +303,7 @@ public class DBEquipment {
         try {
             con.bukaKoneksi();
             con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipments("
-                    + "equipment_id,equipment_type,equipment_name,equipment_rarity,efek_id) values (?,?,?,?,?)");
+                    + "equipment_id,equipment_type,equipment_name,equipment_rarity,efek_id,set_equip_id) values (?,?,?,?,?,?)");
             con.preparedStatement.setString(1, getEquipmentModel().getEquipmentid());
             con.preparedStatement.setString(2, getEquipmentModel().getEquipmenttype());
             con.preparedStatement.setString(3, getEquipmentModel().getEquipmentname());
@@ -327,12 +327,13 @@ public class DBEquipment {
             con.bukaKoneksi();
             con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
                     "update equipments set equipment_type = ?, equipment_name = ?, "
-                    + "equipment_rarity = ?,efek_id=?  where equipment_id = ?;");
+                    + "equipment_rarity = ?,efek_id=?,set_equip_id=?  where equipment_id = ?;");
             con.preparedStatement.setString(1, getEquipmentModel().getEquipmenttype());
             con.preparedStatement.setString(2, getEquipmentModel().getEquipmentname());
             con.preparedStatement.setInt(3, getEquipmentModel().getEquipmentrarity());
             con.preparedStatement.setString(4, getEquipmentModel().getEfekid());
-            con.preparedStatement.setString(5, getEquipmentModel().getEquipmentid());
+            con.preparedStatement.setString(5, getEquipmentModel().getSetequipid());
+            con.preparedStatement.setString(6, getEquipmentModel().getEquipmentid());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -350,7 +351,7 @@ public class DBEquipment {
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select equipment_id,equipment_type,equipment_name,equipment_rarity,"
+            ResultSet rs = con.statement.executeQuery("Select equipment_id,equipment_type,equipment_name,equipment_rarity, set_equip_id"
                     + " e.efek_id, efek_type, efek_value "
                     + "from equipments e join efek f on(e.efek_id = f.efek_id) "
                     + "where " + fld + " like '%" + dt + "%'");
@@ -360,6 +361,7 @@ public class DBEquipment {
                 d.setEquipmentid(rs.getString("equipment_id"));
                 d.setEquipmenttype(rs.getString("equipment_type"));
                 d.setEquipmentname(rs.getString("equipment_name"));
+                 d.setEquipmentname(rs.getString("set_equip_id"));
                 d.setEquipmentrarity(rs.getInt("equipment_rarity"));
                 d.setEfekid(rs.getString("efek_id"));
                 d.setEfektype(rs.getString("efek_type"));

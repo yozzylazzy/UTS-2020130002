@@ -163,7 +163,6 @@ public class FXML_InputDetailEfekController implements Initializable {
     private void btnclearklik(ActionEvent event) {
         txtefekid.setText("");
         txtefekvalue.setText("");
-        txtjumlah.setText("");
         cmbefektype.getSelectionModel().select(0);
         txtefekid.requestFocus();
     }

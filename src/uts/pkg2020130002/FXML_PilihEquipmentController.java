@@ -125,6 +125,9 @@ public class FXML_PilihEquipmentController implements Initializable {
             col = new TableColumn("Equipment_Rarity");
             col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Equipmentrarity"));
             tbvequipment.getColumns().addAll(col);
+            col = new TableColumn("Set Equip ID");
+            col.setCellValueFactory(new PropertyValueFactory<EquipmentModel, String>("Setequipid"));
+            tbvequipment.getColumns().addAll(col);
             tbvequipment.setItems(data);
         } else {
             Alert x = new Alert(Alert.AlertType.ERROR, "Data kosong", ButtonType.OK);

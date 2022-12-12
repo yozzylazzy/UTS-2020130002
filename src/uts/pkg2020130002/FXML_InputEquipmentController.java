@@ -53,6 +53,10 @@ public class FXML_InputEquipmentController implements Initializable {
     private TextField txtefekid;
     @FXML
     private Button btnloadefek;
+    @FXML
+    private Button btnloadsetequip;
+    @FXML
+    private TextField txtsetequipid;
 
     /**
      * Initializes the controller class.
@@ -72,6 +76,7 @@ public class FXML_InputEquipmentController implements Initializable {
             eq.setEquipmentname(txtequipmentname.getText());
             eq.setEquipmenttype(cmbequipmenttype.getSelectionModel().getSelectedItem());
             eq.setEquipmentrarity((int) sldrarity.getValue());
+            eq.setSetequipid(txtsetequipid.getText());
             eq.setEfekid(txtefekid.getText());
             FXMLDocumentController.dtequipments.setEquipmentModel(eq);
             if (editdata) {
@@ -111,6 +116,7 @@ public class FXML_InputEquipmentController implements Initializable {
         cmbequipmenttype.getSelectionModel().select(null);
         sldrarity.setValue(0);
         txtefekid.setText("");
+        txtsetequipid.setText("");
     }
 
     @FXML
@@ -139,7 +145,7 @@ public class FXML_InputEquipmentController implements Initializable {
 
     @FXML
     private void btnloadefekklik(ActionEvent event) {
-         try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEfek.fxml"));
             Parent root = (Parent) loader.load();
             FXML_PilihEfekController isidt = (FXML_PilihEfekController) loader.getController();
@@ -152,6 +158,27 @@ public class FXML_InputEquipmentController implements Initializable {
             stg.showAndWait();
             if (isidt.getHasil() == 1) {
                 txtefekid.setText(isidt.getIdHasil());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void btnloadsetequipklik(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML_PilihEquipmentSet.fxml"));
+            Parent root = (Parent) loader.load();
+            FXML_PilihEquipmentSetController isidt = (FXML_PilihEquipmentSetController) loader.getController();
+            Scene scene = new Scene(root);
+            Stage stg = new Stage();
+            stg.initModality(Modality.APPLICATION_MODAL);
+            stg.setResizable(false);
+            stg.setIconified(false);
+            stg.setScene(scene);
+            stg.showAndWait();
+            if (isidt.getHasil() == 1) {
+                txtsetequipid.setText(isidt.getIdHasil());
             }
         } catch (IOException e) {
             e.printStackTrace();

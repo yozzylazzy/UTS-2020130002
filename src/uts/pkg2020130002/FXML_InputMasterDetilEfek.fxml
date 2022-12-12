@@ -17,9 +17,9 @@
       <Button fx:id="btnexit" layoutX="711.0" layoutY="622.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="113.0" text="Exit" />
       <Button fx:id="btnreset" layoutX="580.0" layoutY="622.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="113.0" text="Reset" />
       <Button fx:id="btnsimpan" layoutX="450.0" layoutY="622.0" mnemonicParsing="false" onAction="#btnsimpanklik" prefHeight="39.0" prefWidth="113.0" text="Simpan" />
-      <TextField fx:id="txtsetequipid" layoutX="245.0" layoutY="117.0" onKeyPressed="#nofakturcek" prefHeight="39.0" prefWidth="307.0" />
-      <Label layoutX="629.0" layoutY="124.0" text="Nama Set :" />
-      <Label layoutX="127.0" layoutY="122.0" text="Set Equip ID :" />
+      <TextField fx:id="txtsetequipid" layoutX="172.0" layoutY="118.0" onKeyPressed="#nofakturcek" prefHeight="39.0" prefWidth="236.0" />
+      <Label layoutX="437.0" layoutY="124.0" text="Nama Set :" />
+      <Label layoutX="54.0" layoutY="123.0" text="Set Equip ID :" />
       <Label layoutX="54.0" layoutY="226.0" text="Efek ID :" />
       <TextField fx:id="txtefekid" layoutX="199.0" layoutY="220.0" prefHeight="39.0" prefWidth="194.0" />
       <TextField fx:id="txtitemset" layoutX="200.0" layoutY="467.0" prefHeight="39.0" prefWidth="296.0" />
@@ -38,6 +38,8 @@
       <Label layoutX="55.0" layoutY="377.0" text="Efek Value :" />
       <TextField fx:id="txtefekvalue" editable="false" layoutX="200.0" layoutY="371.0" prefHeight="39.0" prefWidth="296.0" />
       <ComboBox fx:id="cmbefektype" layoutX="200.0" layoutY="299.0" prefHeight="39.0" prefWidth="296.0" />
-      <TextField fx:id="txtnamaset" layoutX="733.0" layoutY="117.0" onKeyPressed="#nofakturcek" prefHeight="39.0" prefWidth="344.0" />
+      <TextField fx:id="txtnamaset" layoutX="541.0" layoutY="117.0" onKeyPressed="#nofakturcek" prefHeight="39.0" prefWidth="296.0" />
+      <TextField fx:id="txtjumlahmax" layoutX="969.0" layoutY="117.0" onKeyPressed="#nofakturcek" prefHeight="39.0" prefWidth="236.0" />
+      <Label layoutX="855.0" layoutY="124.0" text="Jumlah Max :" />
    </children>
 </AnchorPane>

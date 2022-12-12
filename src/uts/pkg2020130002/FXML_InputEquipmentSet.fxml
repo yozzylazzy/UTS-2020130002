@@ -8,15 +8,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="351.0" prefWidth="763.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uts.pkg2020130002.FXML_InputEquipmentSetController">
+<AnchorPane id="AnchorPane" prefHeight="351.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uts.pkg2020130002.FXML_InputEquipmentSetController">
    <children>
-      <AnchorPane id="AnchorPane" layoutX="3.0" layoutY="3.0" prefHeight="343.0" prefWidth="760.0">
+      <AnchorPane id="AnchorPane" layoutX="3.0" layoutY="3.0" prefHeight="376.0" prefWidth="760.0">
          <children>
-            <Button fx:id="btnsimpan" defaultButton="true" layoutX="230.0" layoutY="275.0" mnemonicParsing="false" onAction="#btnsimpanklik" prefHeight="39.0" prefWidth="99.0" text="SIMPAN" />
-            <Button fx:id="btnreset" layoutX="346.0" layoutY="275.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="90.0" text="RESET" />
-            <Button fx:id="btnexit" cancelButton="true" layoutX="454.0" layoutY="275.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="77.0" text="EXIT" />
-            <Line endX="100.0" layoutX="222.0" layoutY="228.0" startX="-100.0" strokeWidth="5.0" />
+            <Button fx:id="btnsimpan" defaultButton="true" layoutX="231.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnsimpanklik" prefHeight="39.0" prefWidth="99.0" text="SIMPAN" />
+            <Button fx:id="btnreset" layoutX="347.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnresetklik" prefHeight="39.0" prefWidth="90.0" text="RESET" />
+            <Button fx:id="btnexit" cancelButton="true" layoutX="455.0" layoutY="315.0" mnemonicParsing="false" onAction="#btnexitklik" prefHeight="39.0" prefWidth="77.0" text="EXIT" />
+            <Line endX="100.0" layoutX="223.0" layoutY="280.0" startX="-100.0" strokeWidth="5.0" />
             <Label layoutX="234.0" layoutY="39.0" text="INPUT EQUIPMENT SET">
                <font>
                   <Font name="Arial Black" size="24.0" />
@@ -33,8 +32,14 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Line endX="100.0" layoutX="522.0" layoutY="230.0" startX="-100.0" strokeWidth="5.0" />
+            <Line endX="100.0" layoutX="523.0" layoutY="282.0" startX="-100.0" strokeWidth="5.0" />
             <TextField fx:id="txtname" layoutX="328.0" layoutY="162.0" prefHeight="39.0" prefWidth="297.0" />
+            <TextField fx:id="txtjumlahmax" layoutX="328.0" layoutY="212.0" prefHeight="39.0" prefWidth="297.0" />
+            <Label layoutX="120.0" layoutY="218.0" text="JUMLAH MAX :">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

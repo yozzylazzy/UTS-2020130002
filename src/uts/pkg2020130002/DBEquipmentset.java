@@ -133,9 +133,10 @@ public class DBEquipmentset {
         try {
             con.bukaKoneksi();
             con.preparedStatement = con.dbKoneksi.prepareStatement("insert into equipment_set("
-                    + "set_equip_id, set_name) values (?,?)");
+                    + "set_equip_id, set_name, jumlah_max) values (?,?,?)");
             con.preparedStatement.setString(1, getEquipmentsetModel().getSetequipid());
             con.preparedStatement.setString(2, getEquipmentsetModel().getSetname());
+            con.preparedStatement.setInt(2, getEquipmentsetModel().getJumlahmax());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -153,9 +154,10 @@ public class DBEquipmentset {
         try {
             con.bukaKoneksi();
             con.preparedStatement = (PreparedStatement) con.dbKoneksi.prepareStatement(
-                    "update equipment_set set set_name = ? where set_equip_id = ?;");
+                    "update equipment_set set set_name = ?, jumlah_max=? where set_equip_id = ?;");
             con.preparedStatement.setString(1, getEquipmentsetModel().getSetname());
-            con.preparedStatement.setString(2, getEquipmentsetModel().getSetequipid());
+            con.preparedStatement.setInt(2, getEquipmentsetModel().getJumlahmax());
+            con.preparedStatement.setString(3, getEquipmentsetModel().getSetequipid());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
@@ -173,13 +175,12 @@ public class DBEquipmentset {
             Koneksi con = new Koneksi();
             con.bukaKoneksi();
             con.statement = con.dbKoneksi.createStatement();
-            ResultSet rs = con.statement.executeQuery("Select set_equip_id,equipment_id,set_name "
+            ResultSet rs = con.statement.executeQuery("Select set_equip_id,set_name,jumlah_max "
                     + "from equipment_set where " + fld + " like '%" + dt + "%'");
             int i = 1;
             while (rs.next()) {
                 EquipmentsetModel d = new EquipmentsetModel();
                 d.setSetequipid(rs.getString("set_equip_id"));
-                d.setEquipmentid(rs.getString("equipment_id"));
                 d.setSetname(rs.getString("set_name"));
                 d.setJumlahmax(rs.getInt("jumlah_max"));
                 tableData.add(d);
@@ -204,9 +205,10 @@ public class DBEquipmentset {
             con.preparedStatement.setString(1, getEquipmentsetModel().getSetequipid());
             con.preparedStatement.executeUpdate();
             con.preparedStatement = con.dbKoneksi.prepareStatement(
-                    "insert into equipment_set (set_equip_id, set_name) values (?,?)");
+                    "insert into equipment_set (set_equip_id, set_name, jumlah_max) values (?,?,?)");
             con.preparedStatement.setString(1, getEquipmentsetModel().getSetequipid());
             con.preparedStatement.setString(2, getEquipmentsetModel().getSetname());
+            con.preparedStatement.setInt(3, getEquipmentsetModel().getJumlahmax());
             con.preparedStatement.executeUpdate();
             con.preparedStatement = con.dbKoneksi.prepareStatement(
                     "delete from detail_set_efek where set_equip_id =?");
