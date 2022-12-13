@@ -780,7 +780,7 @@ public class FXMLDocumentController implements Initializable {
         totalaspd.setText(String.valueOf(aspdefek + aspd));
         totalcspd.setText(String.valueOf(cspdefek + cspd));
         totalhit.setText(String.valueOf(hitefek + hit));
-        totalhp.setText(String.valueOf(hpefek + hit));
+        totalhp.setText(String.valueOf(hpefek + hp));
         totalmp.setText(String.valueOf(mpefek + mp));
         totalatk.setText(String.valueOf(atkefek + atk));
         totalmatk.setText(String.valueOf(matkefek + matk));

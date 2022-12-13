@@ -146,7 +146,7 @@ public class DBDetailefek {
                     + "join equipment_set es on(de.set_equip_id=es.set_equip_id) join "
                     + " efek e on (de.efek_id=e.efek_id) "
                     + "where de.set_equip_id = '" + setequipid + "'"
-                    + "ORDER BY jumlah");
+                    + "ORDER BY jumlah, efek_type");
             int i = 1;
             while (rs.next()) {
                 DetailefekModel tmp = new DetailefekModel();
