@@ -136,7 +136,7 @@ public class DBEquipmentset {
                     + "set_equip_id, set_name, jumlah_max) values (?,?,?)");
             con.preparedStatement.setString(1, getEquipmentsetModel().getSetequipid());
             con.preparedStatement.setString(2, getEquipmentsetModel().getSetname());
-            con.preparedStatement.setInt(2, getEquipmentsetModel().getJumlahmax());
+            con.preparedStatement.setInt(3, getEquipmentsetModel().getJumlahmax());
             con.preparedStatement.executeUpdate();
             berhasil = true;
         } catch (Exception e) {
